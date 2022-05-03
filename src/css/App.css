@@ -1,3 +1,38 @@
 .App {
   text-align: center;
 }
+.Header {
+  margin: 20px;
+  border: 1px solid;
+}
+.LogInLogOut {
+  margin: 20px;
+
+  border: 1px solid;
+}
+.LogIn {
+  margin: 20px;
+
+  border: 1px solid;
+}
+.NewCharacter {
+  margin: 20px;
+
+  border: 1px solid;
+}
+.NewCharButton {
+  margin: 20px;
+
+  border: 1px solid;
+}
+.Signup {
+  margin: 20px;
+
+  border: 1px solid;
+}
+.SlimCards {
+  flex-wrap: wrap;
+  width: 150;
+  height: 150;
+  border: 1px solid greenyellow;
+}
