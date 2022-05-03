@@ -6,6 +6,7 @@ import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import NewCharacter from "./Components/NewCharacter";
 import NewCharButton from "./Components/NewCharButton";
+import SlimCharCards from "./Components/SlimCharCards";
 function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
       <Login />
       <NewCharButton />
       <NewCharacter />
+      <SlimCharCards />
       <Routes>
         <Route path="/" />
       </Routes>

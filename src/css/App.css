@@ -30,3 +30,9 @@
 
   border: 1px solid;
 }
+.SlimCards {
+  flex-wrap: wrap;
+  width: 150;
+  height: 150;
+  border: 1px solid greenyellow;
+}
