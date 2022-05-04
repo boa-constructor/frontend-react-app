@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -8,43 +8,51 @@ import {
   setPersistence,
   browserSessionPersistence,
 } from "firebase/auth";
+import { UserContext } from "../contexts/user";
 const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
-  const clickHandler = () => {
+  console.log(localStorage.getItem("user"));
+  const { user, setUser } = useContext(UserContext);
+
+  const clickHandler = (e) => {
     const auth = getAuth();
-    setPersistence(auth, browserSessionPersistence);
-    signInWithPopup(auth, provider)
-      .then((res) => {
-        setLoggedInUser(res.user.displayName);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        if (error) return { errorCode, errorMessage, email, credential };
-      });
+    setPersistence(auth, browserSessionPersistence).then(() => {
+      signInWithPopup(auth, provider)
+        .then((res) => {
+          setUser(res.user.displayName);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          if (error) return { errorCode, errorMessage, email, credential };
+        });
+    });
   };
+  useEffect(() => {
+    localStorage.setItem("user", user);
+  }, [user]);
   const logout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        setLoggedInUser(null);
+        setUser(null);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  if (loggedInUser) {
+  if (localStorage.getItem("user") !== "null") {
     return (
       <div>
-        Logged in as: {loggedInUser}
+        Logged in as: {localStorage.getItem("user")}
         <button onClick={logout}>Logout</button>
       </div>
     );
   }
+
   return (
     <div className="SignUpPage">
       <button className="loginbutton" onClick={clickHandler}>

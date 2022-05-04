@@ -7,6 +7,8 @@ import CharacterProfile from "./Components/CharacterProfile";
 import UserProfile from "./Components/Profile";
 import Nav from "./Components/Nav";
 import SignUpPage from "./Components/SignUpPage";
+import { UserContext } from "./contexts/user";
+import { useState } from "react";
 const firebaseConfig = {
   apiKey: "AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4",
   authDomain: "dndinder-68dcc.firebaseapp.com",
@@ -23,18 +25,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
+  const [user, setUser] = useState(localStorage.getItem("user"));
   return (
-    <div className="App">
-      <Header />
-      <Nav />
-      <SignUpPage />
-      <SlimCharCards />
-      <CharacterProfile />
-      <UserProfile />
-      <Routes>
-        <Route path="/" />
-      </Routes>
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div className="App">
+        <Header />
+        {user !== "null" ? (
+          <p>Currently logged in as {user}</p>
+        ) : (
+          <p>You're not logged in!</p>
+        )}
+        <Nav />
+        <SignUpPage />
+        <SlimCharCards />
+        <CharacterProfile />
+        <UserProfile />
+        <Routes>
+          <Route path="/" />
+        </Routes>
+      </div>
+    </UserContext.Provider>
   );
 }
 
