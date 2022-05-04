@@ -4,15 +4,20 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
+  const [loggedInUser, setLoggedInUser] = useState(null);
   const clickHandler = () => {
     const auth = getAuth();
+    setPersistence(auth, browserSessionPersistence);
     signInWithPopup(auth, provider)
       .then((res) => {
-        console.log(res.user);
+        setLoggedInUser(res.user.displayName);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -22,7 +27,24 @@ const SignUpPage = () => {
         if (error) return { errorCode, errorMessage, email, credential };
       });
   };
-
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        setLoggedInUser(null);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  if (loggedInUser) {
+    return (
+      <div>
+        Logged in as: {loggedInUser}
+        <button onClick={logout}>Logout</button>
+      </div>
+    );
+  }
   return (
     <div className="SignUpPage">
       <button className="loginbutton" onClick={clickHandler}>
