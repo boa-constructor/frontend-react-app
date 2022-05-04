@@ -6,11 +6,13 @@ import SlimCharCards from "./Components/SlimCharCards";
 import CharacterProfile from "./Components/CharacterProfile";
 import UserProfile from "./Components/Profile";
 import Nav from "./Components/Nav";
+import SignUpPage from "./Components/Signuppage";
 function App() {
   return (
     <div className="App">
       <Header />
       <Nav />
+      <SignUpPage />
       <SlimCharCards />
       <CharacterProfile />
       <UserProfile />
