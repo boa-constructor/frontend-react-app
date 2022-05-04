@@ -33,6 +33,9 @@
   border: 1px solid;
 }
 .card {
+  width: 300px;
+  heigh: auto;
+
   border: 1px solid;
   padding: 1.5rem;
   margin-right: 0;
@@ -42,6 +45,7 @@
   border-top-right-radius: 0.25rem;
 }
 .card-img-top {
+  clip-path: circle();
   width: 50%;
 }
 .Profile {

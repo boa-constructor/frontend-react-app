@@ -13,6 +13,7 @@ const Login = () => {
           Password (8 characters minimum):
         </label>
         <input type="password" minLength="8" required></input>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
