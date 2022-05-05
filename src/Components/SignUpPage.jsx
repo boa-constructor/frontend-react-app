@@ -12,7 +12,6 @@ import { UserContext } from "../contexts/user";
 const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
-  console.log(localStorage.getItem("user"));
   const { user, setUser } = useContext(UserContext);
 
   const clickHandler = (e) => {
@@ -34,11 +33,12 @@ const SignUpPage = () => {
   useEffect(() => {
     localStorage.setItem("user", user);
   }, [user]);
+
   const logout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        setUser(null);
+        setUser("");
       })
       .catch((error) => {
         console.log(error);

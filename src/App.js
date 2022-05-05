@@ -25,13 +25,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem("user"));
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="App">
         <Header />
-        {user !== "null" ? (
-          <p>Currently logged in as {user}</p>
+        {currentUser ? (
+          <p>Currently logged in as {currentUser}</p>
         ) : (
           <p>You're not logged in!</p>
         )}
