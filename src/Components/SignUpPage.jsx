@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
@@ -13,13 +12,15 @@ const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
   const { user, setUser } = useContext(UserContext);
+  const [loggedIn, setLoggedIn] = useState(user === "" ? false : true);
 
-  const clickHandler = (e) => {
+  const clickHandler = () => {
     const auth = getAuth();
     setPersistence(auth, browserSessionPersistence).then(() => {
       signInWithPopup(auth, provider)
         .then((res) => {
           setUser(res.user.displayName);
+          setLoggedIn(true);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -30,6 +31,7 @@ const SignUpPage = () => {
         });
     });
   };
+
   useEffect(() => {
     localStorage.setItem("user", user);
   }, [user]);
@@ -39,15 +41,17 @@ const SignUpPage = () => {
     signOut(auth)
       .then(() => {
         setUser("");
+        setLoggedIn(false);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  if (localStorage.getItem("user") !== "null") {
+
+  if (loggedIn === true) {
+    localStorage.setItem("user", user);
     return (
       <div>
-        Logged in as: {localStorage.getItem("user")}
         <button onClick={logout}>Logout</button>
       </div>
     );

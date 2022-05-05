@@ -9,6 +9,7 @@ import Nav from "./Components/Nav";
 import SignUpPage from "./Components/SignUpPage";
 import { UserContext } from "./contexts/user";
 import { useState } from "react";
+
 const firebaseConfig = {
   apiKey: "AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4",
   authDomain: "dndinder-68dcc.firebaseapp.com",
@@ -25,13 +26,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(localStorage.getItem("user"));
+  const [user, setUser] = useState(localStorage.getItem("user"));
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
         <Header />
-        {currentUser ? (
-          <p>Currently logged in as {currentUser}</p>
+        {user ? (
+          <p>Currently logged in as {user}</p>
         ) : (
           <p>You're not logged in!</p>
         )}
