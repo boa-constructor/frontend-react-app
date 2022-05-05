@@ -62,6 +62,7 @@ const SignUpPage = () => {
       <button className="loginbutton" onClick={clickHandler}>
         Log-In:
       </button>
+
     </div>
   );
 };
