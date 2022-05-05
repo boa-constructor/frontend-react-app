@@ -1,65 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
+  signOut,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
+import { UserContext } from "../contexts/user";
 const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
-  const auth = getAuth();
-  signInWithRedirect(auth, provider);
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const { user, setUser } = useContext(UserContext);
+  const [loggedIn, setLoggedIn] = useState(user === "" ? false : true);
 
-  const SubmitHandler = (event) => {
+  const clickHandler = () => {
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
+    setPersistence(auth, browserSessionPersistence).then(() => {
+      signInWithPopup(auth, provider)
+        .then((res) => {
+          setUser(res.user.displayName);
+          setLoggedIn(true);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          if (error) return { errorCode, errorMessage, email, credential };
+        });
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("user", user);
+  }, [user]);
+
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        setUser("");
+        setLoggedIn(false);
       })
       .catch((error) => {
-        if (error) {
-          return { errorMessage };
-        }
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        console.log(error);
       });
   };
 
+  if (loggedIn === true) {
+    localStorage.setItem("user", user);
+    return (
+      <div>
+        <button onClick={logout}>Logout</button>
+      </div>
+    );
+  }
+
   return (
     <div className="SignUpPage">
-      <form onSubmit={SubmitHandler}>
-        <label htmlFor="username" value="username">
-          Email:
-        </label>
-        <input
-          type="text"
-          required
-          onChange={(event) => {
-            setRegisterEmail(event.target.value);
-          }}
-        ></input>
-        <label htmlFor="password" value="password">
-          Password:
-        </label>
-        <input
-          type="password"
-          required
-          onChange={(event) => {
-            setRegisterPassword(event.target.value);
-          }}
-        ></input>
-        <label htmlFor="confirmpassword" value="confirmpassword">
-          Confirm Password:
-        </label>
-        <input type="password" required></input>
-        <button>Submit</button>
-      </form>
+      <button className="loginbutton" onClick={clickHandler}>
+        Log-In:
+      </button>
+
     </div>
   );
 };
