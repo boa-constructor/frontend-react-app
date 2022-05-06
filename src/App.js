@@ -4,7 +4,7 @@ import "./css/App.css";
 import Header from "./Components/Header";
 import GetCharactersList from "./Components/GetCharactersList";
 import CharacterProfile from "./Components/CharacterProfile";
-import UserProfile from "./Components/Profile";
+import SetProfile from "./Components/Profile";
 import Nav from "./Components/Nav";
 import SignUpPage from "./Components/SignUpPage";
 import { UserContext } from "./contexts/user";
@@ -46,7 +46,7 @@ function App() {
         <SignUpPage />
         <GetCharactersList />
         <CharacterProfile />
-        <UserProfile />
+        <SetProfile user={user} setProfile={setUser} />
         <Routes>
           <Route path="/" />
         </Routes>
