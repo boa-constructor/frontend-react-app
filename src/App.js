@@ -1,14 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./css/App.css";
 import Header from "./Components/Header";
-import GetCharactersList from "./Components/GetCharactersList";
 import CharacterProfile from "./Components/CharacterProfile";
-import SetProfile from "./Components/Profile";
-import Nav from "./Components/Nav";
 import SignUpPage from "./Components/SignUpPage";
 import { UserContext } from "./contexts/user";
 import { useState } from "react";
+import Guilds from "./Components/Guilds";
+import Messages from "./Components/Messages";
+import Home from "./Components/Home";
+import NavBar from "./Components/NavBar";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4",
@@ -26,29 +27,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [user, setUser] = useState(localStorage.getItem("username"));
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/user" element={<CharacterProfile />}></Route>
-          <Route path="/guilds" element={<Guilds />}></Route>
-          <Route path="/messages" element={<Messages />}></Route>
-        </Routes>
         <Header />
+        <SignUpPage />
         {user ? (
-          <p>Currently logged in as {user}</p>
+          <p>
+            Currently logged in as {user} <NavBar />
+          </p>
         ) : (
           <p>You're not logged in!</p>
         )}
-        <Nav />
-        <SignUpPage />
-        <GetCharactersList />
-        <CharacterProfile />
-        <SetProfile user={user} setProfile={setUser} />
+        {/* <CharacterProfile /> */}
+        {/* <SetProfile user={user} setProfile={setUser} /> */}
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Home user={user} />}></Route>
+          <Route path="/user" element={<CharacterProfile />}></Route>
+          <Route path="/guilds" element={<Guilds />}></Route>
+          <Route path="/messages" element={<Messages />}></Route>
         </Routes>
       </div>
     </UserContext.Provider>
