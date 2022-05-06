@@ -1,9 +1,12 @@
 import React from "react";
-import LogInLogOut from "./Log-in-out";
-import Login from "./Login";
-import NewCharButton from "./NewCharButton";
+import {Link} from "react-router-dom"
 const NavBar = () => {
-  return <div className="Nav_Bar"></div>;
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="/user">Profile</Link>
+    <Link to="/guilds">Guilds</Link>
+    <Link to="/messages">Messages</Link>
+  </nav>
 };
 
 export default NavBar;

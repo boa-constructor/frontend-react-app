@@ -10,7 +10,7 @@ const CharacterProfile = () => {
       <img
         className="profile_img"
         src="https://www.looper.com/img/gallery/galadriels-backstory-explained/intro-1590771661.jpg"
-        alt="Your profile image here"
+        alt="Profile Pic"
       ></img>
       <button type="button" className="sendMessage">
         Send Message

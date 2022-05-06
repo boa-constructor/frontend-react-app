@@ -33,7 +33,7 @@ const SignUpPage = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("user", user);
+    localStorage.setItem("username", user);
   }, [user]);
 
   const logout = () => {
@@ -49,7 +49,7 @@ const SignUpPage = () => {
   };
 
   if (loggedIn === true) {
-    localStorage.setItem("user", user);
+    localStorage.setItem("username", user);
     return (
       <div>
         <button onClick={logout}>Logout</button>
