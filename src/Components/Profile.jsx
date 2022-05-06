@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { postUserProfile } from "../utils/api";
+
 const SetProfile = ({ user, setInputs }) => {
+  const [userObj, setUserObj] = useState({
+    username: "",
+    Online: false,
+    Face_to_face: false,
+    aboutMe: "",
+  });
   const submissionHandler = (e) => {
-    e.preventDefault();
     postUserProfile(user);
   };
 
@@ -15,18 +21,46 @@ const SetProfile = ({ user, setInputs }) => {
   return (
     <div>
       <h1>Welcome to your profile {user.user}</h1>
-      <form onSubmit={submissionHandler}>
+      <form
+        onSubmit={(e) =>
+          setUserObj((currUserObj) => {
+            return { ...currUserObj, username: e.target.checked };
+          })
+        }
+      >
         <fieldset>
           <legend>
             <h3>Online or Face to face games?</h3>
           </legend>
           <div>
             <label htmlFor="GameType">Online</label>
-            <input type="checkbox" id="Online"></input>
+            <input
+              type="checkbox"
+              id="Online"
+              name="about_me"
+              onChange={(e) =>
+                setUserObj((currUserObj) => {
+                  return { ...currUserObj, Online: e.target.checked };
+                })
+              }
+            >
+              {console.log(userObj)}
+            </input>
           </div>
           <div>
             <label htmlFor="GameType">Face to face</label>
-            <input type="checkbox" id="Face_to_face"></input>
+            <input
+              type="checkbox"
+              id="Face_to_face"
+              name="face_to_face"
+              onChange={(e) =>
+                setUserObj((currUserObj) => {
+                  console.log(userObj);
+                  console.log(e.target.checked);
+                  return { ...currUserObj, Face_to_face: e.target.checked };
+                })
+              }
+            ></input>
           </div>
         </fieldset>
         <fieldset>
@@ -39,7 +73,12 @@ const SetProfile = ({ user, setInputs }) => {
             className="about_me_text"
             rows="4"
             cols="50"
-            onChange={handleChange}
+            onChange={(e) =>
+              setUserObj((currUserObj) => {
+                console.log(e.target.value);
+                return { ...currUserObj, aboutMe: e.target.value };
+              })
+            }
           ></textarea>
         </fieldset>
         <fieldset>
