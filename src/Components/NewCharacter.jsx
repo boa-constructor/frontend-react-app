@@ -8,11 +8,6 @@ const NewCharacter = () => {
           Character Name:
         </label>
         <input type="text" required></input>
-
-        <label htmlFor="CharClass" value="class">
-          Password (8 characters minimum):
-        </label>
-        <input type="password" minLength="8" required></input>
         <label htmlFor="class">Pick your class:</label>
         <select name="classes" id="class">
           <option value="Barbarin">Barbarin 😡</option>

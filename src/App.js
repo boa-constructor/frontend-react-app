@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Header from "./Components/Header";
-import SlimCharCards from "./Components/SlimCharCards";
+import GetCharactersList from "./Components/GetCharactersList";
 import CharacterProfile from "./Components/CharacterProfile";
 import SetProfile from "./Components/Profile";
 import Nav from "./Components/Nav";
@@ -30,6 +30,12 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/user" element={<CharacterProfile />}></Route>
+          <Route path="/guilds" element={<Guilds />}></Route>
+          <Route path="/messages" element={<Messages />}></Route>
+        </Routes>
         <Header />
         {user ? (
           <p>Currently logged in as {user}</p>
@@ -38,7 +44,7 @@ function App() {
         )}
         <Nav />
         <SignUpPage />
-        <SlimCharCards />
+        <GetCharactersList />
         <CharacterProfile />
         <SetProfile user={user} setProfile={setUser} />
         <Routes>

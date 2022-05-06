@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-const SlimCharCards = () => {
+const GetCharactersList = () => {
   return (
     <div className="SlimContainer">
       <Card className="SlimCard">
@@ -39,4 +39,4 @@ const SlimCharCards = () => {
     </div>
   );
 };
-export default SlimCharCards;
+export default GetCharactersList;
