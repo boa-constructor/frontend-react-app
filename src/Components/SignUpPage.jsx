@@ -52,14 +52,14 @@ const SignUpPage = () => {
     localStorage.setItem("username", user);
     return (
       <div>
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout} className="Link">Logout</button>
       </div>
     );
   }
 
   return (
     <div className="SignUpPage">
-      <button className="loginbutton" onClick={clickHandler}>
+      <button onClick={clickHandler} className="Link">
         Log-In:
       </button>
 

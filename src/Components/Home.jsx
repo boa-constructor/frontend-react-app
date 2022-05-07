@@ -1,5 +1,4 @@
 import GetCharactersList from "./GetCharactersList"
-import NavBar from "./NavBar"
 const Home = ({user}) => {
     return (
     <div>
