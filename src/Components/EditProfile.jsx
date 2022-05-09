@@ -1,6 +1,6 @@
 import React from "react";
 import { postUserProfile } from "../utils/api";
-const SetProfile = ({ user, setInputs }) => {
+const EditProfile = ({ user, setInputs }) => {
   const submissionHandler = (e) => {
     e.preventDefault();
     postUserProfile(user);
@@ -50,4 +50,4 @@ const SetProfile = ({ user, setInputs }) => {
   );
 };
 
-export default SetProfile;
+export default EditProfile;
