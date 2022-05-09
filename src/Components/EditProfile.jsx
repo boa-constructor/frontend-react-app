@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { postUserProfile, updateUserProfile } from '../utils/api';
 
@@ -14,6 +15,7 @@ const SetProfile = ({ userName, setInputs }) => {
   const submissionHandler = (e) => {
     e.preventDefault();
     updateUserProfile(userObj, 'YhU5hrR4iVIVWTX0XcvT');
+
   };
 
   const handleChange = (e) => {
@@ -21,6 +23,7 @@ const SetProfile = ({ userName, setInputs }) => {
     const value = e.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
   return (
     <div>
       <h1>Welcome to your profile {userName}</h1>
@@ -35,12 +38,14 @@ const SetProfile = ({ userName, setInputs }) => {
             })
           }
         />
+
         <fieldset>
           <legend>
             <h3>Online or Face to face games?</h3>
           </legend>
           <div>
             <label htmlFor="GameType">Online</label>
+
             <input
               type="checkbox"
               id="Online"
@@ -64,6 +69,7 @@ const SetProfile = ({ userName, setInputs }) => {
                 })
               }
             ></input>
+
           </div>
         </fieldset>
         <fieldset>
@@ -76,6 +82,7 @@ const SetProfile = ({ userName, setInputs }) => {
             className="about_me_text"
             rows="4"
             cols="50"
+
             onChange={(e) =>
               setUserObj((currUserObj) => {
                 return { ...currUserObj, aboutMe: e.target.value };
@@ -124,6 +131,7 @@ const SetProfile = ({ userName, setInputs }) => {
               <span className="slider round"></span>
             </label>
           </p>
+
         </fieldset>
         <fieldset>
           <input type="submit"></input>
@@ -133,4 +141,6 @@ const SetProfile = ({ userName, setInputs }) => {
   );
 };
 
+
 export default SetProfile;
+

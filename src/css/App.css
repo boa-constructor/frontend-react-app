@@ -1,62 +1,55 @@
 .App {
   text-align: center;
   background-color: #ffdee9;
-  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  background-image: linear-gradient(0deg, #F7CE65 0%, #FFFEBD 100%);
+  color: #030303;
+  font-family: "calibri";
+  height: 100%;
+}
+#root{
+  height: 100vh;
+}
+body {
+  margin: 0px;
 }
 .Header {
-  margin: 20px;
-  border: 1px solid;
+  border-bottom: 1px solid black;
+  width: 400px;
+  margin: auto;
+  padding: 0;
+}
+.Header h1{
+  margin: 0;
 }
 .LogInLogOut {
-  margin: 20px;
-
   border: 1px solid;
 }
 .LogIn {
-  margin: 20px;
-
   border: 1px solid;
 }
 .NewCharacter {
-  margin: 20px;
-
   border: 1px solid;
 }
 .NewCharButton {
-  margin: 20px;
-
   border: 1px solid;
 }
 .Signup {
-  margin: 20px;
-
   border: 1px solid;
-}
-.card {
-  width: 300px;
-  height: auto;
-
-  border: 1px solid;
-  padding: 1.5rem;
-  margin-right: 0;
-  margin-left: 0;
-  border-width: 1px;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-.card-img-top {
-  clip-path: circle();
-  width: 50%;
-}
-.Profile {
-  width: 100vw;
-  height: 100vw;
-  border: 1px solid;
-  float: left;
+  padding: 5px;
 }
 .profile_img {
-  float: left;
   clip-path: circle();
   width: 300px;
   height: auto;
+}
+.charList {
+  list-style-type: none;
+  padding: 0;
+}
+.Link{
+  color: crimson;
+  text-decoration: none;
+}
+#headerLink{
+  text-decoration: none;
 }

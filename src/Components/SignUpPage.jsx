@@ -19,7 +19,7 @@ const SignUpPage = () => {
     setPersistence(auth, browserSessionPersistence).then(() => {
       signInWithPopup(auth, provider)
         .then((res) => {
-          setUser(res.user.displayName);
+          setUser(res.user.uid);
           setLoggedIn(true);
         })
         .catch((error) => {
@@ -33,7 +33,7 @@ const SignUpPage = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("user", user);
+    localStorage.setItem("user_id", user);
   }, [user]);
 
   const logout = () => {
@@ -49,17 +49,17 @@ const SignUpPage = () => {
   };
 
   if (loggedIn === true) {
-    localStorage.setItem("user", user);
+    localStorage.setItem("user_id", user);
     return (
       <div>
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout} className="Link">Logout</button>
       </div>
     );
   }
 
   return (
     <div className="SignUpPage">
-      <button className="loginbutton" onClick={clickHandler}>
+      <button onClick={clickHandler} className="Link">
         Log-In:
       </button>
 
