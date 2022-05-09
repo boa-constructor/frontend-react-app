@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import {useState} from "react"
 import {Link} from "react-router-dom"
-import { getCharList } from "../utils/api";
+import { getCharacters } from "../utils/api";
 
 const GetCharactersList = () => {
   const [charList, setCharList] = useState([])
 
   useEffect(() => {
-    getCharList().then((data) => {
-      console.log(data)
+    getCharacters().then((data) => {
       setCharList(data)
     }).catch((err) => {
       console.log(err)

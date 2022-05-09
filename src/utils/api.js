@@ -20,7 +20,7 @@ export const postUserProfile = async (username) => {
   }
 };
 
-export const getCharList = async () => {
+export const getCharacters = async () => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -29,8 +29,24 @@ export const getCharList = async () => {
   };
   try {
     const { data } = await firestoreTestApi.get("/getCharacters");
-    console.log(data);
     return data.characters;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getCharacterByID = async (character_id) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+  try {
+    const { data } = await firestoreTestApi.get(
+      `/getCharacterByID/${character_id}`
+    );
+    return data.character;
   } catch (err) {
     console.log(err);
   }
