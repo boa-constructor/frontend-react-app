@@ -9,7 +9,6 @@ const UserProfile = () => {
 
     useEffect(() => {
         getUserProfile(user).then((data) => {
-            console.log(data)
             setUserProfile(data)
         }).catch((err) => {
             console.log(err)
