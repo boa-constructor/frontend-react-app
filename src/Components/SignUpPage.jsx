@@ -8,6 +8,7 @@ import {
   browserSessionPersistence,
 } from "firebase/auth";
 import { UserContext } from "../contexts/user";
+import { postUserProfile } from "../utils/api";
 const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
@@ -20,6 +21,7 @@ const SignUpPage = () => {
       signInWithPopup(auth, provider)
         .then((res) => {
           setUser(res.user.uid);
+          postUserProfile(res.user.uid)
           setLoggedIn(true);
         })
         .catch((error) => {
