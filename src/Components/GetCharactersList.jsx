@@ -8,9 +8,11 @@ const GetCharactersList = () => {
   {name: "Thamkk", class: "Monk ☯", username: "James Barlow"},
   {name: "Goth", class: "Druid 🌱", username: "Sheroze Mohammed"},
   {name:"Thazulk", class: "Warlock 👹", username: "Sam P"}])
+
   useEffect(() => {
     //space for get char list endpoint
   })
+
   return (
     <ul className="charList">
       {charList.map((char) => {
