@@ -3,12 +3,11 @@ const firestoreTestApi = axios.create({
   baseURL: 'http://127.0.0.1:5001/dndinder-68dcc/us-central1',
 });
 
-export const postUserProfile = async (username) => {
+export const postUserProfile = async (user_id) => {
   try {
     const { data } = await firestoreTestApi.post(`/addUser`, {
-      username,
+      user_id,
     });
-    console.log(data, 'this is data');
     return data;
   } catch (err) {
     console.log(err);
@@ -49,6 +48,7 @@ export const getCharacterByID = async (character_id) => {
 
 export const getUserProfile = async (user_id) => {
   try {
+    console.log(user_id);
     const { data } = await firestoreTestApi.get(`/getUser/${user_id}`);
     return data.user;
   } catch (err) {

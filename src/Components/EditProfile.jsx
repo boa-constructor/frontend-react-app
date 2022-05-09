@@ -1,8 +1,10 @@
-
+import { useContext } from 'react';
 import React, { useState } from 'react';
-import { postUserProfile, updateUserProfile } from '../utils/api';
+import {  updateUserProfile } from '../utils/api';
+import { UserContext } from '../contexts/user';
 
 const SetProfile = ({ userName, setInputs }) => {
+  const {user} = useContext(UserContext)
   const [userObj, setUserObj] = useState({
     username: '',
     avatar_url: '',
@@ -14,7 +16,7 @@ const SetProfile = ({ userName, setInputs }) => {
   });
   const submissionHandler = (e) => {
     e.preventDefault();
-    updateUserProfile(userObj, 'YhU5hrR4iVIVWTX0XcvT');
+    updateUserProfile(userObj, `${user}`);
     };
 
   return (

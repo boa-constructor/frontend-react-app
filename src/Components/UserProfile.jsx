@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const UserProfile = () => {
     const [userProfile, setUserProfile] = useState({})
     const {user} = useContext(UserContext)
-
+    console.log(user)
     useEffect(() => {
         getUserProfile(user).then((data) => {
             setUserProfile(data)
