@@ -17,9 +17,10 @@ export const postUserProfile = async (username) => {
 export const updateUserProfile = async (postBody, user_id) => {
   const patchBody = { ...postBody };
   try {
-    const { data } = await firestoreTestApi.patch(`/updateUser/${user_id}`, {
-      patchBody,
-    });
+    const { data } = await firestoreTestApi.patch(
+      `/updateUser/${user_id}`,
+      patchBody
+    );
     return data;
   } catch (err) {
     console.log(err);

@@ -1,4 +1,5 @@
 const CreateCharacter = () => {
+    const submitHandler = () => {}
     return (
         <div>
     <form id="addchar">

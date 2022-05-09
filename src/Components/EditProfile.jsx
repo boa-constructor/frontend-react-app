@@ -15,14 +15,7 @@ const SetProfile = ({ userName, setInputs }) => {
   const submissionHandler = (e) => {
     e.preventDefault();
     updateUserProfile(userObj, 'YhU5hrR4iVIVWTX0XcvT');
-
-  };
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
+    };
 
   return (
     <div>
