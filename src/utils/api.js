@@ -48,9 +48,19 @@ export const getCharacterByID = async (character_id) => {
 
 export const getUserProfile = async (user_id) => {
   try {
-    console.log(user_id);
     const { data } = await firestoreTestApi.get(`/getUser/${user_id}`);
     return data.user;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const postCharacter = async (character) => {
+  try {
+    const { data } = await firestoreTestApi.post(`/addCharacter`, {
+      character,
+    });
+    return data;
   } catch (err) {
     console.log(err);
   }
