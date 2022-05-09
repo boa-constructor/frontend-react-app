@@ -17,6 +17,8 @@ const UserProfile = () => {
     }, [user])
     return <div>
         <h2>Welcome to your profile {userProfile.username}</h2>
+        <Link to="/CreateCharacter" className="Link">Add Character</Link>
+        <br></br>
         <Link to="/EditProfile" className="Link">Edit Profile</Link>
     </div>
 }

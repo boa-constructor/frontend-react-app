@@ -12,6 +12,7 @@ import NavBar from './Components/NavBar';
 import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
+import CreateCharacter from './Components/CreateCharacter';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -43,6 +44,7 @@ function App() {
             path='/EditProfile'
             element={<EditProfile user={user} setInputs={setUser} />}
           ></Route>
+          <Route path='/CreateCharacter' element={<CreateCharacter />}></Route>
           <Route path='/Profile' element={<UserProfile />}></Route>
           <Route path='/guilds' element={<Guilds />}></Route>
           <Route path='/messages' element={<Messages />}></Route>
