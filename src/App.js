@@ -2,6 +2,11 @@ import { initializeApp } from 'firebase/app';
 import { Routes, Route } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
+
+
+
+
+
 import SignUpPage from './Components/SignUpPage';
 import { UserContext } from './contexts/user';
 import { useState } from 'react';
@@ -13,6 +18,7 @@ import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
 import CreateCharacter from './Components/CreateCharacter';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -30,14 +36,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
+
   const [user, setUser] = useState(localStorage.getItem('user_id'));
   console.log(user);
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className='App'>
         <Header user={user} />
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
+
+
         <Routes>
           <Route path='/' element={<Home user={user} />}></Route>
           <Route

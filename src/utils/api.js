@@ -4,9 +4,23 @@ const firestoreTestApi = axios.create({
 });
 
 export const postUserProfile = async (username) => {
+
   try {
     const { data } = await firestoreTestApi.post(`/addUser`, {
       username,
+      about_me,
+    });
+    console.log(data, 'this is data');
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const updateUserProfile = async (postBody, user_id) => {
+  const patchBody = { ...postBody };
+  try {
+    const { data } = await firestoreTestApi.patch(`/updateUser/${user_id}`, {
+      patchBody,
     });
     return data;
   } catch (err) {
