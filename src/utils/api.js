@@ -4,11 +4,9 @@ const firestoreTestApi = axios.create({
 });
 
 export const postUserProfile = async (username) => {
-
   try {
     const { data } = await firestoreTestApi.post(`/addUser`, {
       username,
-      about_me,
     });
     console.log(data, 'this is data');
     return data;
