@@ -48,6 +48,7 @@ body {
 }
 .Link{
   color: crimson;
+  text-decoration: none;
 }
 #headerLink{
   text-decoration: none;
