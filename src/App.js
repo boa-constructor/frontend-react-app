@@ -10,6 +10,7 @@ import Messages from "./Components/Messages";
 import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
 import Profile from "./Components/Profile";
+import Character from "./Components/Character";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4",
@@ -32,14 +33,7 @@ function App() {
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
         <Header user={user} />
-        {user ? (
-          <p>
-            <NavBar />
-            Currently logged in as {user}
-          </p>
-        ) : (
-          <p>You're not logged in!</p>
-        )}
+        {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
         <Routes>
           <Route path="/" element={<Home user={user} />}></Route>
@@ -49,6 +43,10 @@ function App() {
           ></Route>
           <Route path="/guilds" element={<Guilds />}></Route>
           <Route path="/messages" element={<Messages />}></Route>
+          <Route
+            path="/characters/:character_id"
+            element={<Character />}
+          ></Route>
         </Routes>
       </div>
     </UserContext.Provider>
