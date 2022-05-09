@@ -18,7 +18,7 @@ const GetCharactersList = () => {
   return (
     <ul className="charList">
       {charList.map((char) => {
-        return <li key={char.character_id}><Link to={`/characters/${char.character_id}`} className="Link">Name: {char.character_name}</Link><br></br> Class: {char.class}<br></br>{char.Avatar}</li>
+        return <li key={char.character_id}><Link to={`/characters/${char.character_id}`} className="Link">Name: {char.character_name}</Link><br></br> Class: {char.class}<br></br><img src={`${char.Avatar}`} alt="Avatar Pic"></img></li>
       })}
     </ul>
 
