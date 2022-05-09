@@ -4,12 +4,6 @@ const firestoreTestApi = axios.create({
 });
 
 export const postUserProfile = async (username) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  };
   try {
     const { data } = await firestoreTestApi.post(`/addUser`, {
       username,
@@ -21,12 +15,6 @@ export const postUserProfile = async (username) => {
 };
 
 export const getCharacters = async () => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  };
   try {
     const { data } = await firestoreTestApi.get("/getCharacters");
     return data.characters;
@@ -36,12 +24,6 @@ export const getCharacters = async () => {
 };
 
 export const getCharacterByID = async (character_id) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  };
   try {
     const { data } = await firestoreTestApi.get(
       `/getCharacterByID/${character_id}`
