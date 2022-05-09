@@ -1,42 +1,23 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React, { useEffect } from "react";
+import {useState} from "react"
+import {Link} from "react-router-dom"
 const GetCharactersList = () => {
+  const [charList, getCharList] = useState([{name: "Ghank", class: "Barbarin 😡", username: "Will Mason"},
+  {name: "Nivuth", class: "Ranger 🏹", username: "Ali Combes"},
+  {name: "Hrirr", class: "Barbarin 😡", username: "Nick Wooton"},
+  {name: "Thamkk", class: "Monk ☯", username: "James Barlow"},
+  {name: "Goth", class: "Druid 🌱", username: "Sheroze Mohammed"},
+  {name:"Thazulk", class: "Warlock 👹", username: "Sam P"}])
+  useEffect(() => {
+    //space for get char list endpoint
+  })
   return (
-    <div className="SlimContainer">
-      <Card className="SlimCard">
-        <Card.Img src="holder.js/100px270" alt="Card image" />
-        <Card.ImgOverlay>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-          <Card.Text>Last updated 3 mins ago</Card.Text>
-        </Card.ImgOverlay>
-      </Card>
-      <Card className="SlimCard">
-        <Card.Img src="holder.js/100px270" alt="Card image" />
-        <Card.ImgOverlay>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-          <Card.Text>Last updated 3 mins ago</Card.Text>
-        </Card.ImgOverlay>
-      </Card>
-      <Card className="SlimCard">
-        <Card.Img src="holder.js/100px270" alt="Card image" />
-        <Card.ImgOverlay>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-          <Card.Text>Last updated 3 mins ago</Card.Text>
-        </Card.ImgOverlay>
-      </Card>
-    </div>
+    <ul className="charList">
+      {charList.map((char) => {
+        return <li><Link to="/" className="Link">Name: {char.name}</Link><br></br> Class: {char.class}, Username: {char.username}</li>
+      })}
+    </ul>
+
   );
 };
 export default GetCharactersList;
