@@ -55,15 +55,27 @@ export const getUserProfile = async (user_id) => {
   }
 };
 
+
 export const getGroupById = async (group_id) => {
   try {
     const { data } = await firestoreTestApi.get(`/getGroupById/${group_id}`);
     console.log(data, 'this is data');
     return data.group;
   } catch (err) {
+     console.log(err);
+  }
+};
+
+export const createGroup = async (group) => {
+  try {
+    const { data } = await firestoreTestApi.post(`/addGroup`, group);
+    return data.group;
+     } catch (err) {
+
     console.log(err);
   }
 };
+
 
 export const getCharactersFromGroup = async (characters) => {
   const charactersArray = [];
@@ -75,4 +87,15 @@ export const getCharactersFromGroup = async (characters) => {
     })
   );
   return charactersArray;
+  };
+
+
+export const postCharacter = async (character) => {
+  try {
+    const { data } = await firestoreTestApi.post(`/addCharacter`, character);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+
 };
