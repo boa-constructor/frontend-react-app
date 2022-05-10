@@ -36,10 +36,12 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className='App'>
+      <div className="App">
         <Header user={user} />
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
+
+
         <Routes>
           <Route
             path='/'
