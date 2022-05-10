@@ -58,6 +58,7 @@ export const getUserProfile = async (user_id) => {
 export const getGroupById = async (group_id) => {
   try {
     const { data } = await firestoreTestApi.get(`/getGroupById/${group_id}`);
+    console.log(data, 'this is data');
     return data.group;
   } catch (err) {
     console.log(err);
