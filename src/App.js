@@ -1,11 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
-
-
-
-
 
 import SignUpPage from './Components/SignUpPage';
 import { UserContext } from './contexts/user';
@@ -18,7 +14,6 @@ import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
 import CreateCharacter from './Components/CreateCharacter';
-
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -36,7 +31,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
-
   const [user, setUser] = useState(localStorage.getItem('user_id'));
   console.log(user);
 
@@ -46,21 +40,40 @@ function App() {
         <Header user={user} />
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
-
-
         <Routes>
-          <Route path='/' element={<Home user={user} />}></Route>
+          <Route
+            path='/'
+            element={user ? <Home user={user} /> : <p></p>}
+          ></Route>
           <Route
             path='/EditProfile'
-            element={<EditProfile user={user} setInputs={setUser} />}
+            element={
+              user ? (
+                <EditProfile user={user} setInputs={setUser} />
+              ) : (
+                <Navigate to='/' />
+              )
+            }
           ></Route>
-          <Route path='/CreateCharacter' element={<CreateCharacter />}></Route>
-          <Route path='/Profile' element={<UserProfile />}></Route>
-          <Route path='/guilds' element={<Guilds />}></Route>
-          <Route path='/messages' element={<Messages />}></Route>
+          <Route
+            path='/CreateCharacter'
+            element={user ? <CreateCharacter /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/Profile'
+            element={user ? <UserProfile /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/guilds'
+            element={user ? <Guilds /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/messages'
+            element={user ? <Messages /> : <Navigate to='/' />}
+          ></Route>
           <Route
             path='/characters/:character_id'
-            element={<Character />}
+            element={user ? <Character /> : <Navigate to='/' />}
           ></Route>
         </Routes>
       </div>
