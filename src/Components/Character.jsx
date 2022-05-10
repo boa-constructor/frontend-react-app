@@ -8,17 +8,16 @@ const Character = (req, res) => {
   useEffect(() => {
     getCharacterByID(character_id)
       .then((data) => {
-        console.log(data);
         setCharacter(data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [character_id]);
-  console.log(character.background);
+
+  let index = 0;
 
   const games_played = character.games_played;
-  let index = 0;
 
   return (
     <div className="character-box">
@@ -30,10 +29,14 @@ const Character = (req, res) => {
         <div className="character-details">
           <div>{character.character_name}</div>
           <div>Class: {character.class}</div>
-          {games_played &&
-            games_played.map((games) => {
-              return <div key={index++}>{games}</div>;
-            })}
+          <div>
+            <ul>
+              {games_played &&
+                games_played.map((games) => {
+                  return <li key={index++}> {games}</li>;
+                })}
+            </ul>
+          </div>
         </div>
       </div>
 
