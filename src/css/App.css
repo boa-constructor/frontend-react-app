@@ -77,6 +77,7 @@ body {
   display: flex;
   justify-content: space-around;
   height: 100px;
+  margin-bottom: 10px;
 }
 
 .avatar {
@@ -93,6 +94,14 @@ body {
 .characters-preferences {
   display: flex;
   justify-content: space-around;
+}
+
+.characters {
+  border: 1px solid black;
+}
+
+.preferences {
+  border: 1px solid black;
 }
 
 .about-connections {
