@@ -48,10 +48,30 @@ export const getCharacterByID = async (character_id) => {
 
 export const getUserProfile = async (user_id) => {
   try {
-    console.log(user_id);
     const { data } = await firestoreTestApi.get(`/getUser/${user_id}`);
     return data.user;
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getGroupById = async (group_id) => {
+  try {
+    const { data } = await firestoreTestApi.get(`/getGroupById/${group_id}`);
+    return data.group;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getCharacterFromGroup = async (characters) => {
+  const charactersArray = [];
+
+  Promise.all(
+    characters.forEach(async (id) => {
+      const character = await getCharacterByID(id);
+      charactersArray.push(character);
+    })
+  );
+  return charactersArray;
 };
