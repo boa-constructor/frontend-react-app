@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { UserContext } from "../contexts/user"
 import { postCharacter } from "../utils/api"
 
 const CreateCharacter = () => {
-    const [character, setCharacter] = useState({class: "Barbarian"})
+    const user = useContext(UserContext)
+    const [character, setCharacter] = useState({class: "Barbarian", user_id: `${user.user}`})
     const changeHandler = (e) => {
         setCharacter((currCharacter) => {
             console.log(currCharacter)
@@ -13,6 +15,7 @@ const CreateCharacter = () => {
         e.preventDefault()
         postCharacter(character)
     }
+    
     return (
         <div>
     <form id="addchar" onSubmit={submitHandler}>

@@ -57,9 +57,7 @@ export const getUserProfile = async (user_id) => {
 
 export const postCharacter = async (character) => {
   try {
-    const { data } = await firestoreTestApi.post(`/addCharacter`, {
-      character,
-    });
+    const { data } = await firestoreTestApi.post(`/addCharacter`, character);
     return data;
   } catch (err) {
     console.log(err);
