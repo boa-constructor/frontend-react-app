@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getCharacterByID } from "../utils/api";
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getCharacterByID } from '../utils/api';
 const Character = (req, res) => {
   const { character_id } = useParams();
   const [character, setCharacter] = useState({});
