@@ -94,6 +94,7 @@ body {
 .characters-preferences {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 10px;
 }
 
 .characters {
@@ -107,4 +108,8 @@ body {
 .about-connections {
   display: flex;
   justify-content: space-around;
+}
+
+.about-me {
+  border: 1px solid black;
 }
