@@ -84,18 +84,18 @@ const UserProfile = () => {
               <div>Play Offline:{preferences.play_online ? 'Yes' : 'No'}</div>
             </div>
           </div>
+        </div>
 
-          <div className="about-connections">
-            <div className="about-me">About Me:{userProfile.about_me}</div>
-            <div className="connections">
-              <p>Connections:</p>
-              <ul>
-                {connections &&
-                  connections.map((connection) => {
-                    return <li key={index++}>{connection}</li>;
-                  })}
-              </ul>
-            </div>
+        <div className="about-connections">
+          <div className="about-me">About Me:{userProfile.about_me}</div>
+          <div className="connections">
+            <p>Connections:</p>
+            <ul>
+              {connections &&
+                connections.map((connection) => {
+                  return <li key={index++}>{connection}</li>;
+                })}
+            </ul>
           </div>
         </div>
       </div>

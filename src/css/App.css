@@ -66,3 +66,36 @@ body {
   display: flex;
   justify-content: space-around;
 }
+
+.user-profile {
+  border: 1px solid black;
+  width: 700px;
+  margin: auto;
+}
+
+.user-intro {
+  display: flex;
+  justify-content: space-around;
+  height: 100px;
+}
+
+.avatar {
+  border: 1px solid black;
+  flex: 1;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.user-details {
+  flex: 3;
+}
+
+.characters-preferences {
+  display: flex;
+  justify-content: space-around;
+}
+
+.about-connections {
+  display: flex;
+  justify-content: space-around;
+}
