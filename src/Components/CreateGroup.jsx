@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { createGroup } from '../utils/api';
+import { UserContext } from '../contexts/user';
 const CreateGroup = () => {
+  const { user } = useContext(UserContext);
+
   const [newGroup, setNewGroup] = useState({
     characters: [],
-    dm: '',
+    dm: user,
   });
 
   const submissionHandler = (e) => {
