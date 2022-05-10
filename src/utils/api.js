@@ -64,7 +64,7 @@ export const getGroupById = async (group_id) => {
   }
 };
 
-export const getCharacterFromGroup = async (characters) => {
+export const getCharactersFromGroup = async (characters) => {
   const charactersArray = [];
 
   Promise.all(
