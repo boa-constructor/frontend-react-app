@@ -13,7 +13,7 @@ const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
   const { user, setUser } = useContext(UserContext);
-  const [loggedIn, setLoggedIn] = useState(user === "" ? false : true);
+  const [loggedIn, setLoggedIn] = useState(user ? false : true);
 
   const clickHandler = () => {
     const auth = getAuth();
