@@ -7,7 +7,6 @@ const CreateCharacter = () => {
     const [character, setCharacter] = useState({class: "Barbarian", user_id: `${user.user}`})
     const changeHandler = (e) => {
         setCharacter((currCharacter) => {
-            console.log(currCharacter)
             return {...currCharacter, [e.target.id]: e.target.value}
         })
     }
