@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
 
@@ -14,7 +14,6 @@ import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
 import CreateCharacter from './Components/CreateCharacter';
-import CreateGroup from './Components/CreateGroup';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -42,20 +41,41 @@ function App() {
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
 
-        <CreateGroup />
+
         <Routes>
-          <Route path="/" element={<Home user={user} />}></Route>
           <Route
-            path="/EditProfile"
-            element={<EditProfile user={user} setInputs={setUser} />}
+            path='/'
+            element={user ? <Home user={user} /> : <p></p>}
           ></Route>
-          <Route path="/CreateCharacter" element={<CreateCharacter />}></Route>
-          <Route path="/Profile" element={<UserProfile />}></Route>
-          <Route path="/guilds" element={<Guilds />}></Route>
-          <Route path="/messages" element={<Messages />}></Route>
           <Route
-            path="/characters/:character_id"
-            element={<Character />}
+            path='/EditProfile'
+            element={
+              user ? (
+                <EditProfile user={user} setInputs={setUser} />
+              ) : (
+                <Navigate to='/' />
+              )
+            }
+          ></Route>
+          <Route
+            path='/CreateCharacter'
+            element={user ? <CreateCharacter /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/Profile'
+            element={user ? <UserProfile /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/guilds'
+            element={user ? <Guilds /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/messages'
+            element={user ? <Messages /> : <Navigate to='/' />}
+          ></Route>
+          <Route
+            path='/characters/:character_id'
+            element={user ? <Character /> : <Navigate to='/' />}
           ></Route>
         </Routes>
       </div>

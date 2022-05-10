@@ -54,10 +54,21 @@ export const getUserProfile = async (user_id) => {
     console.log(err);
   }
 };
+
 export const createGroup = async (group) => {
   try {
     const { data } = await firestoreTestApi.post(`/addGroup`, group);
     return data.group;
+     } catch (err) {
+    console.log(err);
+  }
+};
+
+
+export const postCharacter = async (character) => {
+  try {
+    const { data } = await firestoreTestApi.post(`/addCharacter`, character);
+    return data;
   } catch (err) {
     console.log(err);
   }
