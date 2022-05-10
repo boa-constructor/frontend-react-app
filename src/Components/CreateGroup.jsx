@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react';
-
+import { createGroup } from '../utils/api';
 const CreateGroup = () => {
-  const [newGroup, setNewGroup] = useState([]);
+  const [newGroup, setNewGroup] = useState({
+    characters: [],
+    dm: '',
+  });
+
+  const submissionHandler = (e) => {
+    e.preventDefault();
+    createGroup(newGroup);
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => submissionHandler(e)}>
         <label htmlFor="group_name">Group Name:</label>
         <input
+          required
           type="text"
           name="group_name"
           onChange={(e) =>
@@ -22,7 +31,7 @@ const CreateGroup = () => {
           type="url"
           onChange={(e) =>
             setNewGroup((currNewGroup) => {
-              return { ...currNewGroup, avatar_url: e.target.value };
+              return { ...currNewGroup, avatar: e.target.value };
             })
           }
         />
@@ -32,7 +41,7 @@ const CreateGroup = () => {
           type="textarea"
           onChange={(e) =>
             setNewGroup((currNewGroup) => {
-              return { ...currNewGroup, game_information: e.target.value };
+              return { ...currNewGroup, game_info: e.target.value };
             })
           }
         />
