@@ -1,7 +1,10 @@
-import { initializeApp } from "firebase/app";
-import { Routes, Route, Navigate } from "react-router-dom";
-import "./css/App.css";
-import Header from "./Components/Header";
+
+import { initializeApp } from 'firebase/app';
+import { Routes, Route } from 'react-router-dom';
+import './css/App.css';
+import Header from './Components/Header';
+
+
 import SignUpPage from './Components/SignUpPage';
 import { UserContext } from './contexts/user';
 import { useState } from 'react';
@@ -13,8 +16,10 @@ import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
 import CreateCharacter from './Components/CreateCharacter';
+
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
+
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -32,6 +37,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
+
   const [user, setUser] = useState(localStorage.getItem("user_id"));
 
 	return (
@@ -87,6 +93,7 @@ function App() {
 			</div>
 		</UserContext.Provider>
 	);
+
 }
 
 export default App;

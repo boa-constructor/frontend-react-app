@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const NavBar = () => {
+
 	return (
 		<nav>
 			<Link to='/Profile' className='Link'>
@@ -18,6 +19,7 @@ const NavBar = () => {
 			</Link>
 		</nav>
 	);
+
 };
 
 export default NavBar;
