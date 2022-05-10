@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import React, { useState } from 'react';
-import {  updateUserProfile } from '../utils/api';
+import { updateUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
 
 const SetProfile = ({ userName, setInputs }) => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
   const [userObj, setUserObj] = useState({
     username: '',
     avatar_url: '',
@@ -17,7 +17,7 @@ const SetProfile = ({ userName, setInputs }) => {
   const submissionHandler = (e) => {
     e.preventDefault();
     updateUserProfile(userObj, `${user}`);
-    };
+  };
 
   return (
     <div>
@@ -64,7 +64,6 @@ const SetProfile = ({ userName, setInputs }) => {
                 })
               }
             ></input>
-
           </div>
         </fieldset>
         <fieldset>
@@ -77,7 +76,6 @@ const SetProfile = ({ userName, setInputs }) => {
             className="about_me_text"
             rows="4"
             cols="50"
-
             onChange={(e) =>
               setUserObj((currUserObj) => {
                 return { ...currUserObj, aboutMe: e.target.value };
@@ -126,7 +124,6 @@ const SetProfile = ({ userName, setInputs }) => {
               <span className="slider round"></span>
             </label>
           </p>
-
         </fieldset>
         <fieldset>
           <input type="submit"></input>
@@ -136,6 +133,4 @@ const SetProfile = ({ userName, setInputs }) => {
   );
 };
 
-
 export default SetProfile;
-
