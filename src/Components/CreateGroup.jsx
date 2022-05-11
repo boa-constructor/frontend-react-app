@@ -7,20 +7,35 @@ const CreateGroup = () => {
   const [newGroup, setNewGroup] = useState({
     characters: [],
     dm: user,
+    user_id: user,
+    group_name: '',
+    avatar: '',
+    game_type: '',
+    game_info: '',
   });
 
   const submissionHandler = (e) => {
     e.preventDefault();
     createGroup(newGroup);
+    setNewGroup({
+      characters: [],
+      dm: user,
+      user_id: user,
+      group_name: '',
+      avatar: '',
+      game_type: '',
+      game_info: '',
+    });
   };
 
   return (
     <div>
-      <form onSubmit={(e) => submissionHandler(e)}>
+      <form onSubmit={submissionHandler}>
         <label htmlFor="group_name">Group Name:</label>
         <input
           required
           type="text"
+          value={newGroup.group_name}
           name="group_name"
           onChange={(e) =>
             setNewGroup((currNewGroup) => {
@@ -32,6 +47,7 @@ const CreateGroup = () => {
         <input
           name="group_avatar"
           type="url"
+          value={newGroup.avatar}
           onChange={(e) =>
             setNewGroup((currNewGroup) => {
               return { ...currNewGroup, avatar: e.target.value };
@@ -40,7 +56,9 @@ const CreateGroup = () => {
         />
         <label htmlFor="game_info">Game Information:</label>
         <textarea
-          name="game_information"
+          required
+          value={newGroup.game_info}
+          name="game_info"
           type="textarea"
           onChange={(e) =>
             setNewGroup((currNewGroup) => {
@@ -48,7 +66,21 @@ const CreateGroup = () => {
             })
           }
         />
-        <button>Create Group</button>
+        <div
+          value={newGroup.game_type}
+          onChange={(e) =>
+            setNewGroup((currNewGroup) => {
+              return { ...currNewGroup, game_type: e.target.value };
+            })
+          }
+        >
+          <label htmlFor="game_type">Game type:</label>
+          <input type="radio" name="game_type" value="Online" required />
+          Online
+          <input type="radio" name="game_type" value="Offline" required />
+          Offline
+        </div>
+        <button type="submit">Create Group</button>
       </form>
     </div>
   );

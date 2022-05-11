@@ -55,19 +55,63 @@ export const getUserProfile = async (user_id) => {
   }
 };
 
-export const createGroup = async (group) => {
+export const getGroupById = async (group_id) => {
   try {
-    const { data } = await firestoreTestApi.post(`/addGroup`, group);
+    const { data } = await firestoreTestApi.get(`/getGroupById/${group_id}`);
     return data.group;
-     } catch (err) {
+  } catch (err) {
     console.log(err);
   }
 };
 
+export const createGroup = async (group) => {
+  try {
+    const { data } = await firestoreTestApi.post(`/addGroup`, group);
+    return data.group;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getCharactersFromGroup = async (characters) => {
+  const charactersArray = [];
+
+  Promise.all(
+    characters.forEach(async (id) => {
+      const character = await getCharacterByID(id);
+      charactersArray.push(character);
+    })
+  );
+  return charactersArray;
+};
 
 export const postCharacter = async (character) => {
   try {
     const { data } = await firestoreTestApi.post(`/addCharacter`, character);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const addCharacterToGroup = async (patchData) => {
+  try {
+    const { data } = await firestoreTestApi.patch(
+      `/addCharacterToGroup`,
+      patchData
+    );
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const removeCharacterFromGroup = async (patchData) => {
+  try {
+    const { data } = await firestoreTestApi.patch(
+      `/removeCharacterFromGroup`,
+      patchData
+    );
     return data;
   } catch (err) {
     console.log(err);

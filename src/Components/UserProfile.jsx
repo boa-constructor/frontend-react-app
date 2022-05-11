@@ -1,23 +1,28 @@
 import { useState, useEffect, useContext } from 'react';
+
 import { getCharacterByID, getUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
 
+
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
+
   const testUser = 'YhU5hrR4iVIVWTX0XcvT';
   let index = 0;
 
   useEffect(() => {
     getUserProfile(testUser)
+
       .then((data) => {
         setUserProfile(data);
       })
       .catch((err) => {
         console.log(err);
       });
+
   }, [testUser]);
 
   const characterID_Array = userProfile.characters;
@@ -33,6 +38,7 @@ const UserProfile = () => {
   return (
     <div>
       <h2>Welcome to your profile {userProfile.username}</h2>
+
       <Link to="/CreateCharacter" className="Link">
         Add Character
       </Link>
@@ -40,6 +46,7 @@ const UserProfile = () => {
       <Link to="/EditProfile" className="Link">
         Edit Profile
       </Link>
+
 
       <div className="user-profile">
         <div className="user-intro">
@@ -98,6 +105,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };
