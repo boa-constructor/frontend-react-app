@@ -14,16 +14,14 @@ const UserProfile = () => {
 
   useEffect(() => {
     getUserProfile(user)
-
       .then((data) => {
         setUserProfile(data);
       })
       .catch((err) => {
         console.log(err);
       });
-
   }, [user]);
-
+  console.log(userProfile)
   const characterID_Array = userProfile.characters;
   const connections = userProfile.connections;
 
@@ -74,9 +72,8 @@ const UserProfile = () => {
 
           <div className="preferences">
             <div className="preferred-days">
-              <p>Preferences:</p>
               <ul>
-                Preferred Days to play:{' '}
+                Preferred Days to play:
                 {preferred_days &&
                   preferred_days.map((day) => {
                     return <li key={index++}>{day}</li>;
