@@ -20,16 +20,16 @@ const UserProfile = () => {
         console.log(err);
       });
   }, [user]);
+  console.log(userProfile)
 
   const characterID_Array = userProfile.characters;
-  const connections = userProfile.connections;
 
-  let preferences = {};
-  for (const key in userProfile.preferences) {
-    preferences[key] = userProfile.preferences[key];
-  }
+  // let preferences = {};
+  // for (const key in userProfile.preferences) {
+  //   preferences[key] = userProfile.preferences[key];
+  // }
 
-  let preferred_days = preferences.days;
+  // let preferred_days = preferences.days;
 
   return (
     <div className="your_profile">
@@ -40,6 +40,7 @@ const UserProfile = () => {
       <Link to="/EditProfile" className="Link">
         <p>Edit Profile</p>
       </Link>
+
       <img src={userProfile.avatar_url} alt="avatar" />
       <div className="user-details">
         {userProfile.username}
@@ -79,6 +80,7 @@ const UserProfile = () => {
             })}
         </ul>
       </div>
+
     </div>
   );
 };

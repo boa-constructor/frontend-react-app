@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import React, { useState } from 'react';
 import { updateUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import UserProfile from './UserProfile';
 
 const SetProfile = ({ userName, setInputs }) => {
@@ -11,7 +11,7 @@ const SetProfile = ({ userName, setInputs }) => {
     username: '',
     avatar_url: '',
     years_played: 0,
-    about_me_text: '',
+    about_me: '',
     play_online: false,
     play_offline: false,
     is_dm: false,
@@ -59,7 +59,7 @@ const SetProfile = ({ userName, setInputs }) => {
             ></input>
           </div>
           <div>
-            <label htmlFor="GameType">Face to face</label>
+            <label htmlFor="GameType">Offline</label>
             <input
               value={userObj.play_offline}
               type="checkbox"
@@ -67,7 +67,7 @@ const SetProfile = ({ userName, setInputs }) => {
               name="play_offline"
               onChange={(e) =>
                 setUserObj((currUserObj) => {
-                  return { ...currUserObj, Face_to_face: e.target.checked };
+                  return { ...currUserObj, play_offline: e.target.checked };
                 })
               }
             ></input>
@@ -85,7 +85,7 @@ const SetProfile = ({ userName, setInputs }) => {
             cols="50"
             onChange={(e) =>
               setUserObj((currUserObj) => {
-                return { ...currUserObj, aboutMe: e.target.value };
+                return { ...currUserObj, about_me: e.target.value };
               })
             }
           ></textarea>
@@ -136,9 +136,7 @@ const SetProfile = ({ userName, setInputs }) => {
           </p>
         </fieldset>
         <fieldset>
-          <Link to="/Profile" component={UserProfile}>
-            <input type="submit"></input>
-          </Link>
+            <button type="submit">Update Profile</button>
         </fieldset>
       </form>
     </div>

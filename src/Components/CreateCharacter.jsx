@@ -84,6 +84,7 @@ const CreateCharacter = () => {
           <option value="Human">Human 🙋🏻‍♂️</option>
           <option value="Tiefling">Tiefling 😈</option>
         </select>
+
         <br></br>
         <br></br>
         <fieldset>
@@ -118,6 +119,7 @@ const CreateCharacter = () => {
             ></input>
           </div>
         </fieldset>
+
 
         <button>Submit</button>
       </form>
