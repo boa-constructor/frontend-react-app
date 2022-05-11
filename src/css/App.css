@@ -105,14 +105,21 @@ body {
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
+  color: black;
 }
 
 .characters {
   border: 1px solid black;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 4px;
 }
 
 .preferences {
   border: 1px solid black;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 4px;
 }
 
 .about-connections {
@@ -122,8 +129,18 @@ body {
 
 .about-me {
   border: 1px solid black;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  color: black;
+  width: 500px;
+  height: 100px;
+  margin: auto;
 }
 
 .connections {
   border: 1px solid black;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 4px;
+  width: 500px;
 }
