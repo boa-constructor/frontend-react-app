@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
-import { getUserProfile } from '../utils/api';
+import { getCharacterByID, getUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
+import GetCharacterByID from './GetCharacterByID';
 
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
@@ -19,15 +20,14 @@ const UserProfile = () => {
       });
   }, [testUser]);
 
-  const characters = userProfile.characters;
+  const character_id = userProfile.characters;
+
   const connections = userProfile.connections;
 
   let preferences = {};
   for (const key in userProfile.preferences) {
     preferences[key] = userProfile.preferences[key];
   }
-
-  console.log(connections);
 
   let preferred_days = preferences.days;
 
@@ -60,9 +60,9 @@ const UserProfile = () => {
           <div className="characters">
             <p>Characters:</p>
             <ul>
-              {characters &&
-                characters.map((character) => {
-                  return <li key={index++}>{character}</li>;
+              {character_id &&
+                character_id.map((id) => {
+                  return <GetCharacterByID key={id} id={id} />;
                 })}
             </ul>
           </div>
