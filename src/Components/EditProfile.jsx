@@ -2,21 +2,25 @@ import { useContext } from 'react';
 import React, { useState } from 'react';
 import { updateUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
+import { Link } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const SetProfile = ({ userName, setInputs }) => {
   const { user } = useContext(UserContext);
-  const [userObj, setUserObj] = useState({
+  const dataObj = {
     username: '',
     avatar_url: '',
     years_played: 0,
-    aboutMe: '',
+    about_me_text: '',
     play_online: false,
     play_offline: false,
     is_dm: false,
-  });
+  };
+  const [userObj, setUserObj] = useState(dataObj);
   const submissionHandler = (e) => {
     e.preventDefault();
     updateUserProfile(userObj, `${user}`);
+    setUserObj(dataObj);
   };
 
   return (
@@ -25,6 +29,7 @@ const SetProfile = ({ userName, setInputs }) => {
       <form onSubmit={(e) => submissionHandler(e)}>
         <h3>Please enter your username:</h3>
         <input
+          value={userObj.username}
           type="text"
           name="username"
           onChange={(e) =>
@@ -42,9 +47,10 @@ const SetProfile = ({ userName, setInputs }) => {
             <label htmlFor="GameType">Online</label>
 
             <input
+              value={userObj.play}
               type="checkbox"
-              id="Online"
-              name="about_me"
+              id="play_online"
+              name="play_online"
               onChange={(e) =>
                 setUserObj((currUserObj) => {
                   return { ...currUserObj, play_online: e.target.checked };
@@ -55,9 +61,10 @@ const SetProfile = ({ userName, setInputs }) => {
           <div>
             <label htmlFor="GameType">Face to face</label>
             <input
+              value={userObj.play_offline}
               type="checkbox"
-              id="Face_to_face"
-              name="face_to_face"
+              id="play_offline"
+              name="play_offline"
               onChange={(e) =>
                 setUserObj((currUserObj) => {
                   return { ...currUserObj, Face_to_face: e.target.checked };
@@ -86,6 +93,7 @@ const SetProfile = ({ userName, setInputs }) => {
           <label>
             Enter your avatar URL:
             <input
+              value={userObj.avatar_url}
               type="url"
               name="avatar_url"
               onChange={(e) =>
@@ -100,6 +108,7 @@ const SetProfile = ({ userName, setInputs }) => {
               Number of years played (Rounded up):
             </label>
             <input
+              value={userObj.years_played}
               type="number"
               id="quantity"
               name="years"
@@ -114,6 +123,7 @@ const SetProfile = ({ userName, setInputs }) => {
             <label className="switch">
               Do you DM?
               <input
+                value={userObj.is_dm}
                 type="checkbox"
                 onChange={(e) =>
                   setUserObj((currUserObj) => {
@@ -126,7 +136,9 @@ const SetProfile = ({ userName, setInputs }) => {
           </p>
         </fieldset>
         <fieldset>
-          <input type="submit"></input>
+          <Link to="/Profile" component={UserProfile}>
+            <input type="submit"></input>
+          </Link>
         </fieldset>
       </form>
     </div>
