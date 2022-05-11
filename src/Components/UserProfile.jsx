@@ -20,7 +20,7 @@ const UserProfile = () => {
         console.log(err);
       });
   }, [user]);
-  console.log(userProfile)
+  console.log(userProfile);
 
   const characterID_Array = userProfile.characters;
 
@@ -58,29 +58,28 @@ const UserProfile = () => {
         </ul>
       </div>
       <div className="preferred-days">
-        <ul>
+        {/* <ul>
           Preferred Days to play:
           {preferred_days &&
             preferred_days.map((day) => {
               return <li key={index++}>{day}</li>;
             })}
-        </ul>
+        </ul> */}
       </div>
       <div className="play-preference">
-        Play Online: {preferences.play_online ? 'Yes' : 'No'}
-        Play Offline:{preferences.play_online ? 'Yes' : 'No'}
+        Play Online: {userProfile.play_online ? 'Yes' : 'No'}
+        Play Offline:{userProfile.play_online ? 'Yes' : 'No'}
       </div>
       <div className="about-connections">
         About Me:{userProfile.about_me}
         <p>Connections:</p>
-        <ul>
+        {/* <ul>
           {connections &&
             connections.map((connection) => {
               return <li key={index++}>{connection}</li>;
             })}
-        </ul>
+        </ul> */}
       </div>
-
     </div>
   );
 };
