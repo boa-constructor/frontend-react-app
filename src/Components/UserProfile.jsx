@@ -20,8 +20,7 @@ const UserProfile = () => {
       });
   }, [testUser]);
 
-  const character_id = userProfile.characters;
-
+  const characterID_Array = userProfile.characters;
   const connections = userProfile.connections;
 
   let preferences = {};
@@ -60,8 +59,8 @@ const UserProfile = () => {
           <div className="characters">
             <p>Characters:</p>
             <ul>
-              {character_id &&
-                character_id.map((id) => {
+              {characterID_Array &&
+                characterID_Array.map((id) => {
                   return <GetCharacterByID key={id} id={id} />;
                 })}
             </ul>

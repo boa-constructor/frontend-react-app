@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getCharacterByID, getCharacters } from '../utils/api';
+import { getCharacterByID } from '../utils/api';
 
 const GetCharacterByID = (props) => {
   const [char, setChar] = useState([]);
