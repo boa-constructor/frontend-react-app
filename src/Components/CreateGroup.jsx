@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { createGroup } from '../utils/api';
 import { UserContext } from '../contexts/user';
 const CreateGroup = () => {

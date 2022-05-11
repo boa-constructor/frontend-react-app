@@ -70,9 +70,8 @@ const UserProfile = () => {
 
           <div className="preferences">
             <div className="preferred-days">
-              <p>Preferences:</p>
               <ul>
-                Preferred Days to play:{' '}
+                Preferred Days to play:
                 {preferred_days &&
                   preferred_days.map((day) => {
                     return <li key={index++}>{day}</li>;

@@ -12,11 +12,7 @@ const NavBar = () => {
 				{' '}
 				Groups
 			</Link>{' '}
-			/
-			<Link to='/messages' className='Link'>
-				{' '}
-				Messages
-			</Link>
+			
 		</nav>
 	);
 
