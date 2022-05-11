@@ -1,4 +1,6 @@
+
 import React, { useEffect } from 'react';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCharacters } from '../utils/api';
@@ -10,7 +12,7 @@ const GetCharactersList = () => {
     getCharacters()
       .then((data) => {
         setCharList(data);
-        console.table(data);
+
       })
       .catch((err) => {
         console.log(err);
@@ -21,11 +23,16 @@ const GetCharactersList = () => {
     <ul className="charList">
       {charList.map((char) => {
         return (
-          <li key={char.character_id} className="char_cards">
-            <Link to={`/characters/${char.character_id}`} className="Link">
-              Name: {char.character_name}
-            </Link>
-            <br></br> Class: {char.class}
+
+          <li className="charList_card" key={char.character_id}>
+            <Link
+              className="charList_link"
+              to={`/characters/${char.character_id}`}
+            >
+              <section className="charList_text">
+                Name: {char.character_name}
+                <p className="charList_class">Class: {char.class}</p>
+                
             <br></br> Race: {char.race}
             <br></br>
             {/* {char.play_online === true && <p>Can play online</p>}
@@ -34,7 +41,15 @@ const GetCharactersList = () => {
             <br></br> Offline:
             {char.play_offline === true ? <p>✔️</p> : <p>✖️</p>}
             <br></br>
-            <img src={`${char.avatar_url}`} alt="Avatar Pic"></img>
+              </section>
+
+              <img
+                className="charList_img"
+                src={`${char.avatar_url}`}
+                alt="Avatar Pic"
+              ></img>
+            </Link>
+
           </li>
         );
       })}
