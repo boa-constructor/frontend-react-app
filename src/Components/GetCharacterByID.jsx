@@ -25,7 +25,7 @@ const GetCharacterByID = (props) => {
           </Link>
           <br></br> Class: {character.class}
           <br></br>
-          <img src={`${character.Avatar}`} alt="Avatar Pic"></img>
+          <img src={`${character.avatar_url}`} alt="Avatar Pic"></img>
         </li>
       </ul>
     </>
