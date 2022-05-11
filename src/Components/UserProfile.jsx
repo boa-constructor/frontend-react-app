@@ -5,7 +5,6 @@ import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
 
-
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
@@ -21,7 +20,7 @@ const UserProfile = () => {
         console.log(err);
       });
   }, [user]);
-  console.log(userProfile)
+
   const characterID_Array = userProfile.characters;
   const connections = userProfile.connections;
 
@@ -43,7 +42,6 @@ const UserProfile = () => {
       <Link to="/EditProfile" className="Link">
         Edit Profile
       </Link>
-
 
       <div className="user-profile">
         <div className="user-intro">
@@ -101,7 +99,6 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
