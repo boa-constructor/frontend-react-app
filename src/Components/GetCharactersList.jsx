@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getCharacterByID, getCharacters } from '../utils/api';
+import {  getCharacters } from '../utils/api';
 
-const GetCharactersList = (props) => {
+const GetCharactersList = () => {
 
   const [charList, setCharList] = useState([]);
 
@@ -20,19 +20,6 @@ const GetCharactersList = (props) => {
         console.log(err);
       });
   }, []);
-
-
-  useEffect(() => {
-    getCharacterByID(props.id)
-      .then((data) => {
-        setCharList(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [props.id]);
-
-  
 
   return (
     <ul className="charList">
