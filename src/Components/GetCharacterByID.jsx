@@ -21,7 +21,7 @@ const GetCharacterByID = (props) => {
       <ul className="charList">
         <li key={character.character_id}>
           <Link to={`/characters/${props.id}`} className="Link">
-            Name: {character.character_name}
+            {character.character_name}
           </Link>
           <br></br> Class: {character.class}
           <br></br>

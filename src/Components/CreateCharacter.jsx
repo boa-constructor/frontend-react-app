@@ -81,39 +81,6 @@ const CreateCharacter = () => {
           <option value="Tiefling">Tiefling 😈</option>
         </select>
 
-        <fieldset>
-          <legend>
-            <h3>Online or Face to face games?</h3>
-          </legend>
-          <div>
-            <label htmlFor="GameType">Online</label>
-
-            <input
-              type="checkbox"
-              id="Online"
-              name="about_me"
-              onChange={(e) =>
-                setCharacter((currCharacter) => {
-                  return { ...currCharacter, play_online: e.target.checked };
-                })
-              }
-            ></input>
-          </div>
-          <div>
-            <label htmlFor="GameType">Face to face</label>
-            <input
-              type="checkbox"
-              id="Face_to_face"
-              name="face_to_face"
-              onChange={(e) =>
-                setCharacter((currCharacter) => {
-                  return { ...currCharacter, play_offline: e.target.checked };
-                })
-              }
-            ></input>
-          </div>
-        </fieldset>
-
         <button>Submit</button>
       </form>
     </div>

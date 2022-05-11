@@ -20,16 +20,16 @@ const UserProfile = () => {
         console.log(err);
       });
   }, [user]);
+  console.log(userProfile)
 
   const characterID_Array = userProfile.characters;
-  const connections = userProfile.connections;
 
-  let preferences = {};
-  for (const key in userProfile.preferences) {
-    preferences[key] = userProfile.preferences[key];
-  }
+  // let preferences = {};
+  // for (const key in userProfile.preferences) {
+  //   preferences[key] = userProfile.preferences[key];
+  // }
 
-  let preferred_days = preferences.days;
+  // let preferred_days = preferences.days;
 
   return (
     <div>
@@ -51,9 +51,8 @@ const UserProfile = () => {
 
           <div className="user-details">
             <div>{userProfile.username}</div>
-            <div>{userProfile.name}</div>
-            <div>{userProfile.years_played}</div>
-            <div>DM: {userProfile.is_dm ? 'Yes' : 'No'}</div>
+            <div>Years Played: {userProfile.years_played}</div>
+            <div>DM: {userProfile.is_dm === "true" ? 'Yes' : 'No'}</div>
           </div>
         </div>
 
@@ -69,7 +68,7 @@ const UserProfile = () => {
           </div>
 
           <div className="preferences">
-            <div className="preferred-days">
+            {/* <div className="preferred-days">
               <ul>
                 Preferred Days to play:
                 {preferred_days &&
@@ -77,28 +76,27 @@ const UserProfile = () => {
                     return <li key={index++}>{day}</li>;
                   })}
               </ul>
-            </div>
+            </div> */}
 
             <div className="play-preference">
-              <div>Play Online: {preferences.play_online ? 'Yes' : 'No'} </div>
-              <div>Play Offline:{preferences.play_online ? 'Yes' : 'No'}</div>
+              <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
+              <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
             </div>
           </div>
         </div>
 
-        <div className="about-connections">
-          <div className="about-me">About Me:{userProfile.about_me}</div>
-          <div className="connections">
-            <p>Connections:</p>
+        
+          <p className="about-me">About Me: {userProfile.about_me}</p>
+          {/* <div className="connections">
+            {/* <p>Connections:</p>
             <ul>
               {connections &&
                 connections.map((connection) => {
                   return <li key={index++}>{connection}</li>;
                 })}
-            </ul>
-          </div>
+            </ul> 
+          </div> */}
         </div>
-      </div>
     </div>
   );
 };
