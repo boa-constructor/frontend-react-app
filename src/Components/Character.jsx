@@ -12,7 +12,7 @@ const Character = (req, res) => {
   const [userGroups, setUserGroups] = useState([])
 
   const user = useContext(UserContext)
-  
+
   useEffect(() => {
     setUserGroups([])
     getUserProfile(user.user).then((data) => {
@@ -62,7 +62,7 @@ const Character = (req, res) => {
   }
 
   const removeHandler = () => {
-    const patchData = {character_id, group_id: currGroup.group_id}
+    const patchData = {character_id, group_id: userGroups[0].group_id}
     removeCharacterFromGroup(patchData)
     .then(() => {
       setCurrGroup({})
@@ -83,7 +83,7 @@ const Character = (req, res) => {
         <div className="character-details">
           <h3>{character.character_name}</h3>
           <h4>Class: {character.class}</h4>
-          {currGroup ? <><h4>Group: <Link className="Link" to={`/groups/${character.group}`}>{currGroup.group_name}</Link></h4>
+          {currGroup  ? <><h4>Group: <Link className="Link" to={`/groups/${character.group}`}>{currGroup.group_name}</Link></h4>
           <button onClick={removeHandler}>Remove from Group</button></>: <>
           <button onClick={addHandler}>Add to Group</button><select></select></>}
           <div>
