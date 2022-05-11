@@ -1,7 +1,10 @@
+
+
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getCharacterByID, getGroupById } from "../utils/api";
 import { addCharacterToGroup, removeCharacterFromGroup } from "../utils/api";
+
 
 const Character = (req, res) => {
   const { character_id } = useParams();
@@ -57,7 +60,7 @@ const Character = (req, res) => {
     <div className="character-box">
       <div className="character-intro">
         <div className="character-img">
-          <img src={character.avatar} alt="avatar for character" />
+          <img src={character.avatar_url} alt="avatar for character" />
         </div>
         <div className="character-details">
           <h3>{character.character_name}</h3>
