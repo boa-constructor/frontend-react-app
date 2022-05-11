@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { getCharacterByID } from '../utils/api';
 
 const GetCharacterByID = (props) => {
-  const [char, setChar] = useState([]);
+  const [character, setCharacter] = useState([]);
   useEffect(() => {
     getCharacterByID(props.id)
       .then((data) => {
-        setChar(data);
+        setCharacter(data);
       })
       .catch((err) => {
         console.log(err);
@@ -19,13 +19,13 @@ const GetCharacterByID = (props) => {
     <>
       {' '}
       <ul className="charList">
-        <li key={char.character_id}>
+        <li key={character.character_id}>
           <Link to={`/characters/${props.id}`} className="Link">
-            Name: {char.character_name}
+            Name: {character.character_name}
           </Link>
-          <br></br> Class: {char.class}
+          <br></br> Class: {character.class}
           <br></br>
-          <img src={`${char.Avatar}`} alt="Avatar Pic"></img>
+          <img src={`${character.Avatar}`} alt="Avatar Pic"></img>
         </li>
       </ul>
     </>
