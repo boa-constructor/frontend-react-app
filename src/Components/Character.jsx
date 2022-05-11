@@ -15,8 +15,6 @@ const Character = (req, res) => {
       });
   }, [character_id]);
 
-  let index = 0;
-
   const games_played = character.games_played;
 
   return (
@@ -32,15 +30,14 @@ const Character = (req, res) => {
           <div>
             <ul>
               {games_played &&
-                games_played.map((games) => {
-                  return <li key={index++}> {games}</li>;
+                games_played.map((game) => {
+                  return <li key={game}> {game}</li>;
                 })}
             </ul>
           </div>
         </div>
       </div>
-
-      <div className="character-background">Hey {character.background}</div>
+      <div className="character-background">{character.background}</div>
     </div>
   );
 };
