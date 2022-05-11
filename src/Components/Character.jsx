@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getCharacterByID } from "../utils/api";
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getCharacterByID } from '../utils/api';
 const Character = (req, res) => {
   const { character_id } = useParams();
   const [character, setCharacter] = useState({});
@@ -23,7 +23,7 @@ const Character = (req, res) => {
     <div className="character-box">
       <div className="character-intro">
         <div className="character-img">
-          <img src={character.avatar} alt="avatar for character" />
+          <img src={character.avatar_url} alt="avatar for character" />
         </div>
 
         <div className="character-details">
