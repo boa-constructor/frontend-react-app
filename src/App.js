@@ -7,8 +7,6 @@ import SignUpPage from './Components/SignUpPage';
 import { UserContext } from './contexts/user';
 import { useState } from 'react';
 
-import Guilds from './Components/Guilds';
-
 import Messages from './Components/Messages';
 import Home from './Components/Home';
 import NavBar from './Components/NavBar';
@@ -16,10 +14,9 @@ import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
 import CreateCharacter from './Components/CreateCharacter';
-
+import Group from './Components/Group';
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
-
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',

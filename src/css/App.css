@@ -70,8 +70,6 @@ body {
   justify-content: space-around;
 }
 
-
-
 .user-profile {
   border: 1px solid black;
   width: 700px;
@@ -117,7 +115,7 @@ body {
 .about-connections {
   display: flex;
   justify-content: space-around;
-
+}
 .charList {
   padding: 20px;
   display: flex;
@@ -149,9 +147,6 @@ body {
   text-decoration: none;
 }
 
-.charList_class {
-}
-
 .charList_text {
   font-size: large;
   margin-right: 15px;
@@ -162,7 +157,6 @@ body {
 
 .charList_link {
   color: black;
-
 }
 
 .about-me {
@@ -171,4 +165,4 @@ body {
 
 .connections {
   border: 1px solid black;
-
+}
