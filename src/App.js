@@ -14,7 +14,7 @@ import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
 import CreateCharacter from './Components/CreateCharacter';
-
+import RecipeReviewCard from './Components/MuiTes';
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
 
@@ -45,7 +45,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={user ? <Home user={user} /> : <p></p>}
+            element={
+              user ? (
+                <div>
+                  <Home user={user} />
+                </div>
+              ) : (
+                <p></p>
+              )
+            }
           ></Route>
           <Route
             path="/EditProfile"
