@@ -3,9 +3,11 @@ import React, { useEffect } from 'react';
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getCharacters } from '../utils/api';
+
+import {  getCharacters } from '../utils/api';
 
 const GetCharactersList = () => {
+
   const [charList, setCharList] = useState([]);
 
   useEffect(() => {
@@ -53,6 +55,7 @@ const GetCharactersList = () => {
           </li>
         );
       })}
+
     </ul>
   );
 };
