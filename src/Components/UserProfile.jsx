@@ -42,22 +42,16 @@ const UserProfile = () => {
       </Link>
 
       <div className="user-profile">
-        <div className="user-intro">
-          <div className="avatar">
-            <img src={userProfile.avatar_url} alt="avatar" />
-          </div>
-
-          <div className="user-details">
-            <div>{userProfile.username}</div>
-            <div>{userProfile.name}</div>
-            <div>{userProfile.years_played}</div>
-            <div>DM: {userProfile.is_dm ? 'Yes' : 'No'}</div>
-          </div>
+        <div className="user-details">
+          <h1>{userProfile.username}</h1>
+          <h2>{userProfile.name}</h2>
+          <h4>Years Played: {userProfile.years_played}</h4>
+          <h4>DM: {userProfile.is_dm ? 'Yes' : 'No'}</h4>
         </div>
 
         <div className="characters-preferences">
           <div className="characters">
-            <p>Characters:</p>
+            <h4>Characters:</h4>
             <ul>
               {characterID_Array &&
                 characterID_Array.map((id) => {
@@ -68,7 +62,7 @@ const UserProfile = () => {
 
           <div className="preferences">
             <div className="preferred-days">
-              <p>Preferences:</p>
+              <h4>Preferences:</h4>
               <ul>
                 Preferred Days to play:{' '}
                 {preferred_days &&
@@ -85,17 +79,20 @@ const UserProfile = () => {
           </div>
         </div>
 
-        <div className="about-connections">
-          <div className="about-me">About Me:{userProfile.about_me}</div>
-          <div className="connections">
-            <p>Connections:</p>
-            <ul>
-              {connections &&
-                connections.map((connection) => {
-                  return <li key={index++}>{connection}</li>;
-                })}
-            </ul>
-          </div>
+        <div className="avatar">
+          <img src={userProfile.avatar_url} alt="avatar" />
+        </div>
+        <br></br>
+        <div className="about-me">About Me:{userProfile.about_me}</div>
+        <br></br>
+        <div className="connections">
+          <p>Connections:</p>
+          <ul>
+            {connections &&
+              connections.map((connection) => {
+                return <li key={index++}>{connection}</li>;
+              })}
+          </ul>
         </div>
       </div>
     </div>
