@@ -10,11 +10,10 @@ const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
 
-  const testUser = 'YhU5hrR4iVIVWTX0XcvT';
   let index = 0;
 
   useEffect(() => {
-    getUserProfile(testUser)
+    getUserProfile(user)
 
       .then((data) => {
         setUserProfile(data);
@@ -23,7 +22,7 @@ const UserProfile = () => {
         console.log(err);
       });
 
-  }, [testUser]);
+  }, [user]);
 
   const characterID_Array = userProfile.characters;
   const connections = userProfile.connections;
