@@ -10,6 +10,7 @@ const CreateCharacter = () => {
     race: 'Dragonborn',
     play_online: false,
     play_offline: false,
+
   });
   const changeHandler = (e) => {
     setCharacter((currCharacter) => {
@@ -19,7 +20,10 @@ const CreateCharacter = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     postCharacter(character);
+
+
     console.table(character, 'this is char');
+
   };
 
   return (
@@ -47,10 +51,12 @@ const CreateCharacter = () => {
           <option value="Warlock">Warlock 👹</option>
           <option value="Wizard">Wizard 🧙‍♂️</option>
         </select>
-        <label htmlFor="Avatar URL">Avatar URL: </label>
+
+        <label htmlFor="avatar_url">Avatar URL: </label>
         <input
           type="url"
-          id="Avatar URL"
+          id="avatar_url"
+
           onChange={(e) => changeHandler(e)}
         ></input>
         <br></br>
@@ -61,6 +67,7 @@ const CreateCharacter = () => {
           onChange={(e) => changeHandler(e)}
         ></textarea>
         <br></br>
+
         <label htmlFor="race">Pick your race: </label>
         <select id="race" onChange={(e) => changeHandler(e)}>
           <option value="Dragonborn">Dragonborn 🐲</option>
@@ -106,6 +113,7 @@ const CreateCharacter = () => {
             ></input>
           </div>
         </fieldset>
+
         <button>Submit</button>
       </form>
     </div>

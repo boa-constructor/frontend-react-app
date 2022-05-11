@@ -1,14 +1,15 @@
 .App {
   text-align: center;
-  background-color: #ffdee9;
-  background-image: linear-gradient(0deg, #f7ce65 0%, #fffebd 100%);
+  background-color: lightgray;
+
+  /* background-image: linear-gradient(0deg, #f7ce65 0%, #fffebd 100%); */
   color: #030303;
   font-family: 'calibri';
   height: 100%;
   font-family: 'Poppins', sans-serif;
 }
 #root {
-  height: 100vh;
+  height: 100%;
 }
 body {
   margin: 0px;
@@ -70,6 +71,7 @@ body {
 }
 
 
+
 .user-profile {
   border: 1px solid black;
   width: 700px;
@@ -115,6 +117,52 @@ body {
 .about-connections {
   display: flex;
   justify-content: space-around;
+
+.charList {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.charList_card {
+  /* border: solid black; */
+  box-shadow: 0px 5px 5px rgba(34, 35, 58, 0.5);
+  height: auto;
+  width: 350px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+}
+
+.charList_img {
+  float: left;
+  width: 7em;
+  height: 7em;
+  border-radius: 100%;
+}
+
+.charList_name {
+  text-decoration: none;
+}
+
+.charList_class {
+}
+
+.charList_text {
+  font-size: large;
+  margin-right: 15px;
+  float: right;
+  text-align: left;
+  text-decoration: none;
+}
+
+.charList_link {
+  color: black;
+
 }
 
 .about-me {
