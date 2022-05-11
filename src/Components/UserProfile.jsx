@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 
-import { getCharacterByID, getUserProfile } from '../utils/api';
+import { getUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
@@ -32,71 +32,55 @@ const UserProfile = () => {
   // let preferred_days = preferences.days;
 
   return (
-    <div>
+    <div className="your_profile">
       <h2>Welcome to your profile {userProfile.username}</h2>
-
       <Link to="/CreateCharacter" className="Link">
-        Add Character
+        <p>Add Character</p>
       </Link>
-      <br></br>
       <Link to="/EditProfile" className="Link">
-        Edit Profile
+        <p>Edit Profile</p>
       </Link>
 
-      <div className="user-profile">
-        <div className="user-intro">
-          <div className="avatar">
-            <img src={userProfile.avatar_url} alt="avatar" />
-          </div>
+      <img src={userProfile.avatar_url} alt="avatar" />
+      <div className="user-details">
+        {userProfile.username}
+        {userProfile.name}
+        {userProfile.years_played}
+        DM: {userProfile.is_dm ? 'Yes' : 'No'}
+      </div>
+      <div className="characters">
+        <p>Characters:</p>
+        <ul>
+          {characterID_Array &&
+            characterID_Array.map((id) => {
+              return <GetCharacterByID key={id} id={id} />;
+            })}
+        </ul>
+      </div>
+      <div className="preferred-days">
+        <ul>
+          Preferred Days to play:
+          {preferred_days &&
+            preferred_days.map((day) => {
+              return <li key={index++}>{day}</li>;
+            })}
+        </ul>
+      </div>
+      <div className="play-preference">
+        Play Online: {preferences.play_online ? 'Yes' : 'No'}
+        Play Offline:{preferences.play_online ? 'Yes' : 'No'}
+      </div>
+      <div className="about-connections">
+        About Me:{userProfile.about_me}
+        <p>Connections:</p>
+        <ul>
+          {connections &&
+            connections.map((connection) => {
+              return <li key={index++}>{connection}</li>;
+            })}
+        </ul>
+      </div>
 
-          <div className="user-details">
-            <div>{userProfile.username}</div>
-            <div>Years Played: {userProfile.years_played}</div>
-            <div>DM: {userProfile.is_dm === "true" ? 'Yes' : 'No'}</div>
-          </div>
-        </div>
-
-        <div className="characters-preferences">
-          <div className="characters">
-            <p>Characters:</p>
-            <ul>
-              {characterID_Array &&
-                characterID_Array.map((id) => {
-                  return <GetCharacterByID key={id} id={id} />;
-                })}
-            </ul>
-          </div>
-
-          <div className="preferences">
-            {/* <div className="preferred-days">
-              <ul>
-                Preferred Days to play:
-                {preferred_days &&
-                  preferred_days.map((day) => {
-                    return <li key={index++}>{day}</li>;
-                  })}
-              </ul>
-            </div> */}
-
-            <div className="play-preference">
-              <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
-              <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
-            </div>
-          </div>
-        </div>
-
-        
-          <p className="about-me">About Me: {userProfile.about_me}</p>
-          {/* <div className="connections">
-            {/* <p>Connections:</p>
-            <ul>
-              {connections &&
-                connections.map((connection) => {
-                  return <li key={index++}>{connection}</li>;
-                })}
-            </ul> 
-          </div> */}
-        </div>
     </div>
   );
 };

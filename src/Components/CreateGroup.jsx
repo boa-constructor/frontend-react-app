@@ -30,7 +30,7 @@ const CreateGroup = () => {
 
   return (
     <div>
-      <form onSubmit={submissionHandler}>
+      <form onSubmit={submissionHandler} className="create_group_form">
         <label htmlFor="group_name">Group Name:</label>
         <input
           required
