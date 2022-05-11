@@ -94,11 +94,23 @@ export const postCharacter = async (character) => {
   }
 };
 
-export const addCharacterToGroup = async (patchdata) => {
+export const addCharacterToGroup = async (patchData) => {
   try {
     const { data } = await firestoreTestApi.patch(
       `/addCharacterToGroup`,
-      patchdata
+      patchData
+    );
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const removeCharacterFromGroup = async (patchData) => {
+  try {
+    const { data } = await firestoreTestApi.patch(
+      `/removeCharacterFromGroup`,
+      patchData
     );
     return data;
   } catch (err) {

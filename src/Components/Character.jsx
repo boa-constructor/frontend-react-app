@@ -1,14 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getCharacterByID, getGroupById } from "../utils/api";
-import { addCharacterToGroup } from "../utils/api";
+import { addCharacterToGroup, removeCharacterFromGroup } from "../utils/api";
 
 const Character = (req, res) => {
   const { character_id } = useParams();
   const [character, setCharacter] = useState({});
   const [newGroup, setNewGroup] = useState({})
   const [currGroup, setCurrGroup] = useState({})
-
   useEffect(() => {
     getCharacterByID(character_id)
       .then((data) => {
@@ -26,7 +25,6 @@ const Character = (req, res) => {
         console.log(err);
       });
   }, [character_id, newGroup]);
-
   const addHandler = () => {
     setNewGroup({group_id: "KPiPmS2MNGrBO26PQNCb", group_name: "boa_constructor"})
     const patchData = {character_id, group_id: "KPiPmS2MNGrBO26PQNCb"}
@@ -43,7 +41,15 @@ const Character = (req, res) => {
   }
 
   const removeHandler = () => {
-
+    const patchData = {character_id, group_id: currGroup.group_id}
+    removeCharacterFromGroup(patchData)
+    .then(() => {
+      setCurrGroup({})
+      setNewGroup({})
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   const games_played = character.games_played;
@@ -57,9 +63,8 @@ const Character = (req, res) => {
           <h3>{character.character_name}</h3>
           <h4>Class: {character.class}</h4>
           {currGroup ? <><h4>Group: <Link className="Link" to={`/groups/${character.group}`}>{currGroup.group_name}</Link></h4>
-          <button onClick={removeHandler}>Remove from Group</button></>: 
-          <button onClick={addHandler}>Add to Group</button>}
-          <select></select>
+          <button onClick={removeHandler}>Remove from Group</button></>: <>
+          <button onClick={addHandler}>Add to Group</button><select></select></>}
           <div>
             <ul>
               {games_played &&
