@@ -19,7 +19,7 @@ const CreateCharacter = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     postCharacter(character);
-    console.log(character, 'this is char');
+    console.table(character, 'this is char');
   };
 
   return (
