@@ -36,4 +36,4 @@ Coming back to the view of all characters, we like the look of this one...
 
 ## Group page
 
-Now we can see the characaters currently in our group
+Now we can see the characters currently in our group
