@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
 
 const UserProfile = () => {
+
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
 
