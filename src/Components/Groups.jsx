@@ -26,6 +26,7 @@ const Groups = () => {
       });
   }, []);
 
+
   return (
     <div>
       These are your current groups
@@ -52,6 +53,7 @@ const Groups = () => {
       <CreateGroup setGroups={setGroups} />
     </div>
   );
+
 };
 
 export default Groups;

@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { UserContext } from '../contexts/user';
 import { getGroupById, getCharacterByID, getUserProfile } from '../utils/api';
 
@@ -58,5 +59,6 @@ const Group = () => {
       )}
     </div>
   );
+
 };
 export default Group;
