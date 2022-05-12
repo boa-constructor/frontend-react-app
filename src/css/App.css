@@ -63,7 +63,6 @@ body {
 
 /* character box styling */
 .character-box {
-  border: 1px solid black;
   width: 50%;
   margin: auto;
   margin-top: 10px;
