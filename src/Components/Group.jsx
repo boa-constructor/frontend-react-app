@@ -1,19 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { UserContext } from '../contexts/user';
 import {
 	getGroupById,
+	getCharactersFromGroup,
 	getCharacterByID,
-	getUserProfile,
 } from '../utils/api';
 
 const Group = () => {
-	const userContext = useContext(UserContext)
 	const [group, setGroup] = useState({});
 	const [characters, setCharacters] = useState([]);
 	const { group_id } = useParams();
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState({})
+
 	useEffect(() => {
 		getGroupById(group_id)
 			.then((group) => {
@@ -32,20 +30,14 @@ const Group = () => {
 				console.log(err);
 			});
 	}, []);
-	useEffect(() => {
-		getUserProfile(userContext.user).then((user) => {
-			setUser(user)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
-	})
 	if (loading) return <p> Loading...</p>;
+
 	return (
 		<div>
+			Group Section
 			<h2>{group.group_name}</h2>
 			<img src={group.avatar_url} alt='group avatar'></img>
-			<p>Contact Info: {user.email}</p>
+			<h3>Dungeon Master: {group.dm}</h3>
 			<p>Group info: {group.game_info}</p>
 			{characters.length && (
 				<ul>

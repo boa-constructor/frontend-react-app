@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { createGroup } from '../utils/api';
 import { UserContext } from '../contexts/user';
-const CreateGroup = ({setGroups}) => {
+const CreateGroup = () => {
   const { user } = useContext(UserContext);
 
   const [newGroup, setNewGroup] = useState({
@@ -16,12 +16,7 @@ const CreateGroup = ({setGroups}) => {
 
   const submissionHandler = (e) => {
     e.preventDefault();
-    createGroup(newGroup).then((group_id) => {
-      newGroup.group_id = group_id
-      setGroups((currGroups) => {
-        return [...currGroups, newGroup]
-      })
-    })
+    createGroup(newGroup);
     setNewGroup({
       characters: [],
       dm: user,
