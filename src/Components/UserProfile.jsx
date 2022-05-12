@@ -10,8 +10,6 @@ const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
 
-  let index = 0;
-
   useEffect(() => {
     getUserProfile(user)
       .then((data) => {
@@ -23,7 +21,9 @@ const UserProfile = () => {
   }, [user]);
   console.log(userProfile);
 
+
   const characterID_Array = userProfile.characters;
+
 
 
 
@@ -64,23 +64,27 @@ const UserProfile = () => {
             {userProfile.about_me}
           </div>
         </div>
-        <div className="use2r_characters">
-          <p>Characters:</p>
-          <ul>
-            {characterID_Array &&
-              characterID_Array.map((id) => {
-                return (
-                  <div className="single_character">
-                    <GetCharacterByID key={id} id={id} />
-                  </div>
-                );
-              })}
-          </ul>
+
+
+        <div className="characters-preferences">
+          <div className="characters">
+            <p>Characters:</p>
+            <ul>
+              {userProfile.characters &&
+                userProfile.characters.map((id) => {
+                  return <GetCharacterByID key={id} id={id} />;
+                })}
+            </ul>
+            <div className="play-preference">
+              <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
+              <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
+            </div>
+          <p className="about-me">About Me: {userProfile.about_me}</p>
+          </div>
         </div>
       </div>
-    </>
+    </div>
 
-  );
 };
 
 export default UserProfile;
