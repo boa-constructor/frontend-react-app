@@ -24,12 +24,7 @@ const UserProfile = () => {
 
   const characterID_Array = userProfile.characters;
 
-  // let preferences = {};
-  // for (const key in userProfile.preferences) {
-  //   preferences[key] = userProfile.preferences[key];
-  // }
 
-  // let preferred_days = preferences.days;
 
   return (
     <>
@@ -83,6 +78,7 @@ const UserProfile = () => {
         </div>
       </div>
     </>
+
   );
 };
 
