@@ -18,9 +18,6 @@ const UserProfile = () => {
         console.log(err);
       });
   }, [user]);
-  console.log(userProfile);
-
-  const characterID_Array = userProfile.characters;
 
   return (
     <div className="flexbox_container">
@@ -72,7 +69,7 @@ const UserProfile = () => {
             <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
             <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
           </div>
-          <p className="about-me">About Me: {userProfile.about_me}</p>
+          <p className="about-me">About Me: {userProfile.About}</p>
         </div>
       </div>
     </div>

@@ -32,10 +32,8 @@ const GetCharactersList = () => {
                 <p className="charList_class">Class: {char.class}</p>
                 <br></br> Race: {char.race}
                 <br></br>
-                <br></br> Online:
-                {char.play_online === true ? <p>✔️</p> : <p>✖️</p>}
-                <br></br> Offline:
-                {char.play_offline === true ? <p>✔️</p> : <p>✖️</p>}
+                <br></br> Online: {char.play_online === true ? <p>✔️</p> : <p>✖️</p>}
+                <br></br> Offline: {char.play_offline === true ? <p>✔️</p> : <p>✖️</p>}
                 <br></br>
               </section>
 

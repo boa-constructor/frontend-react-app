@@ -39,15 +39,15 @@ const Group = () => {
 		.catch((err) => {
 			console.log(err)
 		})
-	})
+	}, [])
 	if (loading) return <p> Loading...</p>;
 	return (
 		<div>
 			<h2>{group.group_name}</h2>
-			<img src={group.avatar_url} alt='group avatar'></img>
+			<img src={group.avatar} alt='group avatar' id='group_avatar'></img>
 			<p>Contact Info: {user.email}</p>
 			<p>Group info: {group.game_info}</p>
-			{characters.length && (
+			{characters.length ? (
 				<ul>
 					{characters.map((character) => {
 						return (
@@ -58,7 +58,7 @@ const Group = () => {
 						);
 					})}
 				</ul>
-			)}
+			): <p>This group doesnt contain any characters yet!</p>}
 		</div>
 	);
 };

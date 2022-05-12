@@ -7,25 +7,33 @@ import { Link } from 'react-router-dom';
 const Groups = () => {
 	const [groups, setGroups] = useState([]);
 	const { user } = useContext(UserContext);
-
+	const [newGroup, setNewGroup] = useState({
+	characters: [],
+	dm: user,
+	user_id: user,
+	group_name: '',
+	avatar: '',
+	game_type: '',
+	game_info: '',
+})
+	
 	useEffect(() => {
 		setGroups([]);
 		getUserProfile(user)
-			.then((data) => {
-				data.groups.forEach((group_id) => {
-					getGroupById(group_id).then((data) => {
-						data.group_id = group_id;
-						setGroups((currGroups) => {
-							return [...currGroups, data];
-						});
+		.then((data) => {
+			data.groups.forEach((group_id) => {
+				getGroupById(group_id).then((data) => {
+					data.group_id = group_id;
+					setGroups((currGroups) => {
+						return [...currGroups, data];
 					});
 				});
-			})
-			.catch((err) => {
-				console.log(err);
 			});
-	}, []);
-
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+	}, [newGroup]);
 	return (
 		<div>
 			These are your current groups
@@ -42,7 +50,7 @@ const Groups = () => {
 				})}
 			</ul>
 			<br></br>
-			<CreateGroup setGroups={setGroups}/>
+			<CreateGroup newGroup={newGroup} setNewGroup={setNewGroup}/>
 		</div>
 	);
 };

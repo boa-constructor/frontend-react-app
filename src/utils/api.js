@@ -65,9 +65,10 @@ export const getGroupById = async (group_id) => {
 };
 
 export const createGroup = async (group) => {
+  console.log(group);
   try {
     const { data } = await firestoreTestApi.post(`/addGroup`, group);
-    return data.group;
+    return data.group_id;
   } catch (err) {
     console.log(err);
   }
@@ -95,6 +96,7 @@ export const postCharacter = async (character) => {
 };
 
 export const addCharacterToGroup = async (patchData) => {
+  console.log(patchData);
   try {
     const { data } = await firestoreTestApi.patch(
       `/addCharacterToGroup`,
