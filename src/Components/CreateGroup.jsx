@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { createGroup } from '../utils/api';
 import { UserContext } from '../contexts/user';
-const CreateGroup = ({setGroups}) => {
+const CreateGroup = ({ setGroups }) => {
   const { user } = useContext(UserContext);
 
   const [newGroup, setNewGroup] = useState({
@@ -17,11 +17,11 @@ const CreateGroup = ({setGroups}) => {
   const submissionHandler = (e) => {
     e.preventDefault();
     createGroup(newGroup).then((group_id) => {
-      newGroup.group_id = group_id
+      newGroup.group_id = group_id;
       setGroups((currGroups) => {
-        return [...currGroups, newGroup]
-      })
-    })
+        return [...currGroups, newGroup];
+      });
+    });
     setNewGroup({
       characters: [],
       dm: user,
@@ -48,6 +48,7 @@ const CreateGroup = ({setGroups}) => {
             })
           }
         />
+        <br></br>
         <label htmlFor="group_avatar">Group Avatar:</label>
         <input
           name="group_avatar"
@@ -59,6 +60,7 @@ const CreateGroup = ({setGroups}) => {
             })
           }
         />
+        <br></br>
         <label htmlFor="game_info">Game Information:</label>
         <textarea
           required
