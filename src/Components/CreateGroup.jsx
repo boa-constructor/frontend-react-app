@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
 import { createGroup } from '../utils/api';
 import { UserContext } from '../contexts/user';
+
 const CreateGroup = ({ setGroups }) => {
+
   const { user } = useContext(UserContext);
 
   const [newGroup, setNewGroup] = useState({
@@ -22,6 +24,7 @@ const CreateGroup = ({ setGroups }) => {
         return [...currGroups, newGroup];
       });
     });
+
     setNewGroup({
       characters: [],
       dm: user,
