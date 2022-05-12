@@ -9,7 +9,7 @@ Welcome to "dndinder", a dynamic web app enabling dnd players worldwide to find 
 Firstly as a new user to the site we can loing with our google account. All information on the site is only available to logged in users. Once logged in we've used local storage to allow users to remain logged in even after naviagating away from the page or closing the browser. We also require users to be logged in before being allowed to access any other page on our site.
 
 ## Characters list
-Once logged in you are created with a list of all avaible characters on the site, more on this section later.
+Once logged in you are greeted with a list of all avaible characters on the site, more on this section later.
 
 
 ## Edit profile
