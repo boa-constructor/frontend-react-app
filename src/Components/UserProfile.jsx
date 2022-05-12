@@ -1,107 +1,71 @@
 import { useState, useEffect, useContext } from 'react';
 
-import { getCharacterByID, getUserProfile } from '../utils/api';
+import { getUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
 
 const UserProfile = () => {
-	const [userProfile, setUserProfile] = useState({});
-	const { user } = useContext(UserContext);
 
-	let index = 0;
+  const [userProfile, setUserProfile] = useState({});
+  const { user } = useContext(UserContext);
 
-	useEffect(() => {
-		getUserProfile(user)
-			.then((data) => {
-				setUserProfile(data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, [user]);
+  let index = 0;
 
-	const characterID_Array = userProfile.characters;
+  useEffect(() => {
+    getUserProfile(user)
+      .then((data) => {
+        setUserProfile(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [user]);
+  console.log(userProfile);
 
-	// let preferences = {};
-	// for (const key in userProfile.preferences) {
-	//   preferences[key] = userProfile.preferences[key];
-	// }
+  const characterID_Array = userProfile.characters;
 
-	// let preferred_days = preferences.days;
+  // let preferences = {};
+  // for (const key in userProfile.preferences) {
+  //   preferences[key] = userProfile.preferences[key];
+  // }
 
-	return (
-		<div>
-			<h2>Welcome to your profile {userProfile.username}</h2>
+  // let preferred_days = preferences.days;
 
-			<Link to='/CreateCharacter' className='Link'>
-				Add Character
-			</Link>
-			<br></br>
-			<Link to='/EditProfile' className='Link'>
-				Edit Profile
-			</Link>
+  return (
+    <div className="your_profile">
+      <h2>Welcome to your profile {userProfile.username}</h2>
+      <Link to="/CreateCharacter" className="Link">
+        <p>Add Character</p>
+      </Link>
+      <Link to="/EditProfile" className="Link">
+        <p>Edit Profile</p>
+      </Link>
 
-			<div className='user-profile'>
-				<div className='user-intro'>
-					<div className='avatar'>
-						<img src={userProfile.avatar_url} alt='avatar' />
-					</div>
-
-					<div className='user-details'>
-						<div>{userProfile.username}</div>
-						<div>Years Played: {userProfile.years_played}</div>
-						<div>DM: {userProfile.is_dm === 'true' ? 'Yes' : 'No'}</div>
-					</div>
-				</div>
-
-				<div className='characters-preferences'>
-					<div className='characters'>
-						<p>Characters:</p>
-						<ul>
-							{characterID_Array &&
-								characterID_Array.map((id) => {
-									return <GetCharacterByID key={id} id={id} />;
-								})}
-						</ul>
-					</div>
-
-					<div className='preferences'>
-						{/* <div className="preferred-days">
-              <ul>
-                Preferred Days to play:
-                {preferred_days &&
-                  preferred_days.map((day) => {
-                    return <li key={index++}>{day}</li>;
-                  })}
-              </ul>
-            </div> */}
-
-						<div className='play-preference'>
-							<p>
-								Play Online: {userProfile.play_online === 'true' ? 'Yes' : 'No'}{' '}
-							</p>
-							<p>
-								Play Offline:{' '}
-								{userProfile.play_online === 'true' ? 'Yes' : 'No'}
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<p className='about-me'>About Me: {userProfile.about_me}</p>
-				{/* <div className="connections">
-            {/* <p>Connections:</p>
-            <ul>
-              {connections &&
-                connections.map((connection) => {
-                  return <li key={index++}>{connection}</li>;
-                })}
-            </ul> 
-          </div> */}
-			</div>
-		</div>
-	);
+      <img src={userProfile.avatar_url} alt="avatar" />
+      <div className="user-details">
+        {userProfile.username}
+        {userProfile.name}
+        {userProfile.years_played}
+        DM: {userProfile.is_dm ? 'Yes' : 'No'}
+      </div>
+      <div className="characters">
+        <p>Characters:</p>
+        <ul>
+          {characterID_Array &&
+            characterID_Array.map((id) => {
+              return <GetCharacterByID key={id} id={id} />;
+            })}
+        </ul>
+      </div>
+      <div className="preferred-days"></div>
+      <div className="play-preference">
+        Play Online: {userProfile.play_online ? 'Yes' : 'No'}
+        Play Offline:{userProfile.play_online ? 'Yes' : 'No'}
+      </div>
+      <div className="about-connections">About Me:{userProfile.about_me}</div>
+    </div>
+  );
 };
 
 export default UserProfile;
