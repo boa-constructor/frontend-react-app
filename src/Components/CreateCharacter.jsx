@@ -10,7 +10,6 @@ const CreateCharacter = () => {
     race: 'Dragonborn',
     play_online: false,
     play_offline: false,
-
   });
   const changeHandler = (e) => {
     setCharacter((currCharacter) => {
@@ -21,9 +20,7 @@ const CreateCharacter = () => {
     e.preventDefault();
     postCharacter(character);
 
-
     console.table(character, 'this is char');
-
   };
 
   return (
@@ -56,7 +53,6 @@ const CreateCharacter = () => {
         <input
           type="url"
           id="avatar_url"
-
           onChange={(e) => changeHandler(e)}
         ></input>
         <br></br>
@@ -73,8 +69,8 @@ const CreateCharacter = () => {
           <option value="Dragonborn">Dragonborn 🐲</option>
           <option value="Dwarf">Dwarf ⛏️</option>
           <option value="Elf">Elf 🧝</option>
-          <option value="Gnome">Druid 🤏</option>
-          <option value="Half-Elf">Fighter 🧝‍♂️</option>
+          <option value="Gnome">Gnome 🤏</option>
+          <option value="Half-Elf">Half-Elf 🧝‍♂️</option>
           <option value="Halfling">Halfling 🍽️</option>
           <option value="Half-Orc">Half-Orc 👹</option>
           <option value="Human">Human 🙋🏻‍♂️</option>
