@@ -37,14 +37,14 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className='App'>
+      <div className="App">
         <Header user={user} />
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
 
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               user ? (
                 <div>
@@ -56,38 +56,38 @@ function App() {
             }
           ></Route>
           <Route
-            path='/EditProfile'
+            path="/EditProfile"
             element={
               user ? (
                 <EditProfile user={user} setInputs={setUser} />
               ) : (
-                <Navigate to='/' />
+                <Navigate to="/" />
               )
             }
           ></Route>
           <Route
-            path='/CreateCharacter'
-            element={user ? <CreateCharacter /> : <Navigate to='/' />}
+            path="/CreateCharacter"
+            element={user ? <CreateCharacter /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/Profile'
-            element={user ? <UserProfile /> : <Navigate to='/' />}
+            path="/Profile"
+            element={user ? <UserProfile /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/groups'
-            element={user ? <Groups /> : <Navigate to='/' />}
+            path="/groups"
+            element={user ? <Groups /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/groups/:group_id'
-            element={user ? <Group /> : <Navigate to='/' />}
+            path="/groups/:group_id"
+            element={user ? <Group /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/groups/create'
-            element={user ? <CreateGroup /> : <Navigate to='/' />}
+            path="/groups/create"
+            element={user ? <CreateGroup /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/characters/:character_id'
-            element={user ? <Character /> : <Navigate to='/' />}
+            path="/characters/:character_id"
+            element={user ? <Character /> : <Navigate to="/" />}
           ></Route>
         </Routes>
       </div>
