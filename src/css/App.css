@@ -5,12 +5,16 @@
   /* background-image: linear-gradient(0deg, #f7ce65 0%, #fffebd 100%); */
   color: #030303;
   font-family: 'calibri';
-  height: 100%;
+
   font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100%;
 }
 #root {
   height: 120vh;
-  min-height: 100vh;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 body {
   margin: 0px;
@@ -138,10 +142,10 @@ body {
 }
 
 .charList_img {
-  float: left;
-  width: 7em;
-  height: 7em;
-  border-radius: 100%;
+  border: 1px solid;
+  clip-path: circle();
+  width: 300px;
+  height: auto;
 }
 
 .charList_name {
@@ -155,7 +159,12 @@ body {
   text-align: left;
   text-decoration: none;
 }
-
+.charList_img {
+  float: left;
+  width: 7em;
+  height: 7em;
+  border-radius: 100%;
+}
 .charList_link {
   color: black;
 }
@@ -203,4 +212,46 @@ body {
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 10px;
+  justify-content: center;
+}
+.profile_user_avatar {
+  width: 50%;
+  height: 75%;
+}
+.character_images_by_id {
+  width: 50%;
+  height: 75%;
+}
+.profile_page {
+  width: auto;
+  height: auto;
+}
+.profile-card {
+  border: 1px solid;
+}
+.user_characters {
+  display: inline-block;
+  box-shadow: 0px 5px 5px rgba(34, 35, 58, 0.5);
+  padding: 10px;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  height: auto;
+  width: 350px;
+  justify-content: center;
+}
+.flexbox_container {
+  display: flex;
+  flex-direction: row;
+}
+.single_character {
+  display: inline-block;
+  box-shadow: 0px 5px 5px rgba(34, 35, 58, 0.5);
+  padding: 10px;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  height: auto;
+  width: 350px;
+  justify-content: center;
 }

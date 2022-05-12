@@ -32,55 +32,57 @@ const UserProfile = () => {
   // let preferred_days = preferences.days;
 
   return (
-    <div className="your_profile">
-      <h2>Welcome to your profile {userProfile.username}</h2>
-      <Link to="/CreateCharacter" className="Link">
-        <p>Add Character</p>
-      </Link>
-      <Link to="/EditProfile" className="Link">
-        <p>Edit Profile</p>
-      </Link>
-
-      <img src={userProfile.avatar_url} alt="avatar" />
-      <div className="user-details">
-        {userProfile.username}
-        {userProfile.name}
-        {userProfile.years_played}
-        DM: {userProfile.is_dm ? 'Yes' : 'No'}
+    <>
+      <div className="flexbox_container">
+        <div className="profile_page">
+          <div className="your_profile">
+            <h2> Welcome to your profile {userProfile.username}</h2>
+            <Link to="/CreateCharacter" className="Link">
+              <p>Add Character</p>
+            </Link>
+            <Link to="/EditProfile" className="Link">
+              <p>Edit Profile</p>
+            </Link>
+            <img
+              src={userProfile.avatar_url}
+              alt="avatar"
+              className="profile_user_avatar"
+            />
+            <br></br>
+            {userProfile.name}
+            <b> Number of years played: </b>
+            {userProfile.years_played}
+            <br></br>
+            <br></br>
+            <b> DM: </b>
+            {userProfile.is_dm ? 'Yes' : 'No'}
+            <br></br>
+            <b> Play Online: </b>
+            {userProfile.play_online ? '✔️' : '✖️'}
+            <br></br>
+            <b> Play Offline: </b>
+            {userProfile.play_online ? '✔️' : '✖️'}
+            <br></br>
+            <b> About Me: </b>
+            <br></br>
+            {userProfile.about_me}
+          </div>
+        </div>
+        <div className="use2r_characters">
+          <p>Characters:</p>
+          <ul>
+            {characterID_Array &&
+              characterID_Array.map((id) => {
+                return (
+                  <div className="single_character">
+                    <GetCharacterByID key={id} id={id} />
+                  </div>
+                );
+              })}
+          </ul>
+        </div>
       </div>
-      <div className="characters">
-        <p>Characters:</p>
-        <ul>
-          {characterID_Array &&
-            characterID_Array.map((id) => {
-              return <GetCharacterByID key={id} id={id} />;
-            })}
-        </ul>
-      </div>
-      <div className="preferred-days">
-        {/* <ul>
-          Preferred Days to play:
-          {preferred_days &&
-            preferred_days.map((day) => {
-              return <li key={index++}>{day}</li>;
-            })}
-        </ul> */}
-      </div>
-      <div className="play-preference">
-        Play Online: {userProfile.play_online ? 'Yes' : 'No'}
-        Play Offline:{userProfile.play_online ? 'Yes' : 'No'}
-      </div>
-      <div className="about-connections">
-        About Me:{userProfile.about_me}
-        <p>Connections:</p>
-        {/* <ul>
-          {connections &&
-            connections.map((connection) => {
-              return <li key={index++}>{connection}</li>;
-            })}
-        </ul> */}
-      </div>
-    </div>
+    </>
   );
 };
 
