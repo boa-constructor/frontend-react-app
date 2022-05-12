@@ -77,8 +77,8 @@ const CreateCharacter = () => {
           <option value="Dragonborn">Dragonborn 🐲</option>
           <option value="Dwarf">Dwarf ⛏️</option>
           <option value="Elf">Elf 🧝</option>
-          <option value="Gnome">Druid 🤏</option>
-          <option value="Half-Elf">Fighter 🧝‍♂️</option>
+          <option value="Gnome">Gnome 🤏</option>
+          <option value="Half-Elf">Half-Elf 🧝‍♂️</option>
           <option value="Halfling">Halfling 🍽️</option>
           <option value="Half-Orc">Half-Orc 👹</option>
           <option value="Human">Human 🙋🏻‍♂️</option>
