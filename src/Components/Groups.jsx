@@ -31,6 +31,7 @@ const Groups = () => {
 			These are your current groups
 			<ul className='groups_list'>
 				{groups.map((group) => {
+					console.log(group, '<< group');
 					return (
 						<li key={group.group_id} className='group_card'>
 							<Link to={`/groups/${group.group_id}`} className='Link'>
@@ -42,7 +43,7 @@ const Groups = () => {
 				})}
 			</ul>
 			<br></br>
-			<CreateGroup setGroups={setGroups}/>
+			<CreateGroup />
 		</div>
 	);
 };

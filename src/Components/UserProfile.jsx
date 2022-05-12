@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
 
 const UserProfile = () => {
+
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
+
+  let index = 0;
 
   useEffect(() => {
     getUserProfile(user)
@@ -22,60 +25,61 @@ const UserProfile = () => {
 
   const characterID_Array = userProfile.characters;
 
-  return (
-    <div className="flexbox_container">
-      <div className="profile_page">
-        <div className="your_profile">
-          <h2> Welcome to your profile {userProfile.username}</h2>
-          <Link to="/CreateCharacter" className="Link">
-            <p>Add Character</p>
-          </Link>
-          <Link to="/EditProfile" className="Link">
-            <p>Edit Profile</p>
-          </Link>
-          <img
-            src={userProfile.avatar_url}
-            alt="avatar"
-            className="profile_user_avatar"
-          />
-          <br></br>
-          {userProfile.name}
-          <b> Number of years played: </b>
-          {userProfile.years_played}
-          <br></br>
-          <br></br>
-          <b> DM: </b>
-          {userProfile.is_dm ? 'Yes' : 'No'}
-          <br></br>
-          <b> Play Online: </b>
-          {userProfile.play_online ? '✔️' : '✖️'}
-          <br></br>
-          <b> Play Offline: </b>
-          {userProfile.play_online ? '✔️' : '✖️'}
-          <br></br>
-          <b> About Me: </b>
-          <br></br>
-          {userProfile.about_me}
-        </div>
-      </div>
 
-      <div className="characters-preferences">
-        <div className="characters">
+
+  return (
+    <>
+      <div className="flexbox_container">
+        <div className="profile_page">
+          <div className="your_profile">
+            <h2> Welcome to your profile {userProfile.username}</h2>
+            <Link to="/CreateCharacter" className="Link">
+              <p>Add Character</p>
+            </Link>
+            <Link to="/EditProfile" className="Link">
+              <p>Edit Profile</p>
+            </Link>
+            <img
+              src={userProfile.avatar_url}
+              alt="avatar"
+              className="profile_user_avatar"
+            />
+            <br></br>
+            {userProfile.name}
+            <b> Number of years played: </b>
+            {userProfile.years_played}
+            <br></br>
+            <br></br>
+            <b> DM: </b>
+            {userProfile.is_dm ? 'Yes' : 'No'}
+            <br></br>
+            <b> Play Online: </b>
+            {userProfile.play_online ? '✔️' : '✖️'}
+            <br></br>
+            <b> Play Offline: </b>
+            {userProfile.play_online ? '✔️' : '✖️'}
+            <br></br>
+            <b> About Me: </b>
+            <br></br>
+            {userProfile.about_me}
+          </div>
+        </div>
+        <div className="use2r_characters">
           <p>Characters:</p>
           <ul>
-            {userProfile.characters &&
-              userProfile.characters.map((id) => {
-                return <GetCharacterByID key={id} id={id} />;
+            {characterID_Array &&
+              characterID_Array.map((id) => {
+                return (
+                  <div className="single_character">
+                    <GetCharacterByID key={id} id={id} />
+                  </div>
+                );
               })}
           </ul>
-          <div className="play-preference">
-            <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
-            <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
-          </div>
-          <p className="about-me">About Me: {userProfile.about_me}</p>
         </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

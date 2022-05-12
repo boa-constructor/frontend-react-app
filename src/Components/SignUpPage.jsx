@@ -21,8 +21,7 @@ const SignUpPage = () => {
       signInWithPopup(auth, provider)
         .then((res) => {
           setUser(res.user.uid);
-          console.log(res.user)
-          postUserProfile({user_id: res.user.uid, email: res.user.email})
+          postUserProfile(res.user.uid)
           setLoggedIn(true);
         })
         .catch((error) => {
