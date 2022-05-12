@@ -11,11 +11,12 @@ const Character = (req, res) => {
   const [currGroup, setCurrGroup] = useState({});
   const [userGroups, setUserGroups] = useState([]);
 
-  const user = useContext(UserContext);
+
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     setUserGroups([]);
-    getUserProfile(user.user)
+    getUserProfile(user)
       .then((data) => {
         data.groups.forEach((group_id) => {
           getGroupById(group_id).then((data) => {
@@ -28,8 +29,7 @@ const Character = (req, res) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
+  }, [user]);
   useEffect(() => {
     getCharacterByID(character_id)
       .then((data) => {
@@ -48,12 +48,13 @@ const Character = (req, res) => {
         console.log(err);
       });
   }, [character_id, newGroup]);
-
+  
   const addHandler = () => {
     setNewGroup({
       group_id: userGroups[0].group_id,
       group_name: userGroups[0].group_name,
     });
+    console.log(userGroups[0])
     const patchData = { character_id, group_id: userGroups[0].group_id };
     addCharacterToGroup(patchData)
       .then(() => {
@@ -78,8 +79,7 @@ const Character = (req, res) => {
         console.log(err);
       });
   };
-  console.log(character, '<<<<');
-
+  console.log(userGroups)
   const games_played = character.games_played;
   return (
     <div className="character-box">
@@ -103,7 +103,6 @@ const Character = (req, res) => {
           ) : (
             <>
               <button onClick={addHandler}>Add to Group</button>
-              <select></select>
             </>
           )}
           <div>

@@ -21,9 +21,6 @@ const UserProfile = () => {
         console.log(err);
       });
   }, [user]);
-  console.log(userProfile);
-
-  const characterID_Array = userProfile.characters;
 
 
 
@@ -76,6 +73,13 @@ const UserProfile = () => {
                 );
               })}
           </ul>
+
+          <div className="play-preference">
+            <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
+            <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
+          </div>
+          <p className="about-me">About Me: {userProfile.About}</p>
+
         </div>
       </div>
     </>

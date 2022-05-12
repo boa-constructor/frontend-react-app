@@ -1,41 +1,18 @@
 import { useState, useContext } from 'react';
 import { createGroup } from '../utils/api';
-import { UserContext } from '../contexts/user';
 
-const CreateGroup = ({ setGroups }) => {
+const CreateGroup = ({newGroup, setNewGroup}) => {
 
   const { user } = useContext(UserContext);
-
-  const [newGroup, setNewGroup] = useState({
-    characters: [],
-    dm: user,
-    user_id: user,
-    group_name: '',
-    avatar: '',
-    game_type: '',
-    game_info: '',
-  });
-
+  const [inputGroup, setInputGroup] = useState({})
   const submissionHandler = (e) => {
     e.preventDefault();
     createGroup(newGroup).then((group_id) => {
-      newGroup.group_id = group_id;
-      setGroups((currGroups) => {
-        return [...currGroups, newGroup];
-      });
-    });
 
-    setNewGroup({
-      characters: [],
-      dm: user,
-      user_id: user,
-      group_name: '',
-      avatar: '',
-      game_type: '',
-      game_info: '',
-    });
+      setNewGroup({...inputGroup, group_id, user_id: user})
+    })
+
   };
-
   return (
     <div>
       <form onSubmit={submissionHandler} className="create_group_form">
@@ -43,11 +20,11 @@ const CreateGroup = ({ setGroups }) => {
         <input
           required
           type="text"
-          value={newGroup.group_name}
+          value={inputGroup.group_name}
           name="group_name"
           onChange={(e) =>
-            setNewGroup((currNewGroup) => {
-              return { ...currNewGroup, group_name: e.target.value };
+            setInputGroup((currInputGroup) => {
+              return { ...currInputGroup, group_name: e.target.value };
             })
           }
         />
@@ -56,10 +33,10 @@ const CreateGroup = ({ setGroups }) => {
         <input
           name="group_avatar"
           type="url"
-          value={newGroup.avatar}
+          value={inputGroup.avatar}
           onChange={(e) =>
-            setNewGroup((currNewGroup) => {
-              return { ...currNewGroup, avatar: e.target.value };
+            setInputGroup((currInputGroup) => {
+              return { ...currInputGroup, avatar: e.target.value };
             })
           }
         />
@@ -67,20 +44,20 @@ const CreateGroup = ({ setGroups }) => {
         <label htmlFor="game_info">Game Information:</label>
         <textarea
           required
-          value={newGroup.game_info}
+          value={inputGroup.game_info}
           name="game_info"
           type="textarea"
           onChange={(e) =>
-            setNewGroup((currNewGroup) => {
-              return { ...currNewGroup, game_info: e.target.value };
+            setInputGroup((currInputGroup) => {
+              return { ...currInputGroup, game_info: e.target.value };
             })
           }
         />
         <div
-          value={newGroup.game_type}
+          value={inputGroup.game_type}
           onChange={(e) =>
-            setNewGroup((currNewGroup) => {
-              return { ...currNewGroup, game_type: e.target.value };
+            setInputGroup((currInputGroup) => {
+              return { ...currInputGroup, game_type: e.target.value };
             })
           }
         >
