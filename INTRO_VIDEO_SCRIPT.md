@@ -37,4 +37,4 @@ This card will tell the user much more about the hero they want to join their pa
 
 ## Group page
 
-Now we can see the characters currently in our group! We are all grouped up and ready to play!
+Now we can see the characters currently in our group! We are all grouped up and ready to play! You can arrange your first game by using the contact details provided. 
