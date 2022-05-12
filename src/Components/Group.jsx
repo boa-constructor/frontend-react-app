@@ -1,13 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { UserContext } from '../contexts/user';
-import {
-	getGroupById,
-	getCharacterByID,
-	getUserProfile,
-} from '../utils/api';
+import { getGroupById, getCharacterByID, getUserProfile } from '../utils/api';
 
 const Group = () => {
+
 	const userContext = useContext(UserContext)
 	const [group, setGroup] = useState({});
 	const [characters, setCharacters] = useState([]);
@@ -61,5 +59,6 @@ const Group = () => {
 			): <p>This group doesnt contain any characters yet!</p>}
 		</div>
 	);
+
 };
 export default Group;

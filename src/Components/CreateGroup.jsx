@@ -1,14 +1,17 @@
 import { useState, useContext } from 'react';
 import { createGroup } from '../utils/api';
-import { UserContext } from '../contexts/user';
+
 const CreateGroup = ({newGroup, setNewGroup}) => {
+
   const { user } = useContext(UserContext);
   const [inputGroup, setInputGroup] = useState({})
   const submissionHandler = (e) => {
     e.preventDefault();
     createGroup(newGroup).then((group_id) => {
+
       setNewGroup({...inputGroup, group_id, user_id: user})
     })
+
   };
   return (
     <div>
@@ -25,6 +28,7 @@ const CreateGroup = ({newGroup, setNewGroup}) => {
             })
           }
         />
+        <br></br>
         <label htmlFor="group_avatar">Group Avatar:</label>
         <input
           name="group_avatar"
@@ -36,6 +40,7 @@ const CreateGroup = ({newGroup, setNewGroup}) => {
             })
           }
         />
+        <br></br>
         <label htmlFor="game_info">Game Information:</label>
         <textarea
           required

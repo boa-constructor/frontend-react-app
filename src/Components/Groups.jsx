@@ -5,6 +5,7 @@ import { getUserProfile, getGroupById } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 const Groups = () => {
+
 	const [groups, setGroups] = useState([]);
 	const { user } = useContext(UserContext);
 	const [newGroup, setNewGroup] = useState({
@@ -53,6 +54,7 @@ const Groups = () => {
 			<CreateGroup newGroup={newGroup} setNewGroup={setNewGroup}/>
 		</div>
 	);
+
 };
 
 export default Groups;
