@@ -288,3 +288,8 @@ body {
 
   font-size: larger;
 }
+
+#group_img {
+  height: 250px;
+  width: 250px;
+}

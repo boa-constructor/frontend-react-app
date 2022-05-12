@@ -41,7 +41,7 @@ const Group = () => {
   return (
     <div>
       <h2>{group.group_name}</h2>
-      <img src={group.avatar} alt="group avatar"></img>
+      <img id="group_img" src={group.avatar} alt="group avatar"></img>
       <p>Contact Info: {user.email}</p>
       <p>Group info: {group.game_info}</p>
       {characters.length && (
