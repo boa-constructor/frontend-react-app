@@ -53,6 +53,10 @@ body {
   color: crimson;
   text-decoration: none;
 }
+
+.NavLink {
+  font-size: 30px;
+}
 #headerLink {
   text-decoration: none;
 }
