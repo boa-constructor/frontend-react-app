@@ -6,11 +6,9 @@ import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
 
 const UserProfile = () => {
-
+  const [charListExists, setCharListExists ] = useState(false)
   const [userProfile, setUserProfile] = useState({});
   const { user } = useContext(UserContext);
-
-  let index = 0;
 
   useEffect(() => {
     getUserProfile(user)
@@ -20,9 +18,9 @@ const UserProfile = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [user]);
+  }, [user, charListExists]);
 
-
+  console.log(userProfile)
 
   return (
     <>
@@ -30,7 +28,7 @@ const UserProfile = () => {
         <div className="profile_page">
           <div className="your_profile">
             <h2> Welcome to your profile {userProfile.username}</h2>
-            <Link to="/CreateCharacter" className="Link">
+            <Link to="/CreateCharacter" className="Link" setCharListExists={setCharListExists}>
               <p>Add Character</p>
             </Link>
             <Link to="/EditProfile" className="Link">
@@ -64,15 +62,16 @@ const UserProfile = () => {
         <div className="use2r_characters">
           <p>Characters:</p>
           <ul>
-            {characterID_Array &&
-              characterID_Array.map((id) => {
+
+            {userProfile.characters &&
+              userProfile.characters.map((id) => {
                 return (
-                  <div className="single_character">
+                  <li className="single_character">
                     <GetCharacterByID key={id} id={id} />
-                  </div>
+                  </li>
                 );
               })}
-          </ul>
+              </ul>
 
           <div className="play-preference">
             <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
