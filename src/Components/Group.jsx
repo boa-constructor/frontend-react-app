@@ -29,7 +29,7 @@ const Group = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [group_id]);
 	useEffect(() => {
 		getUserProfile(userContext.user).then((user) => {
 			setUser(user)
@@ -37,7 +37,7 @@ const Group = () => {
 		.catch((err) => {
 			console.log(err)
 		})
-	}, [])
+	}, [userContext.user])
 	if (loading) return <p> Loading...</p>;
 	return (
 		<div>

@@ -17,9 +17,6 @@ const GetCharacterByID = (props) => {
 
   return (
     <>
-      {' '}
-      <ul className="charList">
-        <li key={character.character_id}>
           <Link to={`/characters/${props.id}`} className="Link">
             {character.character_name}
           </Link>
@@ -31,8 +28,6 @@ const GetCharacterByID = (props) => {
             alt="Avatar Pic"
             className="character_images_by_id"
           ></img>
-        </li>
-      </ul>
     </>
   );
 };

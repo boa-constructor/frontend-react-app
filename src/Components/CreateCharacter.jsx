@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../contexts/user';
 import { postCharacter } from '../utils/api';
 
-const CreateCharacter = () => {
+const CreateCharacter = ({setCharListExists}) => {
   const user = useContext(UserContext);
   const [character, setCharacter] = useState({
     class: 'Barbarian',
@@ -18,7 +18,9 @@ const CreateCharacter = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    postCharacter(character);
+    postCharacter(character).then(() => {
+      setCharListExists(true)
+    })
   };
 
   return (
