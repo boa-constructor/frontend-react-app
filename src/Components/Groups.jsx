@@ -8,6 +8,7 @@ const Groups = () => {
 
 	const [groups, setGroups] = useState([]);
 	const { user } = useContext(UserContext);
+	console.log(user)
 	const [newGroup, setNewGroup] = useState({
 	characters: [],
 	dm: user,
@@ -23,7 +24,9 @@ const Groups = () => {
 		getUserProfile(user)
 		.then((data) => {
 			data.groups.forEach((group_id) => {
+				console.log(group_id)
 				getGroupById(group_id).then((data) => {
+					console.log(data)
 					data.group_id = group_id;
 					setGroups((currGroups) => {
 						return [...currGroups, data];
