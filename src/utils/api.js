@@ -3,10 +3,10 @@ const firestoreTestApi = axios.create({
   baseURL: 'http://127.0.0.1:5001/dndinder-68dcc/us-central1',
 });
 
-export const postUserProfile = async (user_id) => {
+export const postUserProfile = async (postBody) => {
   try {
     const { data } = await firestoreTestApi.post(`/addUser`, {
-      user_id,
+      postBody,
     });
     return data;
   } catch (err) {
