@@ -1,14 +1,15 @@
 import { useState, useContext } from 'react';
+import { UserContext } from '../contexts/user';
 import { createGroup } from '../utils/api';
 
 const CreateGroup = ({newGroup, setNewGroup}) => {
 
   const { user } = useContext(UserContext);
-  const [inputGroup, setInputGroup] = useState({})
+  const [inputGroup, setInputGroup] = useState({user_id: user})
   const submissionHandler = (e) => {
     e.preventDefault();
-    createGroup(newGroup).then((group_id) => {
-
+    console.log(inputGroup)
+    createGroup(inputGroup).then((group_id) => {
       setNewGroup({...inputGroup, group_id, user_id: user})
     })
 
