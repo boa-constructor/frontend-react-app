@@ -19,28 +19,30 @@ const GetCharactersList = () => {
   }, []);
 
   return (
-    <ul className="charList">
+    <ul className='charList'>
       {charList.map((char) => {
         return (
-          <li className="charList_card" key={char.character_id}>
+          <li className='charList_card' key={char.character_id}>
             <Link
-              className="charList_link"
+              className='charList_link'
               to={`/characters/${char.character_id}`}
             >
-              <section className="charList_text">
+              <section className='charList_text'>
                 Name: {char.character_name}
-                <p className="charList_class">Class: {char.class}</p>
+                <p className='charList_class'>Class: {char.class}</p>
                 <br></br> Race: {char.race}
                 <br></br>
-                <br></br> Online: {char.play_online === true ? <p>✔️</p> : <p>✖️</p>}
-                <br></br> Offline: {char.play_offline === true ? <p>✔️</p> : <p>✖️</p>}
+                <br></br> Online:{' '}
+                {char.play_online === true ? <p>✔️</p> : <p>✖️</p>}
+                <br></br> Offline:{' '}
+                {char.play_offline === true ? <p>✔️</p> : <p>✖️</p>}
                 <br></br>
               </section>
 
               <img
-                className="charList_img"
+                className='charList_img'
                 src={`${char.avatar_url}`}
-                alt="Avatar Pic"
+                alt='Avatar Pic'
               ></img>
             </Link>
           </li>
