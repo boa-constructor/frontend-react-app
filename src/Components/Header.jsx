@@ -18,11 +18,15 @@ const Header = ({user}) => {
     }
   }
 
+  function handleLogin() {
+    navigate("/login")
+  }
+
   return (
     <div className="Header" >
       {currentUser ? (<Link to="/" className="Link" id="headerLink"><h1> Welcome to DnDinder™️ </h1></Link>
       ):(<h1> Welcome to DnDinder™️ </h1>)}
-      {currentUser && <Button variant="link" onClick={handleLogout}>Log Out</Button>}
+      {currentUser ? <Button variant="link" onClick={handleLogout}>Log Out</Button>: <Button variant="link" onClick={handleLogin}>Log In</Button>}
       {error && <p>{error}</p>}
     </div>
   );
