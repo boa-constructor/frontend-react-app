@@ -23,6 +23,7 @@ const Header = ({user}) => {
       {currentUser ? (<Link to="/" className="Link" id="headerLink"><h1> Welcome to DnDinder™️ </h1></Link>
       ):(<h1> Welcome to DnDinder™️ </h1>)}
       {currentUser && <Button variant="link" onClick={handleLogout}>Log Out</Button>}
+      {error && <p>{error}</p>}
     </div>
   );
 };

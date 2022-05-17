@@ -16,7 +16,6 @@ import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
-import Dashboard from './Components/Dashboard';
 import { AuthProvider } from './contexts/authContext';
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
@@ -32,7 +31,7 @@ function App() {
           {user ? <NavBar /> : <p>You're not logged in!</p>}
 
           <Routes>
-            <Route exact path='/' element={<Dashboard />} />
+            <Route exact path='/' element={<LandingPage />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/login' element={<Login />} />
             <Route
