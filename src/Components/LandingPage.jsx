@@ -9,8 +9,8 @@ import {
 } from 'firebase/auth';
 import { UserContext } from '../contexts/user';
 import { postUserProfile } from '../utils/api';
-import GetCharactersList from './GetCharactersList';
 const provider = new GoogleAuthProvider();
+
 const LandingPage = () => {
   const { user, setUser } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(user ? true : false);
