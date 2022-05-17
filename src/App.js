@@ -21,6 +21,7 @@ import LandingPage from './Components/LandingPage';
 
 import UsersList from './Components/UsersList';
 
+
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
   authDomain: 'dndinder-68dcc.firebaseapp.com',
@@ -45,20 +46,20 @@ function App() {
         <Header user={user} />
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
-
+        <LandingPage />
         <Routes>
-          <Route
-            path="/"
+          {/* <Route
+            path='/'
             element={
               user ? (
                 <div>
-                  <LandingPage user={user} />
+                  <Home user={user} />
                 </div>
               ) : (
                 <p></p>
               )
             }
-          ></Route>
+          ></Route> */}
           <Route
             path="/EditProfile"
             element={
@@ -94,8 +95,8 @@ function App() {
             element={user ? <Character /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path="/users"
-            element={user ? <UsersList /> : <Navigate to="/" />}
+            path='/users'
+            element={user ? <UsersList /> : <Navigate to='/' />}
           />
         </Routes>
       </div>
