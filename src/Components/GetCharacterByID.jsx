@@ -17,17 +17,17 @@ const GetCharacterByID = (props) => {
 
   return (
     <>
-          <Link to={`/characters/${props.id}`} className="Link">
-            {character.character_name}
-          </Link>
-          <p>test</p>
-          <br></br> Class: {character.class}
-          <br></br>
-          <img
-            src={`${character.avatar_url}`}
-            alt="Avatar Pic"
-            className="character_images_by_id"
-          ></img>
+      <Link to={`/characters/${props.id}`} className='Link'>
+        {character.character_name}
+      </Link>
+      <p>test</p>
+      <br></br> Class: {character.class}
+      <br></br>
+      <img
+        src={`${character.avatar_url}`}
+        alt='Avatar Pic'
+        className='character_images_by_id'
+      ></img>
     </>
   );
 };

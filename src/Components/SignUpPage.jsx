@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -6,9 +6,9 @@ import {
   signOut,
   setPersistence,
   browserSessionPersistence,
-} from "firebase/auth";
-import { UserContext } from "../contexts/user";
-import { postUserProfile } from "../utils/api";
+} from 'firebase/auth';
+import { UserContext } from '../contexts/user';
+import { postUserProfile } from '../utils/api';
 const provider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
@@ -21,8 +21,8 @@ const SignUpPage = () => {
       signInWithPopup(auth, provider)
         .then((res) => {
           setUser(res.user.uid);
-          console.log(res.user.email)
-          postUserProfile({user_id: res.user.uid, email: res.user.email})
+          console.log(res.user.email);
+          postUserProfile({ user_id: res.user.uid, email: res.user.email });
           setLoggedIn(true);
         })
         .catch((error) => {
@@ -36,14 +36,14 @@ const SignUpPage = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("user_id", user);
+    localStorage.setItem('user_id', user);
   }, [user]);
 
   const logout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        setUser("");
+        setUser('');
         setLoggedIn(false);
       })
       .catch((error) => {
@@ -52,20 +52,21 @@ const SignUpPage = () => {
   };
 
   if (loggedIn === true) {
-    localStorage.setItem("user_id", user);
+    localStorage.setItem('user_id', user);
     return (
       <div>
-        <button onClick={logout} className="Link">Logout</button>
+        <button onClick={logout} className='Link'>
+          Logout
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="SignUpPage">
-      <button onClick={clickHandler} className="Link">
+    <div className='SignUpPage'>
+      <button onClick={clickHandler} className='Link'>
         Log-In:
       </button>
-
     </div>
   );
 };
