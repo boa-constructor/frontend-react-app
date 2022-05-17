@@ -119,3 +119,12 @@ export const removeCharacterFromGroup = async (patchData) => {
     console.log(err);
   }
 };
+
+export const getUsers = async () => {
+  try {
+    const { data } = await firestoreTestApi.get('/getUsers');
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
