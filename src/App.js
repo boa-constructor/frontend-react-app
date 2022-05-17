@@ -16,7 +16,11 @@ import CreateCharacter from './Components/CreateCharacter';
 import Group from './Components/Group';
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
+
+import LandingPage from './Components/LandingPage';
+
 import UsersList from './Components/UsersList';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -38,13 +42,13 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className='App'>
+      <div className="App">
         <Header user={user} />
         {user ? <NavBar /> : <p>You're not logged in!</p>}
         <SignUpPage />
-
+        <LandingPage />
         <Routes>
-          <Route
+          {/* <Route
             path='/'
             element={
               user ? (
@@ -55,40 +59,40 @@ function App() {
                 <p></p>
               )
             }
-          ></Route>
+          ></Route> */}
           <Route
-            path='/EditProfile'
+            path="/EditProfile"
             element={
               user ? (
                 <EditProfile user={user} setInputs={setUser} />
               ) : (
-                <Navigate to='/' />
+                <Navigate to="/" />
               )
             }
           ></Route>
           <Route
-            path='/CreateCharacter'
-            element={user ? <CreateCharacter /> : <Navigate to='/' />}
+            path="/CreateCharacter"
+            element={user ? <CreateCharacter /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/Profile'
-            element={user ? <UserProfile /> : <Navigate to='/' />}
+            path="/Profile"
+            element={user ? <UserProfile /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/groups'
-            element={user ? <Groups /> : <Navigate to='/' />}
+            path="/groups"
+            element={user ? <Groups /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/groups/:group_id'
-            element={user ? <Group /> : <Navigate to='/' />}
+            path="/groups/:group_id"
+            element={user ? <Group /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/groups/create'
-            element={user ? <CreateGroup /> : <Navigate to='/' />}
+            path="/groups/create"
+            element={user ? <CreateGroup /> : <Navigate to="/" />}
           ></Route>
           <Route
-            path='/characters/:character_id'
-            element={user ? <Character /> : <Navigate to='/' />}
+            path="/characters/:character_id"
+            element={user ? <Character /> : <Navigate to="/" />}
           ></Route>
           <Route
             path='/users'

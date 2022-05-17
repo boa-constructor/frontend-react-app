@@ -1,4 +1,3 @@
-
 :root {
   --primColor: #dcdcdc;
   --secoColor: #555555;
@@ -11,10 +10,9 @@
   /* background-image: linear-gradient(0deg, #f7ce65 0%, #fffebd 100%); */
   color: #030303;
   font-family: 'calibri';
-
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 #root {
   min-height: 100%;
@@ -301,4 +299,44 @@ body {
 #group_img {
   height: 250px;
   width: 250px;
+}
+/* CSS for landing page  */
+.landing_page {
+  height: 100vw;
+  width: 100vw;
+}
+.landing_image_container {
+  background-color: whitesmoke;
+  /* height: 350px;
+  width: 100%; */
+  height: auto;
+  width: auto;
+}
+.landing_image {
+  box-shadow: 5px 5px 5px 5px rgba(34, 35, 58, 0.5);
+  width: 95vw;
+  flex: 1;
+}
+.about_the_site {
+  padding: 25px;
+  align-self: center;
+}
+.site_photo {
+  box-shadow: 5px 5px 5px 0px rgba(34, 35, 58, 0.5);
+
+  margin: left 15px;
+  float: left;
+  max-width: 350px;
+  max-height: 350px;
+}
+.about_us {
+  padding: 25px;
+  align-self: center;
+}
+.team_photo {
+  float: right;
+  max-height: 350px;
+  max-width: 350px;
+
+  box-shadow: 5px 0px 5px 5px rgba(34, 35, 58, 0.5);
 }
