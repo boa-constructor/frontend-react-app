@@ -11,8 +11,7 @@ const Character = (req, res) => {
   const [currGroup, setCurrGroup] = useState({});
   const [userGroups, setUserGroups] = useState([]);
 
-
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     setUserGroups([]);
@@ -48,13 +47,13 @@ const Character = (req, res) => {
         console.log(err);
       });
   }, [character_id, newGroup]);
-  
+
   const addHandler = () => {
     setNewGroup({
       group_id: userGroups[0].group_id,
       group_name: userGroups[0].group_name,
     });
-    console.log(userGroups[0])
+    console.log(userGroups[0]);
     const patchData = { character_id, group_id: userGroups[0].group_id };
     addCharacterToGroup(patchData)
       .then(() => {
@@ -79,22 +78,22 @@ const Character = (req, res) => {
         console.log(err);
       });
   };
-  console.log(userGroups)
+  console.log(userGroups);
   const games_played = character.games_played;
   return (
-    <div className="character-box">
-      <div className="character-intro">
-        <div className="character-img">
-          <img src={character.avatar_url} alt="avatar for character" />
+    <div className='character-box'>
+      <div className='character-intro'>
+        <div className='character-img'>
+          <img src={character.avatar_url} alt='avatar for character' />
         </div>
-        <div className="character-details">
+        <div className='character-details'>
           <h3>{character.character_name}</h3>
           <h4>Class: {character.class}</h4>
           {currGroup ? (
             <>
               <h4>
                 Group:{' '}
-                <Link className="Link" to={`/groups/${character.group}`}>
+                <Link className='Link' to={`/groups/${character.group}`}>
                   {currGroup.group_name}
                 </Link>
               </h4>
@@ -115,7 +114,7 @@ const Character = (req, res) => {
           </div>
         </div>
       </div>
-      <div className="character-background">{character.About}</div>
+      <div className='character-background'>{character.About}</div>
     </div>
   );
 };

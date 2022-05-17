@@ -16,7 +16,11 @@ import CreateCharacter from './Components/CreateCharacter';
 import Group from './Components/Group';
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
+
 import LandingPage from './Components/LandingPage';
+
+import UsersList from './Components/UsersList';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
@@ -90,6 +94,10 @@ function App() {
             path="/characters/:character_id"
             element={user ? <Character /> : <Navigate to="/" />}
           ></Route>
+          <Route
+            path='/users'
+            element={user ? <UsersList /> : <Navigate to='/' />}
+          />
         </Routes>
       </div>
     </UserContext.Provider>
