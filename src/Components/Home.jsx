@@ -1,6 +1,8 @@
 import GetCharactersList from './GetCharactersList';
-const Home = ({ user }) => {
-  return <div>{user ? <GetCharactersList /> : <p></p>}</div>;
+import { useAuth } from '../contexts/authContext';
+const Home = () => {
+  const { currentUser } = useAuth();
+  return <div>{currentUser ? <GetCharactersList /> : <p></p>}</div>;
 };
 
 export default Home;
