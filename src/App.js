@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import { Container } from 'react-bootstrap';
 import { UserContext } from './contexts/user';
 import { useState } from 'react';
+import { useAuth } from './contexts/authContext';
 
 import Home from './Components/Home';
 import NavBar from './Components/NavBar';
@@ -21,73 +22,63 @@ import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem('user_id'));
-
+  const { currentUser } = useAuth();
+  console.log(currentUser.uid);
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <div className='App'>
-          <Header user={user} />
-          {user ? <NavBar /> : <p>You're not logged in!</p>}
+    <div className='App'>
+      <Header />
+      {currentUser ? <NavBar /> : <p>You're not logged in!</p>}
 
-          <Routes>
-            <Route exact path='/' element={<LandingPage />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/login' element={<Login />} />
-            <Route
-              path='/'
-              element={
-                user ? (
-                  <div>
-                    <Home user={user} />
-                  </div>
-                ) : (
-                  <p></p>
-                )
-              }
-            ></Route>
-            <Route
-              path='/EditProfile'
-              element={
-                user ? (
-                  <EditProfile user={user} setInputs={setUser} />
-                ) : (
-                  <Navigate to='/' />
-                )
-              }
-            ></Route>
-            <Route
-              path='/CreateCharacter'
-              element={user ? <CreateCharacter /> : <Navigate to='/' />}
-            ></Route>
-            <Route
-              path='/Profile'
-              element={user ? <UserProfile /> : <Navigate to='/' />}
-            ></Route>
-            <Route
-              path='/groups'
-              element={user ? <Groups /> : <Navigate to='/' />}
-            ></Route>
-            <Route
-              path='/groups/:group_id'
-              element={user ? <Group /> : <Navigate to='/' />}
-            ></Route>
-            <Route
-              path='/groups/create'
-              element={user ? <CreateGroup /> : <Navigate to='/' />}
-            ></Route>
-            <Route
-              path='/characters/:character_id'
-              element={user ? <Character /> : <Navigate to='/' />}
-            ></Route>
-            <Route
-              path='/users'
-              element={user ? <UsersList /> : <Navigate to='/' />}
-            />
-          </Routes>
-        </div>
-      </AuthProvider>
-    </BrowserRouter>
+      <Routes>
+        <Route exact path='/' element={<LandingPage />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+        <Route
+          path='/'
+          element={
+            currentUser ? (
+              <div>
+                <Home />
+              </div>
+            ) : (
+              <p></p>
+            )
+          }
+        ></Route>
+        <Route
+          path='/EditProfile'
+          element={currentUser ? <EditProfile /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/CreateCharacter'
+          element={currentUser ? <CreateCharacter /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/Profile'
+          element={currentUser ? <UserProfile /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/groups'
+          element={currentUser ? <Groups /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/groups/:group_id'
+          element={currentUser ? <Group /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/groups/create'
+          element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/characters/:character_id'
+          element={currentUser ? <Character /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          path='/users'
+          element={currentUser ? <UsersList /> : <Navigate to='/' />}
+        />
+      </Routes>
+    </div>
   );
 }
 

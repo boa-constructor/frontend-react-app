@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-// import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { updateUserProfile } from '../utils/api';
-import { UserContext } from '../contexts/user';
-import { Link, Navigate } from 'react-router-dom';
-import UserProfile from './UserProfile';
 import { getUserProfile } from '../utils/api';
+import { useAuth } from '../contexts/authContext';
 
 const SetProfile = ({ userName, setInputs }) => {
-  const { user } = useContext(UserContext);
+  const { currentUser } = useAuth();
   const blankProfile = {
     username: '',
     avatar_url: '',
@@ -21,18 +18,18 @@ const SetProfile = ({ userName, setInputs }) => {
   const [userObj, setUserObj] = useState(blankProfile);
 
   useEffect(() => {
-    getUserProfile(user)
+    getUserProfile(currentUser.uid)
       .then((data) => {
         setUserObj(data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [user]);
+  }, [currentUser]);
 
   const submissionHandler = (e) => {
     e.preventDefault();
-    updateUserProfile(userObj, `${user}`);
+    updateUserProfile(userObj, `${currentUser.uid}`);
     setUserObj(blankProfile);
   };
 

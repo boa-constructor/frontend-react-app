@@ -4,21 +4,22 @@ import { getUserProfile } from '../utils/api';
 import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
 import GetCharacterByID from './GetCharacterByID';
+import { useAuth } from '../contexts/authContext';
 
 const UserProfile = () => {
   const [charListExists, setCharListExists] = useState(false);
   const [userProfile, setUserProfile] = useState({});
-  const { user } = useContext(UserContext);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
-    getUserProfile(user)
+    getUserProfile(currentUser.uid)
       .then((data) => {
         setUserProfile(data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [user, charListExists]);
+  }, [currentUser, charListExists]);
 
   console.log(userProfile);
 
