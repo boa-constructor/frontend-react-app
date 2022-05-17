@@ -2,7 +2,6 @@ import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
 import { Container } from 'react-bootstrap';
-
 import { UserContext } from './contexts/user';
 import { useState } from 'react';
 
@@ -19,6 +18,8 @@ import SignUp from './Components/SignUp';
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
 import { AuthProvider } from './contexts/authContext';
+import LandingPage from './Components/LandingPage';
+import UsersList from './Components/UsersList';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('user_id'));
@@ -80,6 +81,10 @@ function App() {
               path='/characters/:character_id'
               element={user ? <Character /> : <Navigate to='/' />}
             ></Route>
+            <Route
+              path='/users'
+              element={user ? <UsersList /> : <Navigate to='/' />}
+            />
           </Routes>
         </div>
       </AuthProvider>
