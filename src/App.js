@@ -1,9 +1,8 @@
-import { initializeApp } from 'firebase/app';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
+import { Container } from 'react-bootstrap';
 
-import SignUpPage from './Components/SignUpPage';
 import { UserContext } from './contexts/user';
 import { useState } from 'react';
 
@@ -16,82 +15,75 @@ import CreateCharacter from './Components/CreateCharacter';
 import Group from './Components/Group';
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
-  authDomain: 'dndinder-68dcc.firebaseapp.com',
-  databaseURL:
-    'https://dndinder-68dcc-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'dndinder-68dcc',
-  storageBucket: 'dndinder-68dcc.appspot.com',
-  messagingSenderId: '887332428606',
-  appId: '1:887332428606:web:fd999c4c18be4c0d106a6f',
-  measurementId: 'G-V4QQMW9LBW',
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+import SignUp from './Components/SignUp';
+import Login from './Components/Login';
+import Dashboard from './Components/Dashboard';
+import { AuthProvider } from './contexts/authContext';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('user_id'));
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div className='App'>
-        <Header user={user} />
-        {user ? <NavBar /> : <p>You're not logged in!</p>}
-        <SignUpPage />
+    <BrowserRouter>
+      <AuthProvider>
+        <div className='App'>
+          <Header user={user} />
+          {user ? <NavBar /> : <p>You're not logged in!</p>}
 
-        <Routes>
-          <Route
-            path='/'
-            element={
-              user ? (
-                <div>
-                  <Home user={user} />
-                </div>
-              ) : (
-                <p></p>
-              )
-            }
-          ></Route>
-          <Route
-            path='/EditProfile'
-            element={
-              user ? (
-                <EditProfile user={user} setInputs={setUser} />
-              ) : (
-                <Navigate to='/' />
-              )
-            }
-          ></Route>
-          <Route
-            path='/CreateCharacter'
-            element={user ? <CreateCharacter /> : <Navigate to='/' />}
-          ></Route>
-          <Route
-            path='/Profile'
-            element={user ? <UserProfile /> : <Navigate to='/' />}
-          ></Route>
-          <Route
-            path='/groups'
-            element={user ? <Groups /> : <Navigate to='/' />}
-          ></Route>
-          <Route
-            path='/groups/:group_id'
-            element={user ? <Group /> : <Navigate to='/' />}
-          ></Route>
-          <Route
-            path='/groups/create'
-            element={user ? <CreateGroup /> : <Navigate to='/' />}
-          ></Route>
-          <Route
-            path='/characters/:character_id'
-            element={user ? <Character /> : <Navigate to='/' />}
-          ></Route>
-        </Routes>
-      </div>
-    </UserContext.Provider>
+          <Routes>
+            <Route exact path='/' element={<Dashboard />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/login' element={<Login />} />
+            <Route
+              path='/'
+              element={
+                user ? (
+                  <div>
+                    <Home user={user} />
+                  </div>
+                ) : (
+                  <p></p>
+                )
+              }
+            ></Route>
+            <Route
+              path='/EditProfile'
+              element={
+                user ? (
+                  <EditProfile user={user} setInputs={setUser} />
+                ) : (
+                  <Navigate to='/' />
+                )
+              }
+            ></Route>
+            <Route
+              path='/CreateCharacter'
+              element={user ? <CreateCharacter /> : <Navigate to='/' />}
+            ></Route>
+            <Route
+              path='/Profile'
+              element={user ? <UserProfile /> : <Navigate to='/' />}
+            ></Route>
+            <Route
+              path='/groups'
+              element={user ? <Groups /> : <Navigate to='/' />}
+            ></Route>
+            <Route
+              path='/groups/:group_id'
+              element={user ? <Group /> : <Navigate to='/' />}
+            ></Route>
+            <Route
+              path='/groups/create'
+              element={user ? <CreateGroup /> : <Navigate to='/' />}
+            ></Route>
+            <Route
+              path='/characters/:character_id'
+              element={user ? <Character /> : <Navigate to='/' />}
+            ></Route>
+          </Routes>
+        </div>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
