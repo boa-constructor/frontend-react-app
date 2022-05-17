@@ -1,40 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  setPersistence,
-  browserSessionPersistence,
-} from 'firebase/auth';
-import { UserContext } from '../contexts/user';
-import { postUserProfile } from '../utils/api';
-const provider = new GoogleAuthProvider();
+import React from 'react';
 
 const LandingPage = () => {
-  const { user, setUser } = useContext(UserContext);
-  const [loggedIn, setLoggedIn] = useState(user ? true : false);
-
-  const clickHandler = () => {
-    const auth = getAuth();
-    setPersistence(auth, browserSessionPersistence).then(() => {
-      signInWithPopup(auth, provider)
-        .then((res) => {
-          setUser(res.user.uid);
-          console.log(res.user.email);
-          postUserProfile({ user_id: res.user.uid, email: res.user.email });
-          setLoggedIn(true);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          const email = error.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          if (error) return { errorCode, errorMessage, email, credential };
-        });
-    });
-  };
-
   return (
     <div className="landing_page">
       <div className="landing_image_container">
@@ -44,12 +10,6 @@ const LandingPage = () => {
           alt="A party fight a vicious green dragon"
         />
       </div>
-      <br></br>
-
-      <button onClick={(e) => clickHandler(e)} className="sign_up_button">
-        Sign Up
-      </button>
-
       <br></br>
       <div className="about_the_site">
         <h2>About the site</h2>
