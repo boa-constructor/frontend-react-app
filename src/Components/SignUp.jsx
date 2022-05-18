@@ -21,7 +21,7 @@ const SignUp = () => {
             setError("")
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
-            navigate("/")
+            navigate("/EditProfile")
         } catch {
             setError("Failed to create an account!")
         }

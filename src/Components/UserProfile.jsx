@@ -64,25 +64,6 @@ const UserProfile = () => {
             {userProfile.about_me}
           </div>
         </div>
-        <div className='use2r_characters'>
-          <p>Characters:</p>
-          <ul>
-            {userProfile.characters &&
-              userProfile.characters.map((id) => {
-                return (
-                  <li className='single_character'>
-                    <GetCharacterByID key={id} id={id} />
-                  </li>
-                );
-              })}
-          </ul>
-
-          <div className='play-preference'>
-            <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
-            <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
-          </div>
-          <p className='about-me'>About Me: {userProfile.About}</p>
-        </div>
       </div>
     </>
   );
