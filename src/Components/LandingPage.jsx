@@ -1,10 +1,6 @@
 import React from 'react';
-import { postUserProfile } from '../utils/api';
-import { useAuth } from '../contexts/authContext';
 
 const LandingPage = () => {
-  const { currentUser } = useAuth();
-  postUserProfile({ user_id: currentUser.uid });
   return (
     <div className='landing_page'>
       <div className='landing_image_container'>

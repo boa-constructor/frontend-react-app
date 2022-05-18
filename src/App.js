@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
 import { useAuth } from './contexts/authContext';
@@ -33,25 +33,14 @@ function App() {
         <Route
           exact
           path='/'
-          element={currentUser ? <LandingPage /> : <Navigate to='/' />}
+          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
         />
               <Route path="/messaging" element={<Messaging />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
 
         <Route
-          path="/"
-          element={
-            currentUser ? (
-              <div>
-                <Home />
-              </div>
-            ) : (
-              <p></p>
-            )
-          }
-        ></Route>
-        <Route
+
           path='/EditProfile'
           element={currentUser ? <EditProfile /> : <Navigate to='/' />}
         ></Route>

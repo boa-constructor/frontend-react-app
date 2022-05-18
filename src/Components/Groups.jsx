@@ -16,6 +16,7 @@ const Groups = () => {
     avatar: '',
     game_type: '',
     game_info: '',
+    groups: []
   });
 
   useEffect(() => {
