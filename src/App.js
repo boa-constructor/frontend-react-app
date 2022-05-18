@@ -14,25 +14,33 @@ import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
+
+import Messaging from './Components/Messaging';
+import { AuthProvider } from './contexts/authContext';
+
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
 
 function App() {
   const { currentUser } = useAuth();
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       {currentUser ? <NavBar /> : <p>You're not logged in!</p>}
 
       <Routes>
+
         <Route
           exact
           path='/'
           element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
         />
+              <Route path="/messaging" element={<Messaging />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
+
         <Route
+
           path='/EditProfile'
           element={currentUser ? <EditProfile /> : <Navigate to='/' />}
         ></Route>
@@ -42,7 +50,7 @@ function App() {
         ></Route>
         <Route
           path='/Profile'
-          element={currentUser ? <UserProfile /> : <Navigate to='/' />}
+          element={currentUser ? <UserProfile /> : <Navigate to='/'/>}
         ></Route>
         <Route
           path='/groups'
@@ -62,7 +70,7 @@ function App() {
         ></Route>
         <Route
           path='/users'
-          element={currentUser ? <UsersList /> : <Navigate to='/' />}
+          element={currentUser ? <UsersList /> : <Navigate to='/'/>}
         />
       </Routes>
     </div>
