@@ -1,9 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
-
+import { useState, useEffect } from 'react';
 import { getUserProfile } from '../utils/api';
-import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
-import GetCharacterByID from './GetCharacterByID';
 import { useAuth } from '../contexts/authContext';
 
 const UserProfile = () => {
@@ -63,25 +60,6 @@ const UserProfile = () => {
             <br></br>
             {userProfile.about_me}
           </div>
-        </div>
-        <div className='use2r_characters'>
-          <p>Characters:</p>
-          <ul>
-            {userProfile.characters &&
-              userProfile.characters.map((id) => {
-                return (
-                  <li className='single_character'>
-                    <GetCharacterByID key={id} id={id} />
-                  </li>
-                );
-              })}
-          </ul>
-
-          <div className='play-preference'>
-            <p>Play Online: {userProfile.play_online ? 'Yes' : 'No'} </p>
-            <p>Play Offline: {userProfile.play_online ? 'Yes' : 'No'}</p>
-          </div>
-          <p className='about-me'>About Me: {userProfile.About}</p>
         </div>
       </div>
     </>

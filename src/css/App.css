@@ -1,3 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Open+Sans:ital,wght@1,500&family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+@layer base {
+  body {
+    @apply font-[Raleway];
+  }
+
+  li {
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+}
+
 :root {
   --primColor: #dcdcdc;
   --secoColor: #555555;
@@ -22,7 +38,7 @@
 body {
   margin: 0px;
 }
-.Header {
+/* .Header {
   border-bottom: 1px solid black;
   width: 400px;
   margin: auto;
@@ -30,13 +46,13 @@ body {
 }
 .Header h1 {
   margin: 0;
-}
-.LogInLogOut {
+} */
+/* .LogInLogOut {
   border: 1px solid;
 }
 .LogIn {
   border: 1px solid;
-}
+} */
 .NewCharacter {
   border: 1px solid;
 }
@@ -56,10 +72,7 @@ body {
   list-style-type: none;
   padding: 0;
 }
-.Link {
-  color: crimson;
-  text-decoration: none;
-}
+
 #headerLink {
   text-decoration: none;
 }
@@ -357,4 +370,36 @@ body {
 .text_field {
   float: bottom;
   border: solid 1px green;
+  list-style-type: none;
+  padding: 0;
+}
+#memberlist {
+  list-style-type: none;
+  padding: 0;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.075);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner {
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+  background-color: #fff;
+}
+
+.popup-inner .close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }

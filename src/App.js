@@ -1,12 +1,7 @@
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
-import { Container } from 'react-bootstrap';
-import { UserContext } from './contexts/user';
-import { useState } from 'react';
 import { useAuth } from './contexts/authContext';
-
-import Home from './Components/Home';
 import NavBar from './Components/NavBar';
 import EditProfile from './Components/EditProfile';
 import Character from './Components/Character';
@@ -18,7 +13,6 @@ import Groups from './Components/Groups';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
 import Messaging from './Components/Messaging';
-import { AuthProvider } from './contexts/authContext';
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
 import { Chat } from 'react-chat-popup';
@@ -26,58 +20,51 @@ import { Chat } from 'react-chat-popup';
 function App() {
   const { currentUser } = useAuth();
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
-      {currentUser ? <NavBar /> : <p>You're not logged in!</p>}
+      {currentUser && <NavBar />}
 
       <Routes>
-        <Route path="/messaging" element={<Messaging />} />
-        <Route exact path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
         <Route
-          path="/"
-          element={
-            currentUser ? (
-              <div>
-                <Home />
-              </div>
-            ) : (
-              <p></p>
-            )
-          }
+          exact
+          path='/'
+          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
+        />
+        <Route path='/messaging' element={<Messaging />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+
+        <Route
+          path='/EditProfile'
+          element={currentUser ? <EditProfile /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/EditProfile"
-          element={currentUser ? <EditProfile /> : <Navigate to="/" />}
+          path='/CreateCharacter'
+          element={currentUser ? <CreateCharacter /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/CreateCharacter"
-          element={currentUser ? <CreateCharacter /> : <Navigate to="/" />}
+          path='/Profile'
+          element={currentUser ? <UserProfile /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/Profile"
-          element={currentUser ? <UserProfile /> : <Navigate to="/" />}
+          path='/groups'
+          element={currentUser ? <Groups /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/groups"
-          element={currentUser ? <Groups /> : <Navigate to="/" />}
+          path='/groups/:group_id'
+          element={currentUser ? <Group /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/groups/:group_id"
-          element={currentUser ? <Group /> : <Navigate to="/" />}
+          path='/groups/create'
+          element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/groups/create"
-          element={currentUser ? <CreateGroup /> : <Navigate to="/" />}
+          path='/characters/:character_id'
+          element={currentUser ? <Character /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path="/characters/:character_id"
-          element={currentUser ? <Character /> : <Navigate to="/" />}
-        ></Route>
-        <Route
-          path="/users"
-          element={currentUser ? <UsersList /> : <Navigate to="/" />}
+          path='/users'
+          element={currentUser ? <UsersList /> : <Navigate to='/' />}
         />
       </Routes>
       <div className="popup_chat">
