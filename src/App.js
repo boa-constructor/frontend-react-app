@@ -53,35 +53,35 @@ function App() {
         ></Route>
         <Route
           path='/EditProfile'
-          element={currentUser ? <EditProfile /> : <Navigate to="/" />}
+          element={currentUser ? <EditProfile /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/CreateCharacter'
-          element={currentUser ? <CreateCharacter /> : <Navigate to="/" />}
+          element={currentUser ? <CreateCharacter /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/Profile'
-          element={currentUser ? <UserProfile /> : <Navigate to="/" />}
+          element={currentUser ? <UserProfile /> : <Navigate to='/'/>}
         ></Route>
         <Route
           path='/groups'
-          element={currentUser ? <Groups /> : <Navigate to="/" />}
+          element={currentUser ? <Groups /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/groups/:group_id'
-          element={currentUser ? <Group /> : <Navigate to="/" />}
+          element={currentUser ? <Group /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/groups/create'
-          element={currentUser ? <CreateGroup /> : <Navigate to="/" />}
+          element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/characters/:character_id'
-          element={currentUser ? <Character /> : <Navigate to="/" />}
+          element={currentUser ? <Character /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/users'
-          element={currentUser ? <UsersList /> : <Navigate to="/" />}
+          element={currentUser ? <UsersList /> : <Navigate to='/'/>}
         />
       </Routes>
     </div>
