@@ -2,22 +2,22 @@ import React from 'react';
 
 const LandingPage = () => {
   return (
-    <div className="landing_page">
-      <div className="landing_image_container">
+    <div className='landing_page'>
+      <div className='landing_image_container'>
         <img
-          className="landing_image"
-          src="https://media.dnd.wizards.com/styles/story_banner/public/images/head-banner/HERO_StartBox.jpg"
-          alt="A party fight a vicious green dragon"
+          className='landing_image'
+          src='https://media.dnd.wizards.com/styles/story_banner/public/images/head-banner/HERO_StartBox.jpg'
+          alt='A party fight a vicious green dragon'
         />
       </div>
       <br></br>
-      <div className="about_the_site">
+      <div className='about_the_site'>
         <h2>About the site</h2>
         <img
-          className="site_photo"
-          src="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          className='site_photo'
+          src='https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
         />
-        <p className="about_site_text">
+        <p className='about_site_text'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et
           urna vitae lorem consequat hendrerit pellentesque vel augue. Fusce nec
           pulvinar tellus. Quisque tellus arcu, malesuada placerat vestibulum
@@ -35,15 +35,15 @@ const LandingPage = () => {
           sem, id sollicitudin odio tincidunt et.
         </p>
       </div>
-      <div className="about_us">
+      <div className='about_us'>
         <h2>About the team</h2>
         <img
-          className="team_photo"
-          src="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          className='team_photo'
+          src='https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
         />
       </div>
       <div>
-        <p className="about_us_text">
+        <p className='about_us_text'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
           efficitur sem sem, a tempor elit congue sit amet. Phasellus efficitur
           metus diam, ut tincidunt lacus egestas nec. Aliquam erat volutpat. Sed

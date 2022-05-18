@@ -2,25 +2,21 @@ import { useEffect, useState } from 'react';
 import { updateUserProfile } from '../utils/api';
 import { getUserProfile } from '../utils/api';
 import { useAuth } from '../contexts/authContext';
+import { postUserProfile } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const SetProfile = ({ userName, setInputs }) => {
   const { currentUser } = useAuth();
-  const blankProfile = {
-    username: '',
-    avatar_url: '',
-    years_played: 0,
-    about_me: '',
-    play_online: false,
-    play_offline: false,
-    is_dm: false,
-  };
-
-  const [userObj, setUserObj] = useState(blankProfile);
+  postUserProfile({ user_id: currentUser.uid });
+  const navigate = useNavigate()
+  const [userObj, setUserObj] = useState({});
 
   useEffect(() => {
     getUserProfile(currentUser.uid)
       .then((data) => {
-        setUserObj(data);
+        setUserObj((currUserObj) => {
+          return {...currUserObj, ...data}
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -30,7 +26,7 @@ const SetProfile = ({ userName, setInputs }) => {
   const submissionHandler = (e) => {
     e.preventDefault();
     updateUserProfile(userObj, `${currentUser.uid}`);
-    setUserObj(blankProfile);
+    navigate("/Profile")
   };
 
   return (
@@ -140,7 +136,7 @@ const SetProfile = ({ userName, setInputs }) => {
                 type='checkbox'
                 onChange={(e) =>
                   setUserObj((currUserObj) => {
-                    return { ...currUserObj, is_dm: e.target.value };
+                    return { ...currUserObj, is_dm: e.target.checked };
                   })
                 }
               />

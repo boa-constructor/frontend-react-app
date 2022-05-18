@@ -1,9 +1,6 @@
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
-import { Container } from 'react-bootstrap';
-import { UserContext } from './contexts/user';
-import { useState } from 'react';
 import { useAuth } from './contexts/authContext';
 
 import Home from './Components/Home';
@@ -17,7 +14,10 @@ import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
+
+import Messaging from './Components/Messaging';
 import { AuthProvider } from './contexts/authContext';
+
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
 
@@ -29,36 +29,32 @@ function App() {
       {currentUser && <NavBar />}
 
       <Routes>
+
+
         <Route
           exact
-          path="/"
-          element={currentUser ? <LandingPage /> : <Navigate to="/login" />}
+          path='/'
+          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
         />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+              <Route path="/messaging" element={<Messaging />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+
         <Route
-          path="/"
-          element={
-            currentUser ? (
-              <div>
-                <Home />
-              </div>
-            ) : (
-              <p></p>
-            )
-          }
-        ></Route>
-        <Route
-          path="/EditProfile"
-          element={currentUser ? <EditProfile /> : <Navigate to="/" />}
+
+          path='/EditProfile'
+          element={currentUser ? <EditProfile /> : <Navigate to='/' />}
+
         ></Route>
         <Route
           path="/CreateCharacter"
           element={currentUser ? <CreateCharacter /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/Profile"
-          element={currentUser ? <UserProfile /> : <Navigate to="/" />}
+
+          path='/Profile'
+          element={currentUser ? <UserProfile /> : <Navigate to='/'/>}
+
         ></Route>
         <Route
           path="/groups"
@@ -77,8 +73,10 @@ function App() {
           element={currentUser ? <Character /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/users"
-          element={currentUser ? <UsersList /> : <Navigate to="/" />}
+
+          path='/users'
+          element={currentUser ? <UsersList /> : <Navigate to='/'/>}
+
         />
       </Routes>
     </div>

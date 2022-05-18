@@ -1,6 +1,5 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import CreateGroup from './CreateGroup';
-import { UserContext } from '../contexts/user';
 import { getUserProfile, getGroupById } from '../utils/api';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/authContext';
@@ -17,6 +16,7 @@ const Groups = () => {
     avatar: '',
     game_type: '',
     game_info: '',
+    groups: []
   });
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Groups = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [newGroup]);
+  }, [newGroup, currentUser.uid]);
   return (
     <div>
       These are your current groups
