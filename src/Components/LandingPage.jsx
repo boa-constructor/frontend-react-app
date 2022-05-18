@@ -16,6 +16,7 @@ const LandingPage = () => {
         <img
           className='site_photo'
           src='https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          alt='placeholder'
         />
         <p className='about_site_text'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et
@@ -40,6 +41,7 @@ const LandingPage = () => {
         <img
           className='team_photo'
           src='https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          alt='placeholder'
         />
       </div>
       <div>
