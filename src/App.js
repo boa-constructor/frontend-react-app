@@ -28,22 +28,10 @@ function App() {
         <Route
           exact
           path='/'
-          element={currentUser ? <LandingPage /> : <Navigate to='/' />}
+          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
         />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
-        <Route
-          path='/'
-          element={
-            currentUser ? (
-              <div>
-                <Home />
-              </div>
-            ) : (
-              <p></p>
-            )
-          }
-        ></Route>
         <Route
           path='/EditProfile'
           element={currentUser ? <EditProfile /> : <Navigate to='/' />}
