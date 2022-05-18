@@ -52,35 +52,35 @@ function App() {
           }
         ></Route>
         <Route
-          path="/EditProfile"
+          path='/EditProfile'
           element={currentUser ? <EditProfile /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/CreateCharacter"
+          path='/CreateCharacter'
           element={currentUser ? <CreateCharacter /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/Profile"
+          path='/Profile'
           element={currentUser ? <UserProfile /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/groups"
+          path='/groups'
           element={currentUser ? <Groups /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/groups/:group_id"
+          path='/groups/:group_id'
           element={currentUser ? <Group /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/groups/create"
+          path='/groups/create'
           element={currentUser ? <CreateGroup /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/characters/:character_id"
+          path='/characters/:character_id'
           element={currentUser ? <Character /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path="/users"
+          path='/users'
           element={currentUser ? <UsersList /> : <Navigate to="/" />}
         />
       </Routes>
