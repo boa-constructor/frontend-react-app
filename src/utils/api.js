@@ -148,6 +148,17 @@ export const postMessage = async (message) => {
     console.error(err);
   }
 };
+
+export const getMessages = async (conversation_id) => {
+  try {
+    const { data } = await firestoreTestApi.get(
+      `/getMessagesByConversationId/${conversation_id}`
+    );
+    return data.messages;
+  } catch (err) {
+    console.error(err);
+  }
+};
 export const addUserToGroup = async (patchData) => {
   try {
     console.log(patchData);

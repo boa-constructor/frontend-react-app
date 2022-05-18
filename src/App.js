@@ -15,6 +15,7 @@ import Login from './Components/Login';
 import Messaging from './Components/Messaging';
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
+import { Chat } from 'react-chat-popup';
 
 function App() {
   const { currentUser } = useAuth();
@@ -66,6 +67,9 @@ function App() {
           element={currentUser ? <UsersList /> : <Navigate to='/' />}
         />
       </Routes>
+      <div className="popup_chat">
+        <Chat />
+      </div>
     </div>
   );
 }

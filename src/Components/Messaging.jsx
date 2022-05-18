@@ -1,12 +1,14 @@
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/authContext';
 // import { admin } from 'firebase';
-import { postMessage } from '../utils/api';
+import { getCharacters, postMessage, getMessages } from '../utils/api';
 
 // import firebase from 'firebase/compat/app';
 const Messaging = () => {
   const { currentUser } = useAuth();
+  const [allMessages, setAllMessages] = useState([]);
+
   const [conversationId, setConversationId] = useState('Ro0nddMW5r1lOqISKUP2');
 
   //   const messagesRef = firebase
@@ -32,6 +34,17 @@ const Messaging = () => {
     setFormValue('');
   };
 
+  useEffect(() => {
+    getMessages(conversationId)
+      .then((data) => {
+        setAllMessages(data);
+      })
+
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   function ChatMessage(props) {
     const { text, uid } = props.message;
 
@@ -47,14 +60,26 @@ const Messaging = () => {
   }
 
   return (
-    <>
-      <main>
+    <div className="messaging_container">
+      <div className="view_messages">
+        <ul className="message_list">
+          {allMessages.map((message) => {
+            return (
+              <li className="single_message" key={message.message_id}>
+                {message.text}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      {/* <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-      </main>
+      </main> */}
 
       <form onSubmit={sendMessage}>
         <input
+          className="text_field"
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
           placeholder="say something nice"
@@ -64,7 +89,7 @@ const Messaging = () => {
           Send message
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
