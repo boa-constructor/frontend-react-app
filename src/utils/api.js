@@ -121,7 +121,6 @@ export const removeCharacterFromGroup = async (patchData) => {
 };
 
 export const getUsers = async (query) => {
-  console.log(query);
   if (query === 'null') {
     try {
       const { data } = await firestoreTestApi.get('/getUsers');
