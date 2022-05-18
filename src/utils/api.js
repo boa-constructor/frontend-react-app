@@ -128,3 +128,12 @@ export const getUsers = async () => {
     console.log(err);
   }
 };
+
+export const addUserToGroup = async (patchData) => {
+  try {
+    console.log(patchData);
+    await firestoreTestApi.patch('/addUserToGroup', patchData);
+  } catch (err) {
+    console.log(err);
+  }
+};
