@@ -30,7 +30,7 @@ const Group = () => {
       <h2>{group.group_name}</h2>
       <img src={group.avatar} alt='group avatar' id='group_avatar'></img>
       <p>Group info: {group.game_info}</p>
-      {members.length ? (<ul>
+      {members.length ? (<ul id='memberlist'>
         {members.map((member) => {
           return <li key={member.user_id}>{member.username} <img src={`${member.avatar}`} alt="member avatar"></img></li>
         })}

@@ -345,6 +345,10 @@ body {
   list-style-type: none;
   padding: 0;
 }
+#memberlist {
+  list-style-type: none;
+  padding: 0;
+}
 
 .popup {
   position: fixed;
