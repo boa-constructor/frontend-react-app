@@ -1,32 +1,36 @@
-import React, {useState} from "react";
-import {Link, useNavigate} from "react-router-dom"
-import { Button } from "react-bootstrap";
-import { useAuth } from "../contexts/authContext";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/authContext';
 
-const Header = ({user}) => {
-  const {logout, currentUser} = useAuth()
-  const [error, setError] = useState()
-  const navigate = useNavigate()
+const Header = ({ user }) => {
+  const { logout, currentUser } = useAuth();
+  const [error, setError] = useState();
+  const navigate = useNavigate();
 
   async function handleLogout() {
-    setError("")
+    setError('');
     try {
-      await logout()
-      navigate("/login")
+      await logout();
+      navigate('/login');
     } catch {
-      setError("Failed to Log Out")
+      setError('Failed to Log Out');
     }
   }
 
   function handleLogin() {
-    navigate("/login")
+    navigate('/login');
   }
 
   return (
-    <div className="Header" >
-      {currentUser ? (<Link to="/" className="Link" id="headerLink"><h1> Welcome to DnDinder™️ </h1></Link>
-      ):(<h1> Welcome to DnDinder™️ </h1>)}
-      {currentUser ? <Button variant="link" onClick={handleLogout}>Log Out</Button>: <Button variant="link" onClick={handleLogin}>Log In</Button>}
+    <div>
+      {currentUser && (
+        <li
+          className="text-gray-300 hover:text-red-600 hover:scale-125 duration-300"
+          onClick={handleLogout}
+        >
+          Log Out
+        </li>
+      )}
       {error && <p>{error}</p>}
     </div>
   );

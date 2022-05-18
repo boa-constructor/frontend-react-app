@@ -26,9 +26,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {currentUser ? <NavBar /> : <p>You're not logged in!</p>}
+      {currentUser && <NavBar />}
 
       <Routes>
+
 
         <Route
           exact
@@ -43,34 +44,39 @@ function App() {
 
           path='/EditProfile'
           element={currentUser ? <EditProfile /> : <Navigate to='/' />}
+
         ></Route>
         <Route
-          path='/CreateCharacter'
-          element={currentUser ? <CreateCharacter /> : <Navigate to='/' />}
+          path="/CreateCharacter"
+          element={currentUser ? <CreateCharacter /> : <Navigate to="/" />}
         ></Route>
         <Route
+
           path='/Profile'
           element={currentUser ? <UserProfile /> : <Navigate to='/'/>}
+
         ></Route>
         <Route
-          path='/groups'
-          element={currentUser ? <Groups /> : <Navigate to='/' />}
+          path="/groups"
+          element={currentUser ? <Groups /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path='/groups/:group_id'
-          element={currentUser ? <Group /> : <Navigate to='/' />}
+          path="/groups/:group_id"
+          element={currentUser ? <Group /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path='/groups/create'
-          element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
+          path="/groups/create"
+          element={currentUser ? <CreateGroup /> : <Navigate to="/" />}
         ></Route>
         <Route
-          path='/characters/:character_id'
-          element={currentUser ? <Character /> : <Navigate to='/' />}
+          path="/characters/:character_id"
+          element={currentUser ? <Character /> : <Navigate to="/" />}
         ></Route>
         <Route
+
           path='/users'
           element={currentUser ? <UsersList /> : <Navigate to='/'/>}
+
         />
       </Routes>
     </div>
