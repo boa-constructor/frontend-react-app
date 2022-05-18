@@ -1,3 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Open+Sans:ital,wght@1,500&family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+@layer base {
+  body {
+    @apply font-[Raleway];
+  }
+
+  li {
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+}
+
 :root {
   --primColor: #dcdcdc;
   --secoColor: #555555;
@@ -22,7 +38,7 @@
 body {
   margin: 0px;
 }
-.Header {
+/* .Header {
   border-bottom: 1px solid black;
   width: 400px;
   margin: auto;
@@ -30,13 +46,13 @@ body {
 }
 .Header h1 {
   margin: 0;
-}
-.LogInLogOut {
+} */
+/* .LogInLogOut {
   border: 1px solid;
 }
 .LogIn {
   border: 1px solid;
-}
+} */
 .NewCharacter {
   border: 1px solid;
 }
@@ -56,10 +72,7 @@ body {
   list-style-type: none;
   padding: 0;
 }
-.Link {
-  color: crimson;
-  text-decoration: none;
-}
+
 #headerLink {
   text-decoration: none;
 }
@@ -341,7 +354,7 @@ body {
   box-shadow: 5px 0px 5px 5px rgba(34, 35, 58, 0.5);
 }
 
-#userlist{
+#userlist {
   list-style-type: none;
   padding: 0;
 }
