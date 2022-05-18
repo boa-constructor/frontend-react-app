@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/authContext";
 import { Link, useNavigate } from "react-router-dom";
+import { postUserProfile } from "../utils/api";
 
 const SignUp = () => {
     const emailRef = useRef()
@@ -11,6 +12,7 @@ const SignUp = () => {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+    const {currentUser} = useAuth()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -22,6 +24,7 @@ const SignUp = () => {
             setError("")
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
+            postUserProfile({email: emailRef.current.value, user_id: currentUser.uid})
             navigate("/")
         } catch {
             setError("Failed to create an account!")
