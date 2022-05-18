@@ -120,12 +120,24 @@ export const removeCharacterFromGroup = async (patchData) => {
   }
 };
 
-export const getUsers = async () => {
-  try {
-    const { data } = await firestoreTestApi.get('/getUsers');
-    return data;
-  } catch (err) {
-    console.log(err);
+export const getUsers = async (query) => {
+  console.log(query);
+  if (query === 'null') {
+    try {
+      const { data } = await firestoreTestApi.get('/getUsers');
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    try {
+      const { data } = await firestoreTestApi.get(
+        `/getUsers?game_type=${query}`
+      );
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 };
 
