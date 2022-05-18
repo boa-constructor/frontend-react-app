@@ -340,3 +340,8 @@ body {
 
   box-shadow: 5px 0px 5px 5px rgba(34, 35, 58, 0.5);
 }
+
+#userlist{
+  list-style-type: none;
+  padding: 0;
+}

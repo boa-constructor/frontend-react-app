@@ -20,12 +20,12 @@ const UsersList = () => {
   }, []);
 
   return (
-    <ul>
+    <ul id="userlist">
       {userList.map((user) => {
         return (
           <li key={user.user_id}>
             <h2>{user.username}</h2>
-            <img src={`${user.avatar}`} />
+            <img src={`${user.avatar}`} alt="user avatar"/>
             <button onClick={clickHandler}>add to group</button>
             <ul>
               {showUserGroupsList &&

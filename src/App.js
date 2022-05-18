@@ -23,7 +23,6 @@ import UsersList from './Components/UsersList';
 
 function App() {
   const { currentUser } = useAuth();
-  console.log(currentUser.uid);
   return (
     <div className='App'>
       <Header />
