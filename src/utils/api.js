@@ -129,20 +129,19 @@ export const getUsers = async () => {
   }
 };
 
-
 export const postMessage = async (message) => {
   try {
     const { data } = await firestoreTestApi.post('/addMessage', message);
     return data;
   } catch (err) {
     console.error(err);
-
+  }
+};
 export const addUserToGroup = async (patchData) => {
   try {
     console.log(patchData);
     await firestoreTestApi.patch('/addUserToGroup', patchData);
   } catch (err) {
     console.log(err);
-
   }
 };
