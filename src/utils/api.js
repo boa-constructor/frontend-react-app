@@ -128,3 +128,12 @@ export const getUsers = async () => {
     console.log(err);
   }
 };
+
+export const postMessage = async (message) => {
+  try {
+    const { data } = await firestoreTestApi.post('/addMessage', message);
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
