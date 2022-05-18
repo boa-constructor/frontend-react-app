@@ -6,31 +6,33 @@ const LandingPage = () => {
     <div>
       <div
         style={{ backgroundImage: `url(${Banner})` }}
-        className="bg-slate-700 text-gray-100 px-8 py-16 bg-cover"
+        className=" text-gray-100 bg-cover"
       >
-        <div className="grid grid-cols-1 gap-7  max-w-[600px]">
-          <h2 className="text-xl uppercase font-bold text-left">
-            Welcome to DnDinder
-          </h2>
-          <h1 className="text-6xl font-bold text-left">
-            Share your DnD experience globally
-          </h1>
-          <p className="text-lg text-left">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-            laudantium cum quis eaque. Odit optio tenetur reiciendis quas dolor,
-            vitae laudantium temporibus aliquid eligendi officiis incidunt nihil
-            ipsam dignissimos unde.
-          </p>
-          <button className="w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md">
-            Find Users
-          </button>
+        <div className="px-8 py-16">
+          <div className="grid grid-cols-1 gap-7  max-w-[600px]">
+            <h2 className="text-xl uppercase font-bold text-left">
+              Welcome to DnDinder
+            </h2>
+            <h1 className="text-6xl font-bold text-left">
+              Share your DnD experience globally
+            </h1>
+            <p className="text-lg text-left">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+              laudantium cum quis eaque. Odit optio tenetur reiciendis quas
+              dolor, vitae laudantium temporibus aliquid eligendi officiis
+              incidunt nihil ipsam dignissimos unde.
+            </p>
+            <button className="bg-gradient-to-r from-pink-600 w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md">
+              Find Users
+            </button>
+          </div>
         </div>
       </div>
 
       <div className="px-8 py-16">
         <div className="max-w-md mb-16 text-left">
           <h2 className="text-5xl">
-            Your next DnD chapter, made possible by matching
+            Your next chapter, made possible by matching
           </h2>
         </div>
 
