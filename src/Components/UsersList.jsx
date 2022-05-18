@@ -25,14 +25,14 @@ const UsersList = () => {
     setUserGroups([]);
     getUserProfile(currentUser.uid).then((user) => {
       user.groups.map((group_id) => {
-        getGroupById(group_id).then((group) => {
+        return getGroupById(group_id).then((group) => {
           setUserGroups((currentGroups) => {
             return [...currentGroups, group];
           });
         });
       });
     });
-  }, []);
+  }, [currentUser.uid]);
 
   useEffect(() => {
     getUsers()
