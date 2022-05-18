@@ -23,19 +23,12 @@ const Header = ({ user }) => {
 
   return (
     <div>
-      {currentUser ? (
+      {currentUser && (
         <li
           className="text-gray-300 hover:text-red-600 hover:scale-125 duration-300"
           onClick={handleLogout}
         >
           Log Out
-        </li>
-      ) : (
-        <li
-          className="list-none text-black-300 bold hover:text-red-600 hover:scale-125 duration-300"
-          onClick={handleLogin}
-        >
-          Log In
         </li>
       )}
       {error && <p>{error}</p>}
