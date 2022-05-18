@@ -1,64 +1,40 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-import { UserContext } from '../contexts/user';
-import { getGroupById, getCharacterByID, getUserProfile } from '../utils/api';
+import { getGroupById, getUserProfile } from '../utils/api';
 
 const Group = () => {
-  const userContext = useContext(UserContext);
   const [group, setGroup] = useState({});
-  const [characters, setCharacters] = useState([]);
+  const [members, setMembers] = useState([]);
   const { group_id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
   useEffect(() => {
+    setMembers([])
     getGroupById(group_id)
       .then((group) => {
         setGroup(group);
-        setLoading(false);
-        group.characters.forEach((character_id) => {
-          getCharacterByID(character_id).then((character) => {
-            character.character_id = character_id;
-            setCharacters((currCharacters) => {
-              return [...currCharacters, character];
-            });
-          });
-        });
+        setLoading(false)
+        group.members.map((member) => {
+          return getUserProfile(member).then((profile) => {
+            setMembers((currProfiles) => {return [...currProfiles, profile]})
+          })
+        })
       })
       .catch((err) => {
         console.log(err);
       });
   }, [group_id]);
-  useEffect(() => {
-    getUserProfile(userContext.user)
-      .then((user) => {
-        setUser(user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userContext.user]);
+  
   if (loading) return <p> Loading...</p>;
   return (
     <div>
       <h2>{group.group_name}</h2>
       <img src={group.avatar} alt='group avatar' id='group_avatar'></img>
-      <p>Contact Info: {user.email}</p>
       <p>Group info: {group.game_info}</p>
-      {characters.length ? (
-        <ul>
-          {characters.map((character) => {
-            return (
-              <li key={character.character_id}>
-                <p>{character.character_name}</p>
-                <img src={character.avatar_url} alt='character avatar'></img>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <p>This group doesnt contain any characters yet!</p>
-      )}
+      {members.length ? (<ul id='memberlist'>
+        {members.map((member) => {
+          return <li key={member.user_id}>{member.username} <img src={`${member.avatar}`} alt="member avatar"></img></li>
+        })}
+      </ul>): (<p>No members in this group yet!</p>)}
     </div>
   );
 };

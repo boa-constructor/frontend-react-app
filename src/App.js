@@ -1,9 +1,6 @@
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import './css/App.css';
 import Header from './Components/Header';
-import { Container } from 'react-bootstrap';
-import { UserContext } from './contexts/user';
-import { useState } from 'react';
 import { useAuth } from './contexts/authContext';
 
 import Home from './Components/Home';
@@ -17,7 +14,6 @@ import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
-import { AuthProvider } from './contexts/authContext';
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
 
@@ -29,7 +25,11 @@ function App() {
       {currentUser ? <NavBar /> : <p>You're not logged in!</p>}
 
       <Routes>
-        <Route exact path='/' element={<LandingPage />} />
+        <Route
+          exact
+          path='/'
+          element={currentUser ? <LandingPage /> : <Navigate to='/' />}
+        />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route
