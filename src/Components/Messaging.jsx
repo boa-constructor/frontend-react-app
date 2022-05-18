@@ -47,7 +47,10 @@ const Messaging = () => {
   }
 
   return (
-    <>
+    <div className="messaging_container">
+      <div className="view_messages">
+        <p>test</p>
+      </div>
       <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
@@ -55,6 +58,7 @@ const Messaging = () => {
 
       <form onSubmit={sendMessage}>
         <input
+          className="text_field"
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
           placeholder="say something nice"
@@ -64,7 +68,7 @@ const Messaging = () => {
           Send message
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

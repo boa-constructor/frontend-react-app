@@ -341,7 +341,20 @@ body {
   box-shadow: 5px 0px 5px 5px rgba(34, 35, 58, 0.5);
 }
 
-#userlist{
+#userlist {
   list-style-type: none;
   padding: 0;
+}
+/* CSS for Landing Page ends  */
+/* CSS for Messenger Comp */
+.messaging_container {
+  height: 100vmax;
+}
+.view_messages {
+  border: 1px;
+  background-color: white;
+}
+.text_field {
+  float: bottom;
+  border: solid 1px green;
 }

@@ -137,3 +137,12 @@ export const postMessage = async (message) => {
     console.error(err);
   }
 };
+
+export const getMessages = async () => {
+  try {
+    const { data } = await firestoreTestApi().get('getMessages');
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
