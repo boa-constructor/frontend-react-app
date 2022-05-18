@@ -4,9 +4,7 @@ import Header from './Components/Header';
 import { useAuth } from './contexts/authContext';
 import NavBar from './Components/NavBar';
 import EditProfile from './Components/EditProfile';
-import Character from './Components/Character';
 import UserProfile from './Components/UserProfile';
-import CreateCharacter from './Components/CreateCharacter';
 import Group from './Components/Group';
 import CreateGroup from './Components/CreateGroup';
 import Groups from './Components/Groups';
@@ -23,7 +21,6 @@ function App() {
     <div className='App'>
       <Header />
       {currentUser && <NavBar />}
-
       <Routes>
         <Route
           exact
@@ -37,10 +34,6 @@ function App() {
         <Route
           path='/EditProfile'
           element={currentUser ? <EditProfile /> : <Navigate to='/' />}
-        ></Route>
-        <Route
-          path='/CreateCharacter'
-          element={currentUser ? <CreateCharacter /> : <Navigate to='/' />}
         ></Route>
         <Route
           path='/Profile'
@@ -59,15 +52,11 @@ function App() {
           element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
         ></Route>
         <Route
-          path='/characters/:character_id'
-          element={currentUser ? <Character /> : <Navigate to='/' />}
-        ></Route>
-        <Route
           path='/users'
           element={currentUser ? <UsersList /> : <Navigate to='/' />}
         />
       </Routes>
-      <div className="popup_chat">
+      <div className='popup_chat'>
         <Chat />
       </div>
     </div>
