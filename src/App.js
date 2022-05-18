@@ -29,32 +29,26 @@ function App() {
       {currentUser && <NavBar />}
 
       <Routes>
-
-
         <Route
           exact
-          path='/'
-          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
+          path="/"
+          element={currentUser ? <LandingPage /> : <Navigate to="/login" />}
         />
-              <Route path="/messaging" element={<Messaging />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
+        <Route path="/messaging" element={<Messaging />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
 
         <Route
-
-          path='/EditProfile'
-          element={currentUser ? <EditProfile /> : <Navigate to='/' />}
-
+          path="/EditProfile"
+          element={currentUser ? <EditProfile /> : <Navigate to="/" />}
         ></Route>
         <Route
           path="/CreateCharacter"
           element={currentUser ? <CreateCharacter /> : <Navigate to="/" />}
         ></Route>
         <Route
-
-          path='/Profile'
-          element={currentUser ? <UserProfile /> : <Navigate to='/'/>}
-
+          path="/Profile"
+          element={currentUser ? <UserProfile /> : <Navigate to="/" />}
         ></Route>
         <Route
           path="/groups"
@@ -73,10 +67,8 @@ function App() {
           element={currentUser ? <Character /> : <Navigate to="/" />}
         ></Route>
         <Route
-
-          path='/users'
-          element={currentUser ? <UsersList /> : <Navigate to='/'/>}
-
+          path="/users"
+          element={currentUser ? <UsersList /> : <Navigate to="/" />}
         />
       </Routes>
     </div>
