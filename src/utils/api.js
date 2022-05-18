@@ -138,10 +138,12 @@ export const postMessage = async (message) => {
   }
 };
 
-export const getMessages = async () => {
+export const getMessages = async (conversation_id) => {
   try {
-    const { data } = await firestoreTestApi().get('getMessages');
-    return data;
+    const { data } = await firestoreTestApi.get(
+      `/getMessagesByConversationId/${conversation_id}`
+    );
+    return data.messages;
   } catch (err) {
     console.error(err);
   }
