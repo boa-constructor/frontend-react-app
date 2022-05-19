@@ -1,70 +1,61 @@
 import React from 'react';
+import Banner from '../images/Banner3.jpg';
 
 const LandingPage = () => {
   return (
-    <div className='landing_page'>
-      <div className='landing_image_container'>
-        <img
-          className='landing_image'
-          src='https://media.dnd.wizards.com/styles/story_banner/public/images/head-banner/HERO_StartBox.jpg'
-          alt='A party fight a vicious green dragon'
-        />
+    <div>
+      <div
+        style={{ backgroundImage: `url(${Banner})` }}
+        className=" text-gray-100 bg-cover"
+      >
+        <div className="px-8 py-16">
+          <div className="grid grid-cols-1 gap-7  max-w-[600px]">
+            <h2 className="text-xl uppercase font-bold text-left">
+              Welcome to DnDinder
+            </h2>
+            <h1 className="text-6xl font-bold text-left">
+              Share your DnD experience globally
+            </h1>
+            <p className="text-lg text-left">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+              laudantium cum quis eaque. Odit optio tenetur reiciendis quas
+              dolor, vitae laudantium temporibus aliquid eligendi officiis
+              incidunt nihil ipsam dignissimos unde.
+            </p>
+            <button className="bg-gradient-to-r from-pink-600 w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md">
+              Find Users
+            </button>
+          </div>
+        </div>
       </div>
-      <br></br>
-      <div className='about_the_site'>
-        <h2>About the site</h2>
-        <img
-          className='site_photo'
-          src='https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          alt='placeholder'
-        />
-        <p className='about_site_text'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et
-          urna vitae lorem consequat hendrerit pellentesque vel augue. Fusce nec
-          pulvinar tellus. Quisque tellus arcu, malesuada placerat vestibulum
-          nec, lacinia at ipsum. Aenean sollicitudin ullamcorper metus, sed
-          efficitur neque pharetra vitae. In at convallis massa, nec aliquam
-          purus. Donec vitae nunc nunc. Interdum et malesuada fames ac ante
-          ipsum primis in faucibus.
-          <br></br>
-          <br></br> Duis dictum nunc malesuada magna semper, sed dignissim purus
-          pellentesque. Suspendisse porta ut nisi sit amet lacinia. Nulla nulla
-          tellus, eleifend a odio a, luctus dapibus neque. Curabitur blandit
-          consequat tempus. Vestibulum eros sem, bibendum quis ultrices vitae,
-          tincidunt in nisi. Praesent nec tincidunt velit. Praesent interdum sed
-          enim vitae mollis. Integer ac nibh libero. Mauris mollis dignissim
-          sem, id sollicitudin odio tincidunt et.
-        </p>
-      </div>
-      <div className='about_us'>
-        <h2>About the team</h2>
-        <img
-          className='team_photo'
-          src='https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          alt='placeholder'
-        />
-      </div>
-      <div>
-        <p className='about_us_text'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-          efficitur sem sem, a tempor elit congue sit amet. Phasellus efficitur
-          metus diam, ut tincidunt lacus egestas nec. Aliquam erat volutpat. Sed
-          vestibulum massa augue, vitae fringilla odio pulvinar a. Vestibulum
-          pellentesque nunc et neque porttitor, vel tristique urna varius. Sed
-          non augue blandit, lacinia arcu ut, varius nunc. Quisque ante ante,
-          placerat non consequat id, pretium pretium elit. Cras eget mollis
-          enim. Maecenas posuere accumsan orci nec fermentum. Proin et iaculis
-          augue. <br></br>
-          <br></br>Sed dolor metus, mattis sit amet maximus non, finibus eget
-          urna. Ut vitae interdum massa, vel suscipit mauris. Etiam ac porttitor
-          diam, sed congue lorem. Aliquam erat volutpat. Duis dapibus ultrices
-          erat et hendrerit. Donec interdum erat vel ex rutrum, vel dapibus odio
-          ultricies. Sed ac cursus nisi. Donec fringilla urna eu ipsum
-          tincidunt, in vestibulum ex aliquet. Sed vehicula dui nec hendrerit
-          aliquet. Pellentesque et lectus vel sem ultricies facilisis molestie
-          ac mi. Nunc massa massa, rhoncus eget ornare eget, blandit et sapien.
-          Phasellus vulputate euismod libero, ac ultrices magna convallis et.
-        </p>
+
+
+      <div className="px-8 py-16">
+        <div className="max-w-md mb-16 text-left">
+          <h2 className="text-5xl">
+            Your next chapter, made possible by matching
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 text-slate-600 text-left">
+          <div className="">
+            <h3 className="text-2xl font-bold mb-4">Share what you love</h3>
+            <p className="text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequuntur, dolorum. Necessitatibus repudiandae consequatur
+              reiciendis officiis perspiciatis ullam fugiat? .
+            </p>
+          </div>
+          <div className="">
+            <h3 className="text-2xl font-bold mb-4">Create Groups</h3>
+            <p className="text-lg">
+              DnDinder gives you the tools to create private groups where you
+              can message those matching your preferences. Lorem ipsum dolor sit
+              amet consectetur adipisicing elit. fuga, !
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

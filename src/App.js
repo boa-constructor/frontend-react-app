@@ -24,9 +24,10 @@ function App() {
       <Routes>
         <Route
           exact
-          path='/'
-          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
+          path="/"
+          element={currentUser ? <LandingPage /> : <Navigate to="/login" />}
         />
+
         <Route path='/messaging' element={<Messaging />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
@@ -38,6 +39,7 @@ function App() {
         <Route
           path='/Profile'
           element={currentUser ? <UserProfile /> : <Navigate to='/' />}
+
         ></Route>
         <Route
           path='/groups'
