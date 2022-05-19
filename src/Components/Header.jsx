@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/authContext';
 
 const Header = ({ user }) => {
@@ -15,10 +15,6 @@ const Header = ({ user }) => {
     } catch {
       setError('Failed to Log Out');
     }
-  }
-
-  function handleLogin() {
-    navigate('/login');
   }
 
   return (

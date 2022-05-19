@@ -1,9 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
-
+import { useState, useEffect } from 'react';
 import { getUserProfile } from '../utils/api';
-import { UserContext } from '../contexts/user';
 import { Link } from 'react-router-dom';
-import GetCharacterByID from './GetCharacterByID';
 import { useAuth } from '../contexts/authContext';
 
 const UserProfile = () => {

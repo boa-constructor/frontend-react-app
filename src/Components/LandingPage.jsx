@@ -29,6 +29,7 @@ const LandingPage = () => {
         </div>
       </div>
 
+
       <div className="px-8 py-16">
         <div className="max-w-md mb-16 text-left">
           <h2 className="text-5xl">
@@ -54,6 +55,7 @@ const LandingPage = () => {
             </p>
           </div>
         </div>
+
       </div>
     </div>
   );

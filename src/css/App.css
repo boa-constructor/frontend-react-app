@@ -358,6 +358,21 @@ body {
   list-style-type: none;
   padding: 0;
 }
+/* CSS for Landing Page ends  */
+/* CSS for Messenger Comp */
+.messaging_container {
+  height: 100vmax;
+}
+.view_messages {
+  border: 1px;
+  background-color: white;
+}
+.text_field {
+  float: bottom;
+  border: solid 1px green;
+  list-style-type: none;
+  padding: 0;
+}
 #memberlist {
   list-style-type: none;
   padding: 0;

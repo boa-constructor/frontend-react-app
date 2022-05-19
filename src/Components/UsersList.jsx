@@ -13,6 +13,11 @@ const UsersList = () => {
   const [userList, setUserList] = useState([]);
   const [userGroups, setUserGroups] = useState([]);
   const [showUserGroupsList, setShowUserGroupsList] = useState(false);
+  const [filter, setFilter] = useState(null);
+
+  const changeHandler = (e) => {
+    setFilter(e.target.value);
+  };
 
   const addGroupHandler = (group_id, user_id) => {
     addUserToGroup({ group_id, user_id });
@@ -35,45 +40,63 @@ const UsersList = () => {
   }, [currentUser.uid]);
 
   useEffect(() => {
-    getUsers()
+    getUsers(filter)
       .then((data) => {
         setUserList(data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [filter]);
 
   return (
-    <ul id='userlist'>
-      {userList.map((user) => {
-        return (
-          <li key={user.user_id}>
-            <h2>{user.username}</h2>
-            <img src={`${user.avatar}`} alt='user avatar' />
-            <button onClick={clickHandler}>add to group</button>
-            <PopUpGroups
-              trigger={showUserGroupsList}
-              setTrigger={setShowUserGroupsList}
-            >
-              <ul>
-                {userGroups.map((group) => {
-                  return (
-                    <button
-                      onClick={() =>
-                        addGroupHandler(group.group_id, user.user_id)
-                      }
-                    >
-                      {group.group_name}
-                    </button>
-                  );
-                })}
-              </ul>
-            </PopUpGroups>
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <label htmlFor='filter'>Filter by</label>
+      <select name='filter' id='filter' onChange={changeHandler}>
+        <option value='null'>all users</option>
+        <option value='online'>online games</option>
+        <option valye='offline'>offline games</option>
+      </select>
+
+      <ul id='userlist'>
+        {userList.length ? (
+          userList.map((user) => {
+            return (
+              <li key={user.user_id}>
+                <h2>{user.username}</h2>
+                <img src={`${user.avatar}`} alt='user avatar' />
+                <button onClick={clickHandler}>add to group</button>
+                <PopUpGroups
+                  trigger={showUserGroupsList}
+                  setTrigger={setShowUserGroupsList}
+                >
+                  <ul>
+                    {userGroups.map((group) => {
+                      return (
+                        <button
+                          onClick={() =>
+                            addGroupHandler(group.group_id, user.user_id)
+                          }
+                        >
+                          {group.group_name}
+                        </button>
+                      );
+                    })}
+                  </ul>
+                </PopUpGroups>
+              </li>
+            );
+          })
+        ) : (
+          <p>sorry, no users fit your criteria</p>
+        )}
+      </ul>
+    </div>
   );
 };
 
