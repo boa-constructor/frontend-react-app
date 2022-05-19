@@ -143,7 +143,7 @@ export const getUsers = async (query) => {
 export const postMessageToConversationId = async (message, conversation_id) => {
   try {
     const { data } = await firestoreTestApi.post(
-      `/addMessage/${conversation_id}`,
+      `/addMessageToConversationId/${conversation_id}`,
       message
     );
     return data;
