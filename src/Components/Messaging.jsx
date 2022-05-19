@@ -1,13 +1,58 @@
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/authContext';
-// import { admin } from 'firebase';
 import {
   getMessagesByConversationId,
   postMessageToConversationId,
 } from '../utils/api';
+import { initializeApp } from 'firebase/app';
+import {
+  connectFirestoreEmulator,
+  getFirestore,
+  collection,
+  getDocs,
+} from 'firebase/firestore/lite';
+import cors from 'cors';
 
-// import firebase from 'firebase/compat/app';
+const firebaseConfig = {
+  apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
+  authDomain: 'dndinder-68dcc.firebaseapp.com',
+  databaseURL:
+    'https://dndinder-68dcc-default-rtdb.europe-west1.firebasedatabase.app',
+  projectId: 'dndinder-68dcc',
+  storageBucket: 'dndinder-68dcc.appspot.com',
+  messagingSenderId: '887332428606',
+  appId: '1:887332428606:web:fd999c4c18be4c0d106a6f',
+  measurementId: 'G-V4QQMW9LBW',
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+connectFirestoreEmulator(db, 'localhost', 4002);
+
+//  function getUsers(async(req, res, db) => {
+//   console.log('clicked');
+//   cors(req, res, async () => {
+//     const usersCol = collection(db, 'Users');
+//     const usersSnapshot = await getDocs(usersCol);
+//     const usersList = usersSnapshot.docs.map((doc) => {
+//       doc.data();
+//       console.log(usersList, '<<<');
+//       return usersList;
+//   });
+//     })
+//  }
+
+const doc = db.collection('Users').doc('9CoUOLOxC4jf1Ug4lsv9');
+
+const observer = doc.onSnapshot(
+  (docSnapshot) => {
+    console.log(`Received doc snapshot: ${docSnapshot}`);
+  },
+  (err) => {
+    console.log(`${err}`);
+  }
+);
+
 const Messaging = () => {
   const { currentUser } = useAuth();
   const [allMessages, setAllMessages] = useState([]);
