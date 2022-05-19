@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/authContext';
 
-const Header = ({ user }) => {
+const Header = () => {
   const { logout, currentUser } = useAuth();
   const [error, setError] = useState();
   const navigate = useNavigate();

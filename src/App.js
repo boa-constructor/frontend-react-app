@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './css/App.css';
-import Header from './Components/Header';
 import { useAuth } from './contexts/authContext';
 import NavBar from './Components/NavBar';
 import EditProfile from './Components/EditProfile';
@@ -13,19 +12,17 @@ import Login from './Components/Login';
 import Messaging from './Components/Messaging';
 import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
-import { Chat } from 'react-chat-popup';
 
 function App() {
   const { currentUser } = useAuth();
   return (
     <div className='App'>
-      <Header />
       {currentUser && <NavBar />}
       <Routes>
         <Route
           exact
-          path="/"
-          element={currentUser ? <LandingPage /> : <Navigate to="/login" />}
+          path='/'
+          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
         />
 
         <Route path='/messaging' element={<Messaging />} />
@@ -39,7 +36,6 @@ function App() {
         <Route
           path='/Profile'
           element={currentUser ? <UserProfile /> : <Navigate to='/' />}
-
         ></Route>
         <Route
           path='/groups'
@@ -58,9 +54,6 @@ function App() {
           element={currentUser ? <UsersList /> : <Navigate to='/' />}
         />
       </Routes>
-      <div className='popup_chat'>
-        <Chat />
-      </div>
     </div>
   );
 }
