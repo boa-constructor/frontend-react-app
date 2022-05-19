@@ -22,30 +22,20 @@ const UserProfile = () => {
   console.log(userProfile);
 
   return (
-    <div className="pt-16 bg-blueGray-50">
-      <div className="w-full lg:w-4/12 px-4 mx-auto">
-        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+    <div className="pt-16 bg-slate-500 min-h-screen">
+      <div className="w-full lg:w-4/12 px-4 mx-auto pb-2 lg:w-[800px]">
+        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-8">
           <div className="px-6">
             <div className="flex flex-wrap justify-center">
               <div className="w-full px-4 flex justify-center">
                 <img
                   src={userProfile.avatar_url}
                   alt="avatar"
-                  className="relative shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                  className="relative shadow-xl rounded-full h-auto align-middle border-none  -m-16 -ml-20 lg:-ml-16 max-w-[180p]x"
                 />
               </div>
-              <div className="w-full px-4 text-center mt-20">
-                <div className="flex justify-center gap-2 py-4 lg:pt-4 pt-8">
-                  <div className="mr-4 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      {userProfile.is_dm ? (
-                        <HiCheck size={30} />
-                      ) : (
-                        <HiX size={30} />
-                      )}
-                    </span>
-                    <span className="text-sm text-blueGray-400">DM</span>
-                  </div>
+              <div className="w-full px-4 text-center mt-12">
+                <div className="flex justify-center gap-2 py-4 lg:pt-4 pt-4">
                   <div className="mr-4 p-3 text-center">
                     <span>
                       {userProfile.play_online ? (
@@ -54,6 +44,7 @@ const UserProfile = () => {
                         <HiX size={30} />
                       )}
                     </span>
+
                     <span className="text-sm text-blueGray-400">
                       Play Online
                     </span>
@@ -73,7 +64,7 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <div className="text-center mt-12">
+            <div className="text-center mt-6">
               <h2 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                 Welcome to your profile,
               </h2>
@@ -88,14 +79,21 @@ const UserProfile = () => {
                   {userProfile.years_played}
                 </span>
               </div>
+              <div class="mb-2 text-blueGray-600">
+                <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                DM:{' '}
+                <span className="font-bold text-lg ml-2">
+                  {userProfile.is_DM ? 'Yes' : 'No'}
+                </span>
+              </div>
             </div>
             <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
               <div className="flex flex-wrap justify-center">
                 <div className="w-full lg:w-9/12 px-4">
-                  <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
+                  <p className="mb-4 text-sm leading-relaxed text-blueGray-700">
                     {userProfile.about_me}
                   </p>
-                  {/* className="no-underline text-gray-300" */}
+
                   <Link to="/EditProfile">
                     {' '}
                     <button className="text-gray-100 hover:text-black bg-gradient-to-r from-pink-300 w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md">
