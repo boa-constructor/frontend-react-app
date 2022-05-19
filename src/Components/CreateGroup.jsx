@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createGroup } from '../utils/api';
+import { createGroup, addUserToGroup } from '../utils/api';
 import { useAuth } from '../contexts/authContext';
 
 const CreateGroup = ({ newGroup, setNewGroup }) => {
@@ -9,6 +9,7 @@ const CreateGroup = ({ newGroup, setNewGroup }) => {
     e.preventDefault();
     createGroup(inputGroup).then((group_id) => {
       setNewGroup({ ...inputGroup, group_id, user_id: currentUser.uid });
+      addUserToGroup({ user_id: currentUser.uid, group_id: group_id });
     });
   };
   return (
