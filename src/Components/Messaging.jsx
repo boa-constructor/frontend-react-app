@@ -1,19 +1,16 @@
-// import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { initializeApp } from 'firebase/app';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/authContext';
 import {
   getMessagesByConversationId,
   postMessageToConversationId,
 } from '../utils/api';
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import { initializeApp } from 'firebase/app';
-import {
-  connectFirestoreEmulator,
-  getFirestore,
-  useCollectionData,
-} from 'firebase/firestore';
+import 'firebase/firestore';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
+import 'firebase/firestore';
 const firebaseConfig = {
   apiKey: 'AIzaSyB69WIWau0OsUGMqTPDA5jJs6NMsEncGR4',
   authDomain: 'dndinder-68dcc.firebaseapp.com',
@@ -27,7 +24,6 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-connectFirestoreEmulator(db, 'localhost', 4002);
 
 // const listener = onSnapshot(doc(db, 'Messages', 'Conversation'), (doc) => {
 //   console.log(doc);
@@ -59,9 +55,10 @@ connectFirestoreEmulator(db, 'localhost', 4002);
 // );
 
 const Messaging = () => {
+  const firestore = firebase.firestore();
+
   const { currentUser } = useAuth();
   const [allMessages, setAllMessages] = useState([]);
-
   const [conversationId, setConversationId] = useState('0IKPrj30o8giJXvaWi8I');
 
   //   const messagesRef = firebase
