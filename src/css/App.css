@@ -92,6 +92,7 @@ body {
 #group_avatar {
   height: 250px;
   width: 250px;
+  margin: 0 auto;
 }
 .user-profile {
   border: 1px solid black;
@@ -308,7 +309,9 @@ body {
 
   font-size: larger;
 }
-
+.groups_list {
+  padding: 0;
+}
 #group_img {
   height: 250px;
   width: 250px;
