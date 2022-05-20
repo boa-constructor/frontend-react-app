@@ -14,13 +14,15 @@ const LandingPage = () => {
               Welcome to DnDinder
             </h2>
             <h1 className="text-6xl font-bold text-left">
-              Share your DnD experience globally
+              Share your D&D experience globally
             </h1>
             <p className="text-lg text-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              laudantium cum quis eaque. Odit optio tenetur reiciendis quas
-              dolor, vitae laudantium temporibus aliquid eligendi officiis
-              incidunt nihil ipsam dignissimos unde.
+              Join our growing community of Dungeon and Dragons players and find
+              your next perfect party member! It takes seconds to set up your
+              account, create a character and find a group to play!<br></br>
+              <br></br>
+              Whether you are a Dungeon Master looking who is hosting a game or
+              a new player learning the ropes, there is always a group for you!
             </p>
             <button className="bg-gradient-to-r from-pink-600 w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md">
               Find Users
@@ -29,33 +31,38 @@ const LandingPage = () => {
         </div>
       </div>
 
-
       <div className="px-8 py-16">
         <div className="max-w-md mb-16 text-left">
           <h2 className="text-5xl">
-            Your next chapter, made possible by matching
+            Your next chapter, made possible by Dndinder.
           </h2>
         </div>
 
         <div className="grid grid-cols-2 gap-4 text-slate-600 text-left">
           <div className="">
-            <h3 className="text-2xl font-bold mb-4">Share what you love</h3>
+            <h3 className="text-2xl font-bold mb-4">Create Groups</h3>
             <p className="text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, dolorum. Necessitatibus repudiandae consequatur
-              reiciendis officiis perspiciatis ullam fugiat? .
+              Create and search through both online and offline groups to find
+              the perfect match for you. As either a Dungeon Master or a player,
+              online or face to face! <br></br>
+              <br></br>
+              Create the perfect character, find the perfect group and begin
+              your adventure. Dndinder aims to provide players with all the
+              tools they need to share in the hobby we all love.
             </p>
           </div>
           <div className="">
-            <h3 className="text-2xl font-bold mb-4">Create Groups</h3>
+            <h3 className="text-2xl font-bold mb-4">About us</h3>
             <p className="text-lg">
-              DnDinder gives you the tools to create private groups where you
-              can message those matching your preferences. Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. fuga, !
+              DnDinder is the brain child of James Barlow, William Mason, Ali
+              Combes, Nick Wootton and Sheroze Mohammed. This project is the
+              culmination of everything we learnt at more during our time on the
+              Nortcoders bootcamp.
+              <br></br> <br></br>
+              We aim to continue upgrading this project over the coming months
             </p>
           </div>
         </div>
-
       </div>
     </div>
   );
