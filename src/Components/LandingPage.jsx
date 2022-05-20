@@ -46,9 +46,9 @@ const LandingPage = () => {
               the perfect match for you. As either a Dungeon Master or a player,
               online or face to face! <br></br>
               <br></br>
-              Create the perfect character, find the perfect group and begin
-              your adventure. Dndinder aims to provide players with all the
-              tools they need to share in the hobby we all love.
+              Create your account, find the perfect group and begin your
+              adventure. Dndinder aims to provide players with all the tools
+              they need to share in the hobby we all love.
             </p>
           </div>
           <div className="">
