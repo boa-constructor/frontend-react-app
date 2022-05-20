@@ -19,7 +19,7 @@ const LandingPage = () => {
             <p className="text-lg text-left">
               Join our growing community of Dungeon and Dragons players and find
               your next perfect party member! It takes seconds to set up your
-              account, create a character and find a group to play!<br></br>
+              account find a group to play!<br></br>
               <br></br>
               Whether you are a Dungeon Master looking who is hosting a game or
               a new player learning the ropes, there is always a group for you!
@@ -42,7 +42,7 @@ const LandingPage = () => {
           <div className="">
             <h3 className="text-2xl font-bold mb-4">Create Groups</h3>
             <p className="text-lg">
-              Create and search through both online and offline groups to find
+              Create and search through both online and offline users to find
               the perfect match for you. As either a Dungeon Master or a player,
               online or face to face! <br></br>
               <br></br>
