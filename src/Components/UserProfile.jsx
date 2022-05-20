@@ -83,7 +83,7 @@ const UserProfile = () => {
                 <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
                 DM:{' '}
                 <span className="font-bold text-lg ml-2">
-                  {userProfile.is_DM ? 'Yes' : 'No'}
+                  {userProfile.is_dm ? 'Yes' : 'No'}
                 </span>
               </div>
             </div>
