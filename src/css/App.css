@@ -92,6 +92,7 @@ body {
 #group_avatar {
   height: 250px;
   width: 250px;
+  margin: 0 auto;
 }
 .user-profile {
   border: 1px solid black;
@@ -120,7 +121,11 @@ body {
 .user-details {
   flex: 3;
 }
-
+#filter {
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
+}
 .characters-preferences {
   display: flex;
   justify-content: space-around;
@@ -308,7 +313,9 @@ body {
 
   font-size: larger;
 }
-
+.groups_list {
+  padding: 0;
+}
 #group_img {
   height: 250px;
   width: 250px;
@@ -399,6 +406,9 @@ body {
 }
 
 .popup-inner .close-btn {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
   position: absolute;
   top: 16px;
   right: 16px;
