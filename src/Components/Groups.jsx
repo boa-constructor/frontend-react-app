@@ -48,7 +48,7 @@ const Groups = () => {
                 <img class="w-28 h-28 p-1 bg-white rounded-full" src={`${group.avatar}`} alt=""/>
                 <div class="title mt-11 ml-3 font-bold flex flex-col">
                   <div class="name break-words text-black">{group.group_name}</div>
-                  <div class="name break-words text-black">Members: {group.members.length}</div>
+                  <div class="name break-words text-black">Members: {group.members? (group.members.length) : (0)}</div>
                   <div class="add font-semibold text-sm italic dark"></div>
                 </div>
               </div>

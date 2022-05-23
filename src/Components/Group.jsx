@@ -11,7 +11,6 @@ const Group = () => {
     setMembers([])
     getGroupById(group_id)
       .then((group) => {
-        console.log(group)
         setGroup(group);
         setLoading(false)
         group.members.map((member) => {
@@ -24,7 +23,6 @@ const Group = () => {
         console.log(err);
       });
   }, [group_id]);
-  
   if (loading) return <p> Loading...</p>;
   return (
     <div className='pt-8 bg-slate-500 min-h-screen'>
@@ -36,6 +34,7 @@ const Group = () => {
       <p>Game type: {group.game_type}</p>
       <p>Group info: {group.game_info}</p>
       {members.length ? (<ul id='memberlist'>
+        {console.log(members)}
         Group Members:
         {members.map((member) => {
           console.log(member)

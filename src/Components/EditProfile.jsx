@@ -23,9 +23,9 @@ const SetProfile = ({ userName, setInputs }) => {
       });
   }, [currentUser]);
 
-  const submissionHandler = (e) => {
+  const submissionHandler = async (e) => {
     e.preventDefault();
-    updateUserProfile(userObj, `${currentUser.uid}`);
+    await updateUserProfile(userObj, `${currentUser.uid}`)
     navigate('/Profile');
   };
 
@@ -33,7 +33,7 @@ const SetProfile = ({ userName, setInputs }) => {
     <div className="min-h-screen font-mono bg-gray-400">
       {/* <!-- Container --> */}
       <div className="container mx-auto">
-        <div className="flex justify-center px-6 mt-5">
+        <div className="flex justify-center px-6 ">
           {/* <!-- Row --> */}
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
             {/* <!-- Col --> */}

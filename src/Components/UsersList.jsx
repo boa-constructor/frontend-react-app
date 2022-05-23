@@ -53,10 +53,6 @@ const UsersList = () => {
   return (
     <div>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-
       <label htmlFor='filter'>Filter by</label>
       <select name='filter' id='filter' onChange={changeHandler}>
         <option value='null'>all users</option>
@@ -70,7 +66,7 @@ const UsersList = () => {
             console.log(user)
             return (
               <li key={user.user_id}>
-                <div class="card border w-96 hover:shadow-none relative flex flex-col mx-auto shadow-lg m-5">
+                <div class="card border w-96 hover:shadow-none relative flex flex-col mx-auto shadow-lg m-5 ">
               <div class="profile w-full flex m-3 ml-4 text-white">
                 <img class="w-28 h-28 p-1 bg-white rounded-full" src={`${user.avatar_url}`} alt=""/>
                 <div class="title mt-11 ml-3 font-bold flex flex-col">

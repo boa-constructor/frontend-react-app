@@ -22,7 +22,7 @@ const UserProfile = () => {
   console.log(userProfile);
 
   return (
-    <div className="pt-16 bg-slate-500 min-h-screen">
+    <div className="pt-16 bg-lightgray min-h-screen">
       <div className="w-full lg:w-4/12 px-4 mx-auto pb-2 lg:w-[800px]">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-8">
           <div className="px-6">
