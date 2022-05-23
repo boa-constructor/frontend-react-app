@@ -34,10 +34,8 @@ const Group = () => {
       <p>Game type: {group.game_type}</p>
       <p>Group info: {group.game_info}</p>
       {members.length ? (<ul id='memberlist'>
-        {console.log(members)}
         Group Members:
         {members.map((member) => {
-          console.log(member)
           return <li key={member.user_id} className="member">{member.username}</li>
         })}
       </ul>): (<p>No members in this group yet!</p>)}
