@@ -14,48 +14,44 @@ import LandingPage from './Components/LandingPage';
 import UsersList from './Components/UsersList';
 
 function App() {
-  const { currentUser } = useAuth();
-  return (
-    <div className='App'>
-      {currentUser && <NavBar />}
-      <Routes>
-        <Route
-          exact
-          path='/'
-          element={currentUser ? <LandingPage /> : <Navigate to='/login' />}
-        />
+	const { currentUser } = useAuth();
+	return (
+		<div className='App'>
+			<NavBar />
+			<Routes>
+				<Route exact path='/' element={<LandingPage />} />
 
-        <Route path='/messaging' element={<Messaging />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
+				<Route path='/messaging' element={<Messaging />} />
+				<Route path='/signup' element={<SignUp />} />
+				<Route path='/login' element={<Login />} />
 
-        <Route
-          path='/EditProfile'
-          element={currentUser ? <EditProfile /> : <Navigate to='/' />}
-        ></Route>
-        <Route
-          path='/Profile'
-          element={currentUser ? <UserProfile /> : <Navigate to='/' />}
-        ></Route>
-        <Route
-          path='/groups'
-          element={currentUser ? <Groups /> : <Navigate to='/' />}
-        ></Route>
-        <Route
-          path='/groups/:group_id'
-          element={currentUser ? <Group /> : <Navigate to='/' />}
-        ></Route>
-        <Route
-          path='/groups/create'
-          element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
-        ></Route>
-        <Route
-          path='/users'
-          element={currentUser ? <UsersList /> : <Navigate to='/' />}
-        />
-      </Routes>
-    </div>
-  );
+				<Route
+					path='/EditProfile'
+					element={currentUser ? <EditProfile /> : <Navigate to='/' />}
+				></Route>
+				<Route
+					path='/Profile'
+					element={currentUser ? <UserProfile /> : <Navigate to='/' />}
+				></Route>
+				<Route
+					path='/groups'
+					element={currentUser ? <Groups /> : <Navigate to='/' />}
+				></Route>
+				<Route
+					path='/groups/:group_id'
+					element={currentUser ? <Group /> : <Navigate to='/' />}
+				></Route>
+				<Route
+					path='/groups/create'
+					element={currentUser ? <CreateGroup /> : <Navigate to='/' />}
+				></Route>
+				<Route
+					path='/users'
+					element={currentUser ? <UsersList /> : <Navigate to='/' />}
+				/>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
