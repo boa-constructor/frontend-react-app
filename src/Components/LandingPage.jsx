@@ -1,7 +1,13 @@
 import React from 'react';
 import Banner from '../images/Banner3.jpg';
+import { useNavigate } from 'react-router-dom';
+
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate("/users")
+  }
   return (
     <div>
       <div
@@ -24,7 +30,8 @@ const LandingPage = () => {
               Whether you are a Dungeon Master looking who is hosting a game or
               a new player learning the ropes, there is always a group for you!
             </p>
-            <button className="bg-gradient-to-r from-pink-600 w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md">
+            <button className="bg-gradient-to-r from-pink-600 w-40 bg-red-500 p-2 px-3 text-lg  hover:bg-red-600 duration-300 hover:scale-110 rounded-md"
+            onClick={clickHandler}>
               Find Users
             </button>
           </div>
@@ -37,7 +44,6 @@ const LandingPage = () => {
             Your next chapter, made possible by Dndinder.
           </h2>
         </div>
-
         <div className="grid grid-cols-2 gap-4 text-slate-600 text-left">
           <div className="">
             <h3 className="text-2xl font-bold mb-4">Create Groups</h3>

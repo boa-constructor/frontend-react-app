@@ -35,8 +35,12 @@
   width: 100%;
   height: 100%;
 }
+html {
+  background-color: lightgray;
+}
 body {
   margin: 0px;
+  background-color: lightgray;
 }
 /* .Header {
   border-bottom: 1px solid black;
@@ -364,6 +368,7 @@ body {
 #userlist {
   list-style-type: none;
   padding: 0;
+  margin-bottom: 0;
 }
 /* CSS for Landing Page ends  */
 /* CSS for Messenger Comp */
