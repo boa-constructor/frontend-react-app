@@ -63,7 +63,6 @@ const UsersList = () => {
       <ul id="userlist">
         {userList.length ? (
           userList.map((user) => {
-            console.log(user);
             return (
               <li key={user.user_id}>
                 <div class="card border w-96 hover:shadow-none relative flex flex-col mx-auto shadow-lg m-5 ">
