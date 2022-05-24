@@ -57,7 +57,7 @@ const UsersList = () => {
       <select name="filter" id="filter" onChange={changeHandler}>
         <option value="null">all users</option>
         <option value="online">online games</option>
-        <option valye="offline">offline games</option>
+        <option value="offline">offline games</option>
       </select>
 
       <ul id="userlist">
@@ -77,7 +77,8 @@ const UsersList = () => {
                       <div class="name break-words text-black">
                         {user.username}
                         <br></br>
-                        Game Type: {user.play_online ? 'online' : 'offline'}
+                        Game Type:{' '}
+                        {user.game_type === 'online' ? 'online' : 'offline'}
                         <br></br>
                         DM: {user.is_dm ? 'yes' : 'no'}
                       </div>
