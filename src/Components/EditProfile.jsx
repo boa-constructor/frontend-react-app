@@ -25,7 +25,7 @@ const SetProfile = ({ userName, setInputs }) => {
 
   const submissionHandler = async (e) => {
     e.preventDefault();
-    await updateUserProfile(userObj, `${currentUser.uid}`)
+    await updateUserProfile(userObj, `${currentUser.uid}`);
     navigate('/Profile');
   };
 
